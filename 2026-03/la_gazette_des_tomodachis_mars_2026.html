@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Gazette des Tomodachis — Mars 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --ink-light: #3d2e10;
+    --paper: #f5eedc;
+    --paper-dark: #e8dcc0;
+    --paper-darker: #d9c99a;
+    --red: #8b1a1a;
+    --gold: #9a7c2a;
+    --rule: #b8a06a;
+    --shadow: rgba(26,18,9,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1f0e;
+    font-family: 'Crimson Text', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, #3d2a0e 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a1209 0%, transparent 50%);
+  }
+
+  .newspaper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newspaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+
+  .paper-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.6rem 0;
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .masthead-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.4rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── GRID ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1px 2fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2-equal {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .col-divider {
+    background: var(--rule);
+    width: 1px;
+    margin: 1.5rem 0;
+  }
+
+  .col {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* ── ARTICLES ── */
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-headline.large {
+    font-size: 1.6rem;
+  }
+
+  .article-headline.small {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .article-deck {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    border-left: 2px solid var(--red);
+    padding-left: 0.6rem;
+  }
+
+  .article-byline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article-body p { margin-bottom: 0.6rem; }
+  .article-body p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── PULL QUOTES ── */
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--red);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── BOXED ITEMS ── */
+  .box {
+    border: 1px solid var(--rule);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background: var(--paper-dark);
+    position: relative;
+  }
+
+  .box::before {
+    content: '§';
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper-dark);
+    padding: 0 0.5rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+  }
+
+  .box-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .box-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── PERSONALIA ── */
+  .persona-card {
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+  .persona-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .persona-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .persona-body {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  /* ── RUNNING GAGS ── */
+  .gag-item {
+    padding: 0.7rem 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .gag-item:last-child { border-bottom: none; }
+
+  .gag-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--red);
+    margin-bottom: 0.25rem;
+  }
+
+  .gag-body {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  /* ── BOTTOM RULES ── */
+  hr.ornament {
+    border: none;
+    text-align: center;
+    height: 1.2rem;
+    margin: 0.5rem 0;
+    overflow: visible;
+  }
+  hr.ornament::after {
+    content: '— ✦ —';
+    font-family: 'IM Fell English', serif;
+    color: var(--rule);
+    font-size: 0.8rem;
+  }
+
+  .footer {
+    background: var(--ink);
+    color: var(--paper-dark);
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-style: italic;
+  }
+
+  .red { color: var(--red); }
+  .gold { color: var(--gold); }
+
+  .full-width {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2, .grid-2-equal { grid-template-columns: 1fr; }
+    .col-divider { display: none; }
+    .col { padding: 1rem 0.75rem; }
+    .paper-name { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="newspaper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Fondée en l'An IX des Kikoojaps</span>
+      <span>☩ Organe officiel du Saint-Empire des Tomodachis ☩</span>
+      <span>Imprimée à volonté</span>
+    </div>
+    <div class="paper-name">La Gazette des Tomodachis</div>
+    <div class="paper-subtitle">Chronique véridique & impartiale des affaires du Saint-Empire</div>
+    <div class="masthead-rule">✦ ✦ ✦</div>
+    <div class="masthead-info">
+      <span>No. 1 &nbsp;·&nbsp; Mars 2026</span>
+      <span>« Ni fard ni mensonge, seulement les faits tels qu'ils ont été postés »</span>
+      <span>57 178 messages archivés</span>
+    </div>
+  </div>
+
+  <!-- SECTION : GRANDES CONVERSATIONS -->
+  <div class="section-header">I. — Grandes Conversations du Mois</div>
+
+  <div class="grid-3">
+    <div class="col">
+      <div class="article-headline large">Le Sénat brûlera-t-il&nbsp;?</div>
+      <div class="article-byline">Affaires politiques · 27 mars</div>
+      <div class="article-deck">Un billet de Trump sur les billets de banque déclenche une nuit de débat sur la démocratie, les retraites dorées et l'utilité des institutions.</div>
+      <div class="article-body">
+        <p>Tout commença par un simple lien : Donald J. Trump allait apposer sa signature sur les dollars américains. La nouvelle, relayée par Reveur depuis un article du Monde, suffira à enflammer le #général pour les cinq heures suivantes.</p>
+        <p>Nagisa proposa immédiatement d'ériger une statue en or à la place de la Liberté. Dead_kage et Remimi enchaînèrent sur l'état des institutions françaises. On apprit ce soir-là que le Sénat dispose d'une caisse de retraite propre avoisinant le milliard d'euros. _umaruchan, d'un souffle, formula la proposition de la soirée : <em>« une IRL Sénat pour tout brûler. »</em> Proposition qui ne fut jamais officiellement démentie par la modération.</p>
+      </div>
+      <div class="pull-quote">« une IRL Sénat pour tout brûler »<br><small>— _umaruchan, 27 mars, 23h14</small></div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline large">Hassan II, Israël & la Géopolitique de Comptoir</div>
+      <div class="article-byline">Histoire & diplomatie · 7 mars, 0h00–1h10</div>
+      <div class="article-deck">À minuit passé, Petitvelo et Reveur s'engagent dans une exégèse de la politique marocaine sous Hassan II — avec une précision qui étonne à cette heure.</div>
+      <div class="article-body">
+        <p>Alors que la plupart des membres dormaient, Petitvelo et Reveur tinrent seuls le salon général pour une conversation de plus d'une heure sur les relations secrètes Maroc-Israël, l'opération Ajax, Kadhafi et les accords d'Oslo.</p>
+        <p>Petitvelo admit modestement que sa culture du Maroc <em>« ne dépassait pas Hassan II. »</em> Reveur reconnut qu'il trouvait la stratégie d'Hassan II <em>« calculée mais moralement discutable vis-à-vis de la cause palestinienne. »</em> La discussion se conclut avec l'admission partagée que <em>« en géopolitique, les intérêts priment toujours sur la morale »</em> — vérité universelle prononcée à 1h10 du matin.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Elomeurt, Wikipedia & la Décadence Civilisationnelle</div>
+      <div class="article-byline">Philosophie des loisirs · 25 mars</div>
+      <div class="article-deck">Le débat sur les gachas comme symptôme du déclin débouche sur Asimov, l'IA prédatrice et la valeur marchande du savoir humain.</div>
+      <div class="article-body">
+        <p>Remimi ouvrit les hostilités avec une analogie romaine : les gachas sont le panem et circenses de notre époque. Hoshiiyomi contra avec les algorithmes de rétention. Ertiks objecta que <em>« payer pour tirer au sort »</em> existait avant le smartphone.</p>
+        <p>La conversation glissa ensuite vers Wikipedia, vers l'IA qui <em>« pille internet sans créer »</em>, vers les livres auto-édités sur Amazon, pour aboutir à la question d'Asimov : l'accès universel au savoir rend-il les humains plus intelligents, ou simplement mieux informés de leurs propres bêtises&nbsp;?</p>
+      </div>
+
+      <hr class="ornament">
+
+      <div class="article-headline small">Roadou Déménage — Toute la Commu Suit</div>
+      <div class="article-byline">Vie domestique · 27 mars</div>
+      <div class="article-body">
+        <p>À 5h50 du matin, Roadou démontait son bureau. À 14h, il annonçait : <em>« Officiellement chez moi. »</em> Entre les deux : achat de poêles, Uber Eats planifié, et la solidarité des noctambules du serveur qui veillaient avec lui à distance.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONVERSATIONS SUITE -->
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Coming-Out, Famille & Double Contrainte</div>
+      <div class="article-byline">Intimité & société · 22 mars</div>
+      <div class="article-deck">Une conversation rare sur la réconciliation de l'identité avec la famille.</div>
+      <div class="article-body">
+        <p>Le 22 mars, Elomeurt raconta son coming-out lesbien en même temps que celui de son frère gay à leur mère — dans la maison du quartier, un soir ordinaire. La mère, au courant depuis lors, continue de venir chaque semaine. Le beau-père, homophobe déclaré, ne sait rien et ne doit rien savoir : telle est la frontière que la famille a tracée en silence pour préserver la paix et la liberté.</p>
+        <p>Mycenasilvae évoqua une amie musulmane bi dans une situation semblable. Reveur réfléchit à voix haute sur ce qu'il appela le <em>« debuff familial »</em> dans certaines configurations. La conversation tint sur la durée sans hausser le ton — ce qui, pour #général, constitue en soi un événement.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">La Nuit du 11 Mars : Cosplay, Fanfare & Confessions</div>
+      <div class="article-byline">Chronique nocturne · 11 mars, 22h–4h</div>
+      <div class="article-deck">Haychocobananas en Batman, Remimi sans instrument, Reveur grippé et sentimental.</div>
+      <div class="article-body">
+        <p>Haychocobananas raconta comment, déguisé en Batman dans les rues de Villeurbanne, il fut stoppé par une voiture dont les passagers voulaient une photo. Mycenasilvae présenta ses plans d'armure cosplay. Remimi révéla n'avoir jamais appris la musique malgré une famille où chacun joue piano, harpe ou violon.</p>
+        <p>Reveur, grippé à 3h du matin, déclara son amitié à plusieurs membres en même temps. <em>« Je suis 100 fois plus émotif quand je suis malade »</em>, admit-il, avant de proposer de monter une fanfare pour la prochaine IRL. Personne ne s'y opposa.</p>
+      </div>
+
+      <div class="box">
+        <div class="box-title">L'IRL de Metz — Logistique & Enthousiasme</div>
+        <div class="box-body">Le 20 mars, Elomeurt calcula son billet de train Paris-Metz (70€, 1h30), Rpazaideuh proposa une <em>geek room</em> un samedi, et Aupremiercoup dressa une liste de trois IRLs en projet : Metz, Algérie avec Natsume comme guide, Sénégal en exploration. Date retenue : week-end du 18 avril.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION : DÉLIRES -->
+  <div class="section-header">II. — Délires, Running Gags & Folklore Interne</div>
+
+  <div class="grid-2">
+    <div class="col">
+      <div class="article-headline large">L'Alerte : Hiéroglyphe Vivant du Saint-Empire</div>
+      <div class="article-byline">Anthropologie culturelle · tout le mois</div>
+      <div class="article-deck">Nulle autre réaction n'incarne aussi fidèlement l'âme de ce serveur que l'emoji :alerte:. Enquête sur un phénomène impossible à expliquer à un tiers.</div>
+      <div class="article-body">
+        <p>Il est impossible de dater avec précision l'apparition de l'alerte dans le lexique du Saint-Empire. Ce que l'on sait, c'est qu'en mars 2026 elle remplit simultanément toutes les fonctions qu'un langage normal répartirait entre des dizaines de mots : indignation, approbation, ironie, détresse, victoire, annonce banale, annonce catastrophique.</p>
+        <p>3113, le 11 mars, en posta huit d'affilée sans commentaire. C'était suffisant. Sufeet l'utilise sans avoir compris pourquoi depuis des mois — et personne ne lui a expliqué, car l'explication briserait le charme. L'alerte est la langue maternelle du serveur : on l'acquiert par imprégnation, jamais par grammaire.</p>
+        <p>Mention spéciale à <strong>:alerteprison:</strong>, variante formelle utilisée pour les condamnations morales, et à la version animée <strong>:alertram:</strong>, réservée aux situations d'urgence absolue ou d'enthousiasme extrême.</p>
+      </div>
+
+      <div class="pull-quote">« l'alerte est le seul mot dont on n'a jamais besoin de connaître le sens exact »</div>
+
+      <hr class="ornament">
+
+      <div class="article-headline">Speedy et le Petit-Déjeuner Cosmique</div>
+      <div class="article-byline">Rituels · tous les matins, 8h05–8h25</div>
+      <div class="article-body">
+        <p>Chaque matin de mars, sans exception, Speedy_1385 a posté son petit-déjeuner. Deux pains complets, du beurre, une confiture variable (4 fruits, abricots, fraises selon l'humeur de la semaine), une citronnade et un café. Systématiquement ponctué de <em>:KannaSip:</em> et <em>:Sip:</em>.</p>
+        <p>Le 19 mars, il ajouta un second message : <em>« Re, le 2ème café. »</em> Rien d'autre. Ce fut suffisant. Le 13 mars, Mycenasilvae posta exactement le même message que Speedy — dans les mêmes termes, avec les mêmes emojis — au décalage d'une heure. Hommage ou possession&nbsp;? Le mystère reste entier.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Le Secret KJ Story — Révélations Fictives</div>
+      <div class="article-byline">Sociologie du serveur · 20 mars</div>
+      <div class="article-body">
+        <p>Sufeet proposa de relancer un KJ-Lanta. Elomeurt contre-proposa un <em>Secret KJ Story</em> où chaque membre aurait un secret. S'ensuivit une séance de révélations inventées sur mesure : Kage <em>« n'habite pas vraiment à Toulouse »</em>, Natsume <em>« a déjà embrassé une meuf et kiffé »</em>, Nagisa <em>« sait en réalité cuisiner »</em>. Falundrim nota sobrement qu'il était, lui, <em>« bitchless »</em>, pendant que Natsume semblait avoir une vie amoureuse secrète de fiction.</p>
+      </div>
+
+      <hr class="ornament">
+
+      <div class="article-headline">Despey se fait Tirer dessus par un Feu Follet</div>
+      <div class="article-byline">Jeux vidéo & violence · 22 mars</div>
+      <div class="article-body">
+        <p>Jouant à Dragon Age 4, Elomeurt posta cette phrase dans son intégralité : <em>« Je me suis fait COCKBLOCK par un feu follet de merde je vais atomiser Israel. »</em> Aucun contexte supplémentaire ne fut fourni. Aucun ne fut demandé.</p>
+      </div>
+
+      <hr class="ornament">
+
+      <div class="article-headline">Le Repas de Roadou</div>
+      <div class="article-byline">Gastronomie · 23 mars</div>
+      <div class="article-body">
+        <p>Le 23 mars, Roadou annonça avoir mangé deux burgers, un wrap kebab et des frites bacon cheddar, et ne plus pouvoir continuer. La commu l'applaudit en silence.</p>
+      </div>
+
+      <hr class="ornament">
+
+      <div class="gag-item">
+        <div class="gag-title">L'Émission « On a échangé nos Transfem »</div>
+        <div class="gag-body">Elomeurt annonça avec le plus grand sérieux ce nouveau programme télévisé. Elle n'en dit pas plus. Il n'en fallait pas davantage.</div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">« Arbeloa, c'est de ma faute »</div>
+        <div class="gag-body">Despey posta deux faux tweets parodiant la signature du coach du Real Madrid : <em>« Pourquoi Hibiki a groom des mineurs ? C'est ma faute. »</em> La formule fit mouche et fut réemployée tout le mois.</div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">Lupin fait une Oeuvre sur le Vide</div>
+        <div class="gag-body">Lupin_red révéla avoir rendu une feuille blanche en art plastique sur le thème du vide, puis fourni la définition du vide à la séance suivante. Note obtenue : 16. Le cours d'art plastique a ainsi vu naître le philosophe qu'il cherchait.</div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">Teufei et le Service IT</div>
+        <div class="gag-body">Teufei passa trois heures à expliquer par mail, puis à voix haute, que son problème de VPN n'était pas lié à ses identifiants. Le service IT conclut que c'était ses identifiants. Le problème était une double authentification oubliée. Le service IT ne s'excusa pas.</div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">Drum.fern découvre les relations humaines</div>
+        <div class="gag-body">Le 5 mars, Drum.fern eut une révélation : <em>« Les gens qui se mettent en couple commencent par faire un RP dans lequel ils sont en couple, puis ce n'est plus du RP. »</em> Le Général accueillit cette observation en silence respectueux.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION : PERSONNALITÉS -->
+  <div class="section-header">III. — Portrait des Figures du Saint-Empire</div>
+
+  <div class="full-width">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Galerie des Personnages Notables</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1.5rem;">Portraits établis d'après les archives du mois de mars, par la rédaction</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="col">
+      <div class="persona-card">
+        <div class="persona-name">Remimi</div>
+        <div class="persona-title">La Bibliothécaire · 2 175 msgs</div>
+        <div class="persona-body">La voix la plus érudite du serveur, capable de citer Asimov ou d'analyser la guerre de Cent Ans à 1h du matin avec la même aisance. Elle pose :wadanohara: sur tout, souffre discrètement de sa santé fragile, et a tort si rarement qu'elle le sait probablement. Spécialiste de Touhou, des institutions politiques et du paganisme comparé.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Falundrim</div>
+        <div class="persona-title">Le Sociologue du Zinc · 1 015 msgs</div>
+        <div class="persona-body">Habitant de Narbonne, il partage des articles sur sa ville avec un <em>« Ma ville rayonne dans la France : »</em> lapidaire. Musulman pratiquant avec le sens de la dérision, il a théorisé le paradis en cinq niveaux (standard, premium, VIP avec DLC). Il voit tout sans avoir l'air de regarder, et glisse un conseil pratique entre deux vannes sans jamais s'en vanter.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Speedy_1385</div>
+        <div class="persona-title">Le Gardien du Temps · rituel quotidien · 159 msgs</div>
+        <div class="persona-body">Sa ponctualité matinale est le seul repère horaire fiable du serveur. Deux pains complets, une confiture, une citronnade, un café. Jamais en retard. Jamais en avance. Le Saint-Empire se lève quand Speedy poste.</div>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="persona-card">
+        <div class="persona-name">Elomeurt</div>
+        <div class="persona-title">La Formule Vivante · 4 109 msgs · #2 du mois</div>
+        <div class="persona-body">Moteur comique du serveur et moderatrice discrète. Pense en blagues, travaille chez Auchan au rayon fromage, est lesbienne out depuis un moment, et joue à Dragon Age 4 avec une précision d'analyste littéraire. Son usage du mot « nonobstant » dans une engueulade sur Mass Effect reste l'événement stylistique du mois. Le gif Moeka Koizumi est son deuxième langage.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Despey</div>
+        <div class="persona-title">Le Critique Culturel Exalté · 1 250 msgs</div>
+        <div class="persona-body">PSG comme religion, Rosalia comme déesse, cinéma japonais comme vocation. Il regarda Love Exposure (4h) en convalescence après s'être évanoui et avoir nettoyé son propre sang dans le couloir de son immeuble à 3h du matin. Le lendemain, il postait un gif pour célébrer la victoire contre Chelsea. Aussi sincère dans ses larmes de manga que dans son analyse de Shion Sono.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Teufei</div>
+        <div class="persona-title">La Doctorante Épuisée · 1 751 msgs · #1 parmi les silencieux</div>
+        <div class="persona-body">En M2, elle a obtenu en mars une proposition de contrat d'ingénieure de deux ans — nouvelle qu'elle annonça après avoir avoué <em>« flippé »</em> en étant convoquée seule par son chef d'équipe. Critique du capitalisme de surveillance à 22h, elle arrive à 8h30 en réunion et repart avec la nourriture qui reste. Ses perroquets, notamment Kaki au plumage de flammes, sont l'unique sujet où son ton analytique se suspend.</div>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="persona-card">
+        <div class="persona-name">Reveur</div>
+        <div class="persona-title">Le Grand Frère Maladroit · 2 494 msgs</div>
+        <div class="persona-body">Dit <em>« akhy »</em>, dit <em>« mon fils »</em>, est grippé un tiers du mois. À force de côtoyer Elomeurt et le général, il reconnaît lui-même <em>« s'exprimer comme un attardé »</em> et l'assume avec fierté. Très attaché aux membres historiques, il déclare son amitié à 3h du matin quand sa fièvre monte. Ne boit pas, ne fume pas, prie, et joue à Minecraft seul le soir plutôt que de sortir — ce qu'il présente comme un choix assumé.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Aupremiercoup</div>
+        <div class="persona-title">Le Sage Provocateur · 1 446 msgs</div>
+        <div class="persona-body">Fut épinglé au tableau des perturbateurs à l'école. Cite le cours du 2 mars 2009. Planifie les IRLs avec la logistique d'un général d'armée. Son emoji signature est le <em>😌</em> posé après chaque sentence définitive. Il est le seul membre à avoir envoyé un message à 5h28 du matin pour réfléchir à la liste des invités de l'IRL Sénégal.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Mycenasilvae</div>
+        <div class="persona-title">L'Artiste Instable · 3 159 msgs</div>
+        <div class="persona-body">Cosplayeuse, couturière sans machine, dormant en décalé total, postant à 5h du matin des gifs inexplicables. Son champignon cosplay gagné au LEC de Montpellier est une relique. Elle est partout dans les fils de conversation et y apporte une dose de chaos doux qui, paradoxalement, maintient l'équilibre général.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOX FINAL -->
+  <div class="full-width">
+    <div class="box" style="max-width:600px; margin:0 auto;">
+      <div class="box-title">Avis de la Rédaction</div>
+      <div class="box-body" style="text-align:center; font-style:italic;">
+        Le Saint-Empire des Tomodachis n'est ni un serveur de gaming, ni un forum politique, ni un groupe d'amis ordinaire. C'est un lieu où l'on brûle le Sénat à minuit et où l'on constate au matin que les arbres fleurissent. La rédaction espère avoir rendu justice à cet équilibre singulier.
+        <br><br>
+        <span class="gold">— La Gazette des Tomodachis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    La Gazette des Tomodachis · Mars 2026 · Tous droits réservés au Saint-Empire · Reproduction autorisée avec mention de la source · Imprimée sur papier virtuel recyclé
+  </div>
+
+</div>
+</body>
+</html>

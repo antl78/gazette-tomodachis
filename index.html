@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Gazette des Tomodachis — Archives</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --ink-light: #3d2e10;
+    --paper: #f5eedc;
+    --paper-dark: #e8dcc0;
+    --red: #8b1a1a;
+    --gold: #9a7c2a;
+    --rule: #b8a06a;
+    --shadow: rgba(26,18,9,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1f0e;
+    font-family: 'Crimson Text', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, #3d2a0e 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a1209 0%, transparent 50%);
+  }
+
+  .newspaper {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newspaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+
+  .paper-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.6rem 0;
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .masthead-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.4rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 1.5rem 2.5rem;
+    border-bottom: 2px solid var(--rule);
+    text-align: center;
+  }
+
+  .intro-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-light);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .intro-text::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── LISTE DES ÉDITIONS ── */
+  .editions-list {
+    padding: 1.5rem 2.5rem 2rem;
+  }
+
+  .edition-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px dotted var(--rule);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .edition-item:last-child {
+    border-bottom: none;
+  }
+
+  .edition-item:hover {
+    background: var(--paper-dark);
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .edition-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--red);
+    flex-shrink: 0;
+    width: 2.5rem;
+    text-align: right;
+    line-height: 1;
+  }
+
+  .edition-sep {
+    width: 1px;
+    height: 2rem;
+    background: var(--rule);
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .edition-info {
+    flex: 1;
+  }
+
+  .edition-mois {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .edition-meta {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 0.15rem;
+  }
+
+  .edition-desc {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  .edition-arrow {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--rule);
+    flex-shrink: 0;
+    transition: color 0.15s, transform 0.15s;
+  }
+
+  .edition-item:hover .edition-arrow {
+    color: var(--red);
+    transform: translateX(4px);
+  }
+
+  /* Badge "Nouveau" */
+  .badge-new {
+    display: inline-block;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    padding: 2px 6px;
+    background: var(--red);
+    color: var(--paper);
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 6px;
+    text-transform: uppercase;
+  }
+
+  /* ── ENCADRÉ "À VENIR" ── */
+  .coming-soon {
+    margin: 0 2.5rem 1.5rem;
+    border: 1px dashed var(--rule);
+    padding: 0.75rem 1rem;
+    text-align: center;
+    background: var(--paper-dark);
+  }
+
+  .coming-soon-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: var(--paper-dark);
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="newspaper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Fondée en l'An IX des Kikoojaps</span>
+      <span>☩ Organe officiel du Saint-Empire des Tomodachis ☩</span>
+      <span>Imprimée à volonté</span>
+    </div>
+    <div class="paper-name">La Gazette des Tomodachis</div>
+    <div class="paper-subtitle">Chronique véridique &amp; impartiale des affaires du Saint-Empire</div>
+    <div class="masthead-rule">✦ ✦ ✦</div>
+    <div class="masthead-info">
+      <span>Archives complètes</span>
+      <span>« Ni fard ni mensonge, seulement les faits tels qu'ils ont été postés »</span>
+      <span>Saint-Empire des Tomodachis</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p class="intro-text">Vous trouverez ici l'intégralité des éditions de la Gazette, chronique mensuelle et véridique des événements, délires et personnages qui font la vie du Saint-Empire des Tomodachis. Chaque numéro est établi d'après les archives brutes du serveur, sans fard ni concession.</p>
+  </div>
+
+  <!-- LISTE DES ÉDITIONS -->
+  <div class="section-header">— Toutes les Éditions —</div>
+
+  <div class="editions-list">
+
+    <!-- N°1 — Mars 2026 -->
+    <a class="edition-item" href="./2026-03/index.html">
+      <div class="edition-num">I</div>
+      <div class="edition-sep"></div>
+      <div class="edition-info">
+        <div class="edition-mois">Mars 2026 <span class="badge-new">Nouveau</span></div>
+        <div class="edition-meta">N° 1 · 57 178 messages · 87 membres actifs</div>
+        <div class="edition-desc">Le Sénat brûlera-t-il ? · La nuit cosplay du 11 mars · Roadou déménage · L'Alerte comme langue maternelle.</div>
+      </div>
+      <div class="edition-arrow">→</div>
+    </a>
+
+    <!-- Éditions futures — décommenter et remplir au fur et à mesure -->
+    <!--
+    <a class="edition-item" href="./2026-04/index.html">
+      <div class="edition-num">II</div>
+      <div class="edition-sep"></div>
+      <div class="edition-info">
+        <div class="edition-mois">Avril 2026</div>
+        <div class="edition-meta">N° 2 · XX XXX messages · XX membres actifs</div>
+        <div class="edition-desc">Résumé des grands sujets du mois.</div>
+      </div>
+      <div class="edition-arrow">→</div>
+    </a>
+    -->
+
+  </div>
+
+  <!-- ENCADRÉ À VENIR -->
+  <div class="coming-soon">
+    <p class="coming-soon-text">La prochaine édition paraîtra en début de mois prochain. La rédaction travaille.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    La Gazette des Tomodachis · Tous droits réservés au Saint-Empire · Reproduction autorisée avec mention de la source · Imprimée sur papier virtuel recyclé
+  </div>
+
+</div>
+</body>
+</html>
