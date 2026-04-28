@@ -305,6 +305,43 @@
     margin-bottom: 0.3rem;
   }
 
+  /* ── TAGS ── */
+  .persona-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 5px 0 7px;
+  }
+
+  .tag {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--ink-light);
+    background: var(--paper);
+  }
+
+  /* ── CITATIONS PERSONNALITÉS ── */
+  .persona-quotes {
+    margin: 6px 0 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .persona-quote {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--red);
+    padding-left: 0.7rem;
+    border-left: 2px solid var(--rule);
+  }
+
   .persona-body {
     font-size: 0.85rem;
     line-height: 1.6;
@@ -562,67 +599,154 @@
 
   <div class="grid-3">
     <div class="col">
+
       <div class="persona-card">
         <div class="persona-name">Remimi</div>
         <div class="persona-title">La Bibliothécaire · 2 175 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">culture & histoire</span>
+          <span class="tag">Touhou fangirl</span>
+          <span class="tag">:wadanohara: sur tout</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« l'on peut avoir un impact plus concret [...] les humains n'ont jamais été aussi riches et nombreux »</div>
+          <div class="persona-quote">« disons que les intérêts priment toujours sur la morale en géopolitique »</div>
+        </div>
         <div class="persona-body">La voix la plus érudite du serveur, capable de citer Asimov ou d'analyser la guerre de Cent Ans à 1h du matin avec la même aisance. Elle pose :wadanohara: sur tout, souffre discrètement de sa santé fragile, et a tort si rarement qu'elle le sait probablement. Spécialiste de Touhou, des institutions politiques et du paganisme comparé.</div>
       </div>
 
       <div class="persona-card">
         <div class="persona-name">Falundrim</div>
         <div class="persona-title">Le Sociologue du Zinc · 1 015 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">musulman décomplexé</span>
+          <span class="tag">Narbonne rayonne</span>
+          <span class="tag">paradis premium DLC</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Ma ville rayonne dans la France : » [lien article sordide]</div>
+          <div class="persona-quote">« Savoir que j'ai fait sourire 4 personnes de bon matin m'aide à bien commencer la journée »</div>
+        </div>
         <div class="persona-body">Habitant de Narbonne, il partage des articles sur sa ville avec un <em>« Ma ville rayonne dans la France : »</em> lapidaire. Musulman pratiquant avec le sens de la dérision, il a théorisé le paradis en cinq niveaux (standard, premium, VIP avec DLC). Il voit tout sans avoir l'air de regarder, et glisse un conseil pratique entre deux vannes sans jamais s'en vanter.</div>
       </div>
 
       <div class="persona-card">
         <div class="persona-name">Speedy_1385</div>
         <div class="persona-title">Le Gardien du Temps · rituel quotidien · 159 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">pain complet quotidien</span>
+          <span class="tag">:KannaSip: endémique</span>
+          <span class="tag">horloge du serveur</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Bonjour ! Les 2 pains complets au beurre et à la confiture aux 4 fruits, la citronnade et le café. »</div>
+          <div class="persona-quote">« Re, le 2ème café. »</div>
+        </div>
         <div class="persona-body">Sa ponctualité matinale est le seul repère horaire fiable du serveur. Deux pains complets, une confiture, une citronnade, un café. Jamais en retard. Jamais en avance. Le Saint-Empire se lève quand Speedy poste.</div>
       </div>
+
     </div>
 
     <div class="col-divider"></div>
 
     <div class="col">
+
       <div class="persona-card">
         <div class="persona-name">Elomeurt</div>
         <div class="persona-title">La Formule Vivante · 4 109 msgs · #2 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">humour absurde expert</span>
+          <span class="tag">lesbienne assumée</span>
+          <span class="tag">Dragon Age analyste</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Je me suis fait COCKBLOCK par un feu follet de merde je vais atomiser Israel. »</div>
+          <div class="persona-quote">« nonobstant, j'ai eu le temps de mettre presque 400 heures dans la saga dragon age le temps que tu joues à mass effect 2 »</div>
+        </div>
         <div class="persona-body">Moteur comique du serveur et moderatrice discrète. Pense en blagues, travaille chez Auchan au rayon fromage, est lesbienne out depuis un moment, et joue à Dragon Age 4 avec une précision d'analyste littéraire. Son usage du mot « nonobstant » dans une engueulade sur Mass Effect reste l'événement stylistique du mois. Le gif Moeka Koizumi est son deuxième langage.</div>
       </div>
 
       <div class="persona-card">
         <div class="persona-name">Despey</div>
         <div class="persona-title">Le Critique Culturel Exalté · 1 250 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">PSG comme religion</span>
+          <span class="tag">cinéma japonais era</span>
+          <span class="tag">Rosalia déesse</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Je me suis évanoui sans raison je me suis réveillé aux urgences avec ça. J'ai l'air de plus en plus badass. »</div>
+          <div class="persona-quote">« A la base j'ai écouté par curiosité car elle a un gros cul (réellement) et finalement j'écoute l'album en boucle »</div>
+        </div>
         <div class="persona-body">PSG comme religion, Rosalia comme déesse, cinéma japonais comme vocation. Il regarda Love Exposure (4h) en convalescence après s'être évanoui et avoir nettoyé son propre sang dans le couloir de son immeuble à 3h du matin. Le lendemain, il postait un gif pour célébrer la victoire contre Chelsea. Aussi sincère dans ses larmes de manga que dans son analyse de Shion Sono.</div>
       </div>
 
       <div class="persona-card">
         <div class="persona-name">Teufei</div>
         <div class="persona-title">La Doctorante Épuisée · 1 751 msgs · #1 parmi les silencieux</div>
+        <div class="persona-tags">
+          <span class="tag">labo cellules souches</span>
+          <span class="tag">perroquets Kaki</span>
+          <span class="tag">capitalisme sangsue</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« demain je vais devoir me lever tôt (8h30) pour aller en réunion :suicide: »</div>
+          <div class="persona-quote">« Super nouvelle le chef d'équipe m'a proposé un contrat d'ingénieur [...] si il a l'argent on peut étendre à 2 ans »</div>
+        </div>
         <div class="persona-body">En M2, elle a obtenu en mars une proposition de contrat d'ingénieure de deux ans — nouvelle qu'elle annonça après avoir avoué <em>« flippé »</em> en étant convoquée seule par son chef d'équipe. Critique du capitalisme de surveillance à 22h, elle arrive à 8h30 en réunion et repart avec la nourriture qui reste. Ses perroquets, notamment Kaki au plumage de flammes, sont l'unique sujet où son ton analytique se suspend.</div>
       </div>
+
     </div>
 
     <div class="col-divider"></div>
 
     <div class="col">
+
       <div class="persona-card">
         <div class="persona-name">Reveur</div>
         <div class="persona-title">Le Grand Frère Maladroit · 2 494 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">akhy & mon fils</span>
+          <span class="tag">grippé chronique</span>
+          <span class="tag">émotif à 3h du mat</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Je suis 100x plus émotif que d'habitude quand je suis malade »</div>
+          <div class="persona-quote">« T'as bien grandi mon fils, c'était un plaisir de suivre ton évolution 🥹 »</div>
+        </div>
         <div class="persona-body">Dit <em>« akhy »</em>, dit <em>« mon fils »</em>, est grippé un tiers du mois. À force de côtoyer Elomeurt et le général, il reconnaît lui-même <em>« s'exprimer comme un attardé »</em> et l'assume avec fierté. Très attaché aux membres historiques, il déclare son amitié à 3h du matin quand sa fièvre monte. Ne boit pas, ne fume pas, prie, et joue à Minecraft seul le soir plutôt que de sortir — ce qu'il présente comme un choix assumé.</div>
       </div>
 
       <div class="persona-card">
         <div class="persona-name">Aupremiercoup</div>
         <div class="persona-title">Le Sage Provocateur · 1 446 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">logisticien des IRL</span>
+          <span class="tag">perturbateur repenti</span>
+          <span class="tag">😌 signature</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Je me suis fait éjecté des cours plusieurs fois. J'ai aussi été épinglé au tableau avec l'ensemble des perturbateurs de la classe. »</div>
+          <div class="persona-quote">« C'est le début d'une nouvelle aventure qui s'annonce. 😌 »</div>
+        </div>
         <div class="persona-body">Fut épinglé au tableau des perturbateurs à l'école. Cite le cours du 2 mars 2009. Planifie les IRLs avec la logistique d'un général d'armée. Son emoji signature est le <em>😌</em> posé après chaque sentence définitive. Il est le seul membre à avoir envoyé un message à 5h28 du matin pour réfléchir à la liste des invités de l'IRL Sénégal.</div>
       </div>
 
       <div class="persona-card">
         <div class="persona-name">Mycenasilvae</div>
         <div class="persona-title">L'Artiste Instable · 3 159 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">cosplay & couture</span>
+          <span class="tag">sommeil en décalé</span>
+          <span class="tag">chaos doux</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« je dors quasi la moitié de l'après-midi tous les jours et la nuit je fais pleins de cauchemars »</div>
+          <div class="persona-quote">« Vivement le 31 pour prendre une douche j'en peux plus »</div>
+        </div>
         <div class="persona-body">Cosplayeuse, couturière sans machine, dormant en décalé total, postant à 5h du matin des gifs inexplicables. Son champignon cosplay gagné au LEC de Montpellier est une relique. Elle est partout dans les fils de conversation et y apporte une dose de chaos doux qui, paradoxalement, maintient l'équilibre général.</div>
       </div>
+
     </div>
   </div>
 
