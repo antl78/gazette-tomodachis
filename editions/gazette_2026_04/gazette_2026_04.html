@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Gazette des Tomodachis — Avril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --ink-light: #3d2e10;
+    --paper: #f5eedc;
+    --paper-dark: #e8dcc0;
+    --paper-darker: #d9c99a;
+    --red: #8b1a1a;
+    --gold: #9a7c2a;
+    --rule: #b8a06a;
+    --shadow: rgba(26,18,9,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1f0e;
+    font-family: 'Crimson Text', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, #3d2a0e 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a1209 0%, transparent 50%);
+  }
+
+  .newspaper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newspaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+
+  .paper-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.6rem 0;
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .masthead-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.4rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── GRID ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1px 2fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2-equal {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .col-divider {
+    background: var(--rule);
+    width: 1px;
+    margin: 1.5rem 0;
+  }
+
+  .col {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* ── ARTICLES ── */
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-headline.large {
+    font-size: 1.6rem;
+  }
+
+  .article-headline.small {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .article-deck {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    border-left: 2px solid var(--red);
+    padding-left: 0.6rem;
+  }
+
+  .article-byline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article-body p { margin-bottom: 0.6rem; }
+  .article-body p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── PULL QUOTES ── */
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--red);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── BOXED ITEMS ── */
+  .box {
+    border: 1px solid var(--rule);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background: var(--paper-dark);
+    position: relative;
+  }
+
+  .box::before {
+    content: '§';
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper-dark);
+    padding: 0 0.5rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+  }
+
+  .box-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .box-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── PERSONALIA ── */
+  .persona-card {
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+  .persona-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .persona-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── TAGS ── */
+  .persona-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 5px 0 7px;
+  }
+
+  .tag {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--ink-light);
+    background: var(--paper);
+  }
+
+  /* ── CITATIONS PERSONNALITÉS ── */
+  .persona-quotes {
+    margin: 6px 0 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .persona-quote {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--red);
+    padding-left: 0.7rem;
+    border-left: 2px solid var(--rule);
+  }
+
+  .persona-body {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  /* ── RUNNING GAGS ── */
+  .gag-item {
+    padding: 0.7rem 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .gag-item:last-child { border-bottom: none; }
+
+  .gag-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--red);
+    margin-bottom: 0.25rem;
+  }
+
+  .gag-body {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  /* ── BOTTOM RULES ── */
+  hr.ornament {
+    border: none;
+    text-align: center;
+    height: 1.2rem;
+    margin: 0.5rem 0;
+    overflow: visible;
+  }
+  hr.ornament::after {
+    content: '— ✦ —';
+    font-family: 'IM Fell English', serif;
+    color: var(--rule);
+    font-size: 0.8rem;
+  }
+
+  .footer {
+    background: var(--ink);
+    color: var(--paper-dark);
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-style: italic;
+  }
+
+  .red { color: var(--red); }
+  .gold { color: var(--gold); }
+
+  .full-width {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2, .grid-2-equal { grid-template-columns: 1fr; }
+    .col-divider { display: none; }
+    .col { padding: 1rem 0.75rem; }
+    .paper-name { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="newspaper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Fondée en l'An IX des Kikoojaps</span>
+      <span>☩ Organe officiel du Saint-Empire des Tomodachis ☩</span>
+      <span>Imprimée à volonté</span>
+    </div>
+    <div class="paper-name">La Gazette des Tomodachis</div>
+    <div class="paper-subtitle">Chronique véridique & impartiale des affaires du Saint-Empire</div>
+    <div class="masthead-rule">✦ ✦ ✦</div>
+    <div class="masthead-info">
+      <span>No. 2 &nbsp;·&nbsp; Avril 2026</span>
+      <span>« Ni fard ni mensonge, seulement les faits tels qu'ils ont été postés »</span>
+      <span>66 629 messages archivés</span>
+    </div>
+  </div>
+
+  <!-- SECTION : GRANDES CONVERSATIONS -->
+  <div class="section-header">I. — Grandes Conversations du Mois</div>
+
+  <div class="grid-3">
+    <div class="col">
+      <div class="article-headline large">L'Italie n'est Pas Qualifiée — et ce n'est Pas un Poisson d'Avril</div>
+      <div class="article-byline">Football & deuil collectif · 1er avril, 11h42</div>
+      <div class="article-deck">Le 1er avril, Pocoudonworld posa la question que personne ne voulait poser. La réponse fut non. Le deuil fut authentique.</div>
+      <div class="article-body">
+        <p>Pocoudonworld formula la question de la manière la plus sobre qui soit : <em>« Les gars, l'Italie pas qualifiée c'est pas un poisson d'avril rassurez moi. »</em> Le silence qui suivit valait une réponse. Ce n'était pas un poisson d'avril. L'Italie n'était, pour la troisième fois depuis 2018, pas qualifiée pour la Coupe du Monde.</p>
+        <p>Free007 produisit immédiatement une analyse rétrospective : depuis la tête de Zidane en 2006, le parcours des Azzurri était catastrophique — sorties en poules en 2010 et 2014, zéro qualification depuis 2018. Hoshiiyomi délivra l'épitaphe du soir : <em>« certains seront majeurs et n'auront jamais vu l'Italie en coupe du monde dans quelques années. »</em> Aupremiercoup nota sobrement que l'IRL Italie restait envisageable, mais que l'Italie non qualifiée rendait l'opération <em>« moins symbolique. »</em></p>
+      </div>
+      <div class="pull-quote">« certains seront majeurs et n'auront jamais vu l'Italie en coupe du monde »<br><small>— Hoshiiyomi, 1er avril, 21h46</small></div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline large">Trump, Macron & la Géopolitique de Comptoir</div>
+      <div class="article-byline">Affaires du monde · tout le mois</div>
+      <div class="article-deck">D'un détroit d'Ormuz à une taxe douanière, le monde fut abondamment analysé depuis le #général — avec la rigueur et la franchise qui caractérisent le Saint-Empire.</div>
+      <div class="article-body">
+        <p>Avril fut, à l'image des mois précédents, une chambre d'écho des convulsions du monde extérieur. L'administration Trump continua de hanter les conversations avec une régularité digne d'un rituel. Elomeurt résuma l'ambiance dès le 1er : <em>« trump fait vraiment son âge — il tweete comme un papi qui croit aux montages IA facebook. »</em></p>
+        <p>Pocoudonworld développa une analyse plus stratégique : Trump avait su profiter de la guerre pour faire main basse sur le détroit d'Ormuz et lever les sanctions sur le pétrole iranien. Thrarx confirma que l'ONU ne pouvait rien y faire. Macron fut mentionné avec une régularité comparable — souvent associé à la vie chère, au ticket de bus à 1,80 € et aux institutions françaises en général.</p>
+        <p>Le débat sur le multiculturalisme du 6 avril, porté par Remimi et Pocoudonworld, se prolongea plusieurs heures sans hausser le ton — exploit qui mérite d'être souligné.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">La Rage de Dent de 1amyste — et la Solidarité du Général</div>
+      <div class="article-byline">Santé & entraide · 17 avril, 0h30</div>
+      <div class="article-deck">À minuit passé, 1amyste déclara avoir probablement une carie. Le serveur se transforma en cabinet dentaire.</div>
+      <div class="article-body">
+        <p>1amyste annonça ses symptômes avec la précision d'un patient en salle d'attente : douleur à une molaire, possible otite du même côté, rendez-vous dentiste impossible avant trois mois. .Deardeath répondit avant même que la question soit posée — clou de girofle, bain de bouche, poser le clou contre la gencive le soir. Roadou renchérit depuis l'expérience vécue et ses molaires abîmées par des années de soda : <em>« si vraiment ça va pas, go urgence, la douleur peut vite dégénérer et être insupportable. »</em></p>
+        <p>1amyste confessa avoir bu une à deux bouteilles de Coca et d'Ice Tea par jour pendant une bonne partie de sa vie. Personne ne jeta la pierre. On nota simplement que la douleur de carie, selon Roadou, venait de l'infection qui attaquait le nerf — information qui n'aida pas mais que tout le monde retint.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONVERSATIONS SUITE -->
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">La Femme dans la Douche d'Aupremiercoup</div>
+      <div class="article-byline">Vie en résidence · 1er avril, 0h31</div>
+      <div class="article-deck">À minuit et demi, Aupremiercoup ouvrit sa porte. Ce qui suivit fut rapporté au #général en temps réel avec le plus grand sérieux.</div>
+      <div class="article-body">
+        <p>Aupremiercoup posta à 0h31 : une femme de sa résidence avait toqué à sa porte, elle était très mignonne, elle prenait une douche chez lui et souhaitait discuter assez longuement. Il précisa avoir mis de côté ses sous-vêtements <em>« par respect. »</em> Il envoya une photo de ses habits sur son bureau.</p>
+        <p>Sufeet répondit, avec la concision d'un grand esprit : <em>« Je comprends pas pourquoi tu nous envoies ses habits. »</em> La suite de la conversation ne fut jamais entièrement clarifiée. Le général accepta l'ambiguïté. C'était un 1er avril, mais Aupremiercoup insista qu'il ne mentait pas. On le crut.</p>
+      </div>
+
+      <div class="box">
+        <div class="box-title">L'IRL Metz — Acte I accompli</div>
+        <div class="box-body">Le 2 avril, Aupremiercoup publia la mise à jour officielle des IRLs en chantier : <em>IRL Metz avec Satou comme guide</em> fut cochée ✅. Les suivantes restent en suspens : IRL Algérie avec Natsume, IRL Sénégal avec Sadio Mané comme guide imaginaire, IRL Japan Expo avec Kaijuu, et — ajout du mois — une IRL Paris qui aura lieu les 18 et 19 avril et dont tout le monde parle. Free007 s'est déclaré partant pour une IRL Venise. Elomeurt a deux semaines en juin et a proposé une IRL saucisson-tapenade-pissaladière dans le Sud. Ertiks a crié <em>« IRL TAPENADE »</em> en majuscules.</div>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Roadou, la Psychiatrie & le Sommeil Impossible</div>
+      <div class="article-byline">Chronique nocturne · 15 avril</div>
+      <div class="article-deck">Le 15 avril, journée la plus active du mois avec 2 989 messages, Roadou déclara n'avoir pas dormi depuis la veille. Ce n'était pas une nouveauté.</div>
+      <div class="article-body">
+        <p>À 15h24 du 15 avril, après avoir passé la nuit sur le serveur, Roadou écrit : <em>« dsl j'ai pas dormi depuis hier. »</em> C'est la dixième fois environ en avril. Le serveur prit note sans surprise. Roadou avait révélé plus tôt dans le mois suivre un suivi psychiatrique depuis l'an dernier, après plus de dix ans à se battre seul.</p>
+        <p>Le 4 avril, il raconta avoir rêvé de son père <em>« faire l'aide à mourir »</em> — un cauchemar qu'il glissa entre deux conversations sur d'autres sujets, sans ponctuation dramatique. Le serveur s'arrêta une seconde, puis continua. C'est souvent ainsi que les choses importantes sont dites ici : en passant, à 4h du matin, entre deux gifs.</p>
+      </div>
+
+      <hr class="ornament">
+
+      <div class="article-headline small">Nagisa & le Bar à Chats Coworking</div>
+      <div class="article-byline">Scènes de vie · 17 avril, 17h49</div>
+      <div class="article-body">
+        <p>Nagisaharu découvrit qu'un bar à chats disposait d'un espace coworking. Il s'y rendit. Il y avait une seule personne — une fille avec un ordinateur. Il ne précisa pas la suite. Le serveur imagina le reste.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION : DÉLIRES -->
+  <div class="section-header">II. — Délires, Running Gags & Folklore Interne</div>
+
+  <!-- PAGE DÉDIÉE : L'ALERTE -->
+  <div style="padding: 2rem 2rem 0; border-bottom: 2px solid var(--rule);">
+
+    <!-- Titre et intro sur toute la largeur -->
+    <div style="text-align:center; margin-bottom: 1.25rem;">
+      <div class="article-headline large" style="font-size:2rem;">L'Alerte en Avril : Nouveau Sommet Statistique</div>
+      <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin: 0.3rem 0;">Anthropologie culturelle · tout le mois</div>
+      <div class="article-deck" style="max-width:620px; margin:0.5rem auto 0; border-left:none; text-align:center; padding-left:0;">698 messages contenant le mot « alerte » en un seul mois. L'emoji phare du serveur a connu en avril son utilisation la plus diversifiée jamais documentée.</div>
+    </div>
+
+    <!-- Texte en deux colonnes -->
+    <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:0; margin-bottom:1.25rem;">
+      <div style="padding: 0 1.25rem 0 0;">
+        <div class="article-body">
+          <p>Si les années passées avaient établi l'alerte comme hiéroglyphe vivant du Saint-Empire, avril 2026 en a confirmé l'universalité. 698 messages contenant ce mot — contre toutes les autres émotions combinées de la langue française. L'alerte fut utilisée pour accueillir la non-qualification italienne, pour commenter la femme dans la douche d'Aupremiercoup, pour sanctionner une déclaration de Kaijuu, et pour signaler que quelque chose était drôle sans que l'auteur sache exactement pourquoi.</p>
+          <p>Rpazaideuh livra le 17 avril une exégèse qui fera date : <em>« l'alertram pour moi c'est un rire où t'arrives même plus à respirer. »</em> Queencedia précisa ses propres deux usages de l'alerte de base : quand quelqu'un qu'elle n'aime pas dit quelque chose qui la fait quand même rire (honnête), et l'autre cas, <em>« exactement ce qu'a dit Rpz. »</em> La rédaction n'en sait pas plus.</p>
+        </div>
+        <div class="pull-quote" style="margin-top:1rem;">« l'alertram pour moi c'est un rire où t'arrives même plus à respirer »<br><small>— Rpazaideuh, 17 avril, 17h00</small></div>
+      </div>
+      <div style="background:var(--rule); width:1px; margin: 0;"></div>
+      <div style="padding: 0 0 0 1.25rem;">
+        <div class="article-headline small" style="margin-bottom:0.4rem;">Palmarès de l'Alerte — Avril 2026</div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin-bottom:0.6rem;">Statistiques officielles · compilation mensuelle</div>
+        <div class="article-body">
+          <p>Pour la première fois, les archives livrent un classement officiel des membres ayant reçu le plus de réactions alerte (et dérivés) en avril. Le podium est sans appel :</p>
+          <p><strong class="red">#1 — Xkaijuu</strong> : 1 519 réactions. L'homme qui save des outfits de femme <em>« juste pour adapter en mec »</em> et déclare son poulet aux olives comme dernier repas de condamné mérite chaque alerte reçue.</p>
+          <p><strong class="red">#2 — Elomeurt</strong> : 1 392 réactions. Première du classement général des messages, deuxième à l'alerte. Cohérence totale.</p>
+          <p><strong class="red">#3 — Despey</strong> : 847 réactions. Podium mérité pour l'homme qui a transformé Rosalia, le PSG et Saliba en religion personnelle.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Séparateur ornemental -->
+    <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin-bottom:1rem;">— ✦ Top 3 des Posts · Palmarès par Réactions ✦ —</div>
+
+
+    <!-- 3 images en pleine largeur, côte à côte -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.25rem; padding-bottom:1.75rem;">
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥇 Post #1</div>
+        <img src="top1.jpg" alt="Post #1" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top1.jpg manquant</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥈 Post #2</div>
+        <img src="top2.jpg" alt="Post #2" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top2.jpg manquant</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥉 Post #3</div>
+        <img src="top3.jpg" alt="Post #3" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top3.jpg manquant</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- FIN PAGE ALERTE -->
+
+  <div class="grid-2" style="grid-template-columns: 2fr 1px 1fr;">
+    <div class="col">
+      <div class="article-headline">Kaijuu & les Outfits Féminins — Enquête en Cours</div>
+      <div class="article-byline">Mode & identité · 17 avril, 16h15</div>
+      <div class="article-body">
+        <p>Le 17 avril, Kaijuu (xkaijuu) posta discrètement : <em>« Les gars je commence à save des outfit de femme pour me dire "c'est juste pour adapter ça en mec". »</em> La parenthèse ne trompa personne. La conversation qui suivit fut, selon les témoins, <em>« romantique »</em> dans au moins un sens du terme. Kaijuu avait déjà déclaré plus tôt dans le mois que deux femmes l'avaient arrêté dans la rue pour lui demander son secret pour les cheveux — ce qu'il jugea être son <em>« prime »</em> — avant d'annoncer vouloir tout raser parce que les vendeurs de shit avaient la même coupe.</p>
+      </div>
+
+      <hr class="ornament">
+
+      <div class="article-headline">La Grande Nuit des Tierlists — #jeux-vidéo</div>
+      <div class="article-byline">Culture vidéoludique · 13 avril, 18h50–22h30</div>
+      <div class="article-deck">Elomeurt lança une grille « About Me — Video Games ». Ce qui suivit fut quatre heures de débats, provocations et révélations involontaires sur les goûts de chacun.</div>
+      <div class="article-body">
+        <p>Tout commença quand Elomeurt annonça qu'elle <em>« buggait sur 3 catégories »</em> pour remplir sa grille jeux vidéo — jeu favori, besoin de remake, jeu le plus surcoté. Narumanu proposa aussitôt que KOTOR avait besoin d'un remake. Elomeurt trancha : <em>« demander un remake de KOTOR = tafiole. »</em> Puis : <em>« mon dice roll, mon RTWP, mon peak Bioware »</em> — phrase que personne ne contesta vraiment.</p>
+        <p>Ertiks fit sa propre grille à la place d'Igno, <em>« pour qu'il ne perde pas de temps avec ces bêtises. »</em> Il y plaça SotFS (la version de Dark Souls 2 qu'Igno déteste) tout en haut. Igno ne fit pas sa grille. Nagisa prétendit essayer, laissa la moitié des cases vides, et déclara <em>« flemme »</em> quand Elomeurt lui dit de faire un effort. Elomeurt : <em>« je te demande pas ton avis, juste fais la. »</em> Nagisa : <em>« du coup je fais pas ma grille si tu veux pas mon avis ??? Elle est bête ou quoi. »</em></p>
+        <p>Le débat bifurqua vers Gris. Ertiks : <em>« ya pas de hype, les gens qui kiff sont des gens qui n'aiment pas le jeu vidéo. »</em> Ecleas : <em>« indie game des années 2010 prétentieux. »</em> Narumanu, rattrapant les messages : <em>« pue la merde gris — je devais intervenir. »</em> Elomeurt avait évité de commenter pour <em>« préserver la dignité »</em> d'Ecleas, déjà détruite après qu'elle eut demandé un remake de Bloodborne — <em>« un jeu PS4 »</em>. Le summum fut atteint quand Elomeurt tenta d'invoquer Ikar0s en postant un lien YouTube. Ikar0s apparut dans les trente secondes. Nagisa : <em>« c'est scripté. »</em></p>
+      </div>
+
+      <hr class="ornament">
+
+      <div class="article-headline small">Le Poulet aux Olives de Kaijuu — #cuisine</div>
+      <div class="article-byline">Gastronomie & mémoire · 19 avril, 16h13</div>
+      <div class="article-body">
+        <p>Dans #cuisine, Ynnel posta une photo de sa pissaladière maison. Kaijuu demanda ce que c'était. Mycenasilvae : <em>« tié pas du coin toi, mon beau cailloux. »</em> Kaijuu comprit : <em>« c'est comme une pizza au thon mais c'est pas du thon. »</em> Ce fut suffisant. Mais la vraie révélation vint ensuite : Kaijuu déclara que son dernier repas de condamné serait un tajine poulet aux olives — celui de la voisine de la femme de son frère, au hlel d'il y a six ans. <em>« Fréro c'était wow. »</em> Mycenasilvae : <em>« dans le four les olives font l'amour avec le poulet — repu et heureux. »</em> La conversation se conclut sur les œufs mollets marinés de Petitvelo (soja, mirin, gochujang) et sur la déclaration de Sterno que la courgette crue râpée <em>« blinde le ventre »</em> pour presque zéro calorie. Petitvelo répondit avec un gif.</p>
+      </div>
+
+      <hr class="ornament">
+
+      <div class="gag-item">
+        <div class="gag-title">Le Poisson d'Avril d'Elomeurt — Version Professionnelle</div>
+        <div class="gag-body">Elomeurt confectionna un poisson en papier et le colla dans le dos d'un collègue. La directrice de l'Auchan le remarqua. Elomeurt, au lieu de se faire discret, se retourna et lui expliqua méthodiquement le concept du poisson d'avril. La directrice rit. Falundrim commenta : <em>« chadette d'avoir mis le poisson. »</em></div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">Mycenasilvae & la Diarrhée du 1er Avril</div>
+        <div class="gag-body">Mycenasilvae annonça le soir du 1er avril avoir contracté la diarrhée — et précisa que ce n'était pas un poisson d'avril. <em>« Je vide tout mon soul »</em>, dit-elle. Aucun commentaire ne fut jugé nécessaire.</div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">Ertiks, le Plus Grand Bras du Serveur</div>
+        <div class="gag-body">Lors du fil sur les prises de sang ratées, Ertiks déclara n'avoir jamais eu d'hématome parce que <em>« la veine est plus large que mon bras. »</em> La rédaction prend acte.</div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">Le Bar Imaginaire du Serveur</div>
+        <div class="gag-body">Le 17 avril à 18h01, Maitrehypson proposa : <em>« et si le serveur tenait un vrai bar — à quoi ressemblerait la carte ? »</em> Free007 rappela que le serveur avait déjà un bar attitré : le Banana Café à Châtelet. Elomeurt déclara immédiatement son pèlerinage au <em>« saint Banana Café »</em>.</div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">Petitvelo Supporte la Bosnie</div>
+        <div class="gag-body">Le 1er avril à 0h11, Petitvelo annonça en lettres capitales et avec un soulignement intérieur : <em>« Mais igo ON (je dis bien ON) supporte la Bosnie cette année. »</em> La raison ne fut jamais complètement élucidée. La Bosnie ne s'est pas qualifiée non plus.</div>
+      </div>
+
+      <div class="gag-item">
+        <div class="gag-title">Deardeath Fuit sa Psychiatre</div>
+        <div class="gag-body">Lors d'une conversation nocturne le 4 avril, .Deardeath révéla avoir fui sa psychiatre après que celle-ci eut noté <em>« anxieuse sévère à traiter d'urgence. »</em> Elle prenait des calmants à la pharmacie et du CBD à la place. Le serveur l'écouta sans juger, ce qui est peut-être la chose la plus précieuse qu'il offre.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION : PERSONNALITÉS -->
+  <div class="section-header">III. — Portrait des Figures du Saint-Empire</div>
+
+  <div class="full-width">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Galerie des Personnages Notables</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1.5rem;">Portraits établis d'après les archives du mois d'avril, par la rédaction</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Elomeurt</div>
+        <div class="persona-title">La Formule Vivante · 4 706 msgs · #1 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">poisson d'avril expert</span>
+          <span class="tag">Auchan rayon fromage</span>
+          <span class="tag">lesbienne asexuelle</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Y AVAIT PAS DE MERGUEZ PIQUANTE MAISON À LA BOUCHERIE JE VAIS ME FAIRE SAUTER LE CAISSON »</div>
+          <div class="persona-quote">« 21h25 c'est l'heure des cordons bleus »</div>
+        </div>
+        <div class="persona-body">Reste en tête du classement pour le deuxième mois consécutif. Elle est le moteur comique du serveur, mais aussi parfois sa conscience. La merguez piquante maison indisponible à la boucherie fut en avril la plus grande tragédie personnelle documentée. Elle précisa par ailleurs être <em>lesbienne asexuelle</em> — information glissée dans une conversation sur autre chose, comme toujours avec Elomeurt.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Ertiks</div>
+        <div class="persona-title">Le Taiseux Présent · 4 644 msgs · #2 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">veines élargies</span>
+          <span class="tag">cafécafécafé</span>
+          <span class="tag">gwer revendiqué</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« la veine est plus large que mon bras »</div>
+          <div class="persona-quote">« En tant que gwer, vous pouvez venir me tuer en personne ou pas ? »</div>
+        </div>
+        <div class="persona-body">Ertiks posta 4 644 messages en avril — second du classement — sans jamais avoir l'air de vraiment essayer. Il réapparut le 15 avril à 11h27 avec un message unique : <em>« cafécafécafé »</em>. Ce fut suffisant pour synthétiser l'état d'esprit d'une matinée entière. Son unique contribution à la discussion sur les prises de sang fut définitive.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Mycenasilvae</div>
+        <div class="persona-title">L'Artiste Instable · 4 036 msgs · #3 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">diarrhée du 1er avril</span>
+          <span class="tag">cosplay en cours</span>
+          <span class="tag">envahir Israël prévu</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« On ira envahir israel »</div>
+          <div class="persona-quote">« EN 15 ANS J'AI RECU PLEINS DE MENACES ET JAMAIS DE GATEAUX »</div>
+        </div>
+        <div class="persona-body">Toujours dans le trio des contributeurs. Mycenasilvae est la seule membre à avoir planifié une invasion d'Israël et une IRL tapenade dans la même semaine, avec le même enthousiasme et sans plus de détails sur l'une que sur l'autre. Sa complainte des quinze ans sans gâteaux reçut, en retour, des menaces renouvelées. La logique lui échappe visiblement.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Shinymin</div>
+        <div class="persona-title">La Discrète Prolifique · 3 911 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">Alfortville chère</span>
+          <span class="tag">bâtarde assumée</span>
+          <span class="tag">Star Wars jamais vu</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« 2.05€ à Alfortville — l'économie de macron »</div>
+          <div class="persona-quote">« jsuis une bâtarde mdrrr »</div>
+        </div>
+        <div class="persona-body">Quatrième du classement général, Shinymin reste l'une des présences les plus constantes du serveur. Elle révéla n'avoir <em>« jamais vu un seul Star Wars »</em> avec la sérénité de quelqu'un qui s'en porte très bien. Son ticket de bus à 2,05 € à Alfortville fut posé comme accusation contre l'économie nationale. Elle a raison.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Roadou</div>
+        <div class="persona-title">Le Noctambule Psychiatrisé · 2 876 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">pas dormi depuis hier</span>
+          <span class="tag">suivi psy depuis un an</span>
+          <span class="tag">romantisme exigé</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« dsl j'ai pas dormi depuis hier »</div>
+          <div class="persona-quote">« Le romantisme est important pour moi et je pourrais pas avoir de romantisme avec un mec »</div>
+        </div>
+        <div class="persona-body">A révélé en avril suivre un suivi psychiatrique depuis l'an dernier après plus de dix ans sans aide — annonce glissée entre deux conversations comme s'il commentait la météo. Noctambule endémique, amateur de romantisme, hostile aux molaires cariées par le Coca, il reste l'une des présences les plus honnêtes du serveur — et la seule à avoir causé un silence collectif en mentionnant un cauchemar sur son père.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Remimi</div>
+        <div class="persona-title">La Bibliothécaire · 2 545 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">multiculturalisme analysé</span>
+          <span class="tag">:wadanohara: endémique</span>
+          <span class="tag">Afrique géopolitique</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« je n'ai rien contre les différentes cultures mais je ne crois pas au multiculturalisme »</div>
+          <div class="persona-quote">« l'accès à la mer est un enjeu politique et économique majeur pour un pays »</div>
+        </div>
+        <div class="persona-body">Livra en avril une exégèse du multiculturalisme qui tint plusieurs heures, une analyse de la décolonisation africaine centrée sur l'Éthiopie et l'accès à la mer, et une réflexion sur les années 1930 en Europe. Entre les deux, elle posa systématiquement :wadanohara: comme d'autres diraient <em>amen</em>. Aucune contradiction perçue de son côté.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Free007</div>
+        <div class="persona-title">L'Administrateur Nostalgique · 2 447 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">IRL Venise partant</span>
+          <span class="tag">banh mi du 13e</span>
+          <span class="tag">bulle IA diagnostiquée</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« les banh mi du 13e — à mon époque ça coûtait que 3 euros c'était tellement worth »</div>
+          <div class="persona-quote">« Je me demande si c'est pas surtout accentué depuis que l'administration Trump a pris le pouvoir et que les USA misent tout sur la bulle IA qui surgonfle Wall Street »</div>
+        </div>
+        <div class="persona-body">Nostalgique des banh mi à 3 euros du 13e arrondissement, partant pour l'IRL Venise, auteur d'une théorie sur Trump et la bulle IA qui surgonfle Wall Street depuis janvier 2025. A perdu ses enregistrements vocaux où il lisait la fic de Schiappa suite au crash de son S21 — ce que la rédaction considère comme une perte culturelle irremplaçable.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Reveur</div>
+        <div class="persona-title">Le Grand Frère Exhausted · 2 054 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">disciple unique de Reveur</span>
+          <span class="tag">Truth Social infiltré</span>
+          <span class="tag">allergique à manger</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« J'ai installé truth social je suis en train de mourir de rire c'est un repère à malades mentaux »</div>
+          <div class="persona-quote">« Par contre j'aime pas manger oui, c'est une perte de temps »</div>
+        </div>
+        <div class="persona-body">Infiltra Truth Social pour des raisons de curiosité scientifique et en sortit traumatisé mais documenté. Admit en avril ne pas aimer manger — <em>« c'est une perte de temps »</em> — tout en reconnaissant avoir un estomac <em>« plutôt bon. »</em> Déclara une fois de plus son amitié à plusieurs membres simultanément, avec une dédicace spéciale à l'<em>« unique disciple, frère et ami »</em>. La liste des destinataires reste confidentielle.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Aupremiercoup</div>
+        <div class="persona-title">Le Logisticien des IRLs · 1 504 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">femme dans la douche</span>
+          <span class="tag">IRL registrar officiel</span>
+          <span class="tag">😌 signature</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« La photo de ses habits qu'elle a laissés sur mon bureau, j'ai mis de côté les sous-vêtements par respect »</div>
+          <div class="persona-quote">« voilà que les astres s'alignent pour dévoiler le visage d'une seule personne : mashii »</div>
+        </div>
+        <div class="persona-body">Gère le registre officiel des IRLs avec la rigueur d'un notaire et la patience d'un saint. Sa révélation du 1er avril — la femme dans la douche — reste l'anecdote la plus commentée du mois, et la seule pour laquelle il insista avec le plus grand sérieux qu'il ne mentait pas. Le 😌 en fin de phrase reste sa ponctuation finale sur toute déclaration importante.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOX FINAL -->
+  <div class="full-width">
+    <div class="box" style="max-width:600px; margin:0 auto;">
+      <div class="box-title">Avis de la Rédaction</div>
+      <div class="box-body" style="text-align:center; font-style:italic;">
+        Avril 2026 fut un mois de deuils sportifs, de dents cariées, d'ambitions géopolitiques et de confiture de fraises. L'Italie ne fut pas qualifiée, Roadou ne dormit pas, Elomeurt ne trouva pas sa merguez piquante. Et pourtant, à 979 alertes de distance, le serveur continua de tourner avec la régularité d'une horloge mal réglée mais profondément fiable.
+        <br><br>
+        <span class="gold">— La Gazette des Tomodachis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    La Gazette des Tomodachis · Avril 2026 · Tous droits réservés au Saint-Empire · Reproduction autorisée avec mention de la source · Imprimée sur papier virtuel recyclé
+  </div>
+
+</div>
+</body>
+</html>
