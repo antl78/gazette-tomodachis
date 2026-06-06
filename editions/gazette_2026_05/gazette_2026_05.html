@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Gazette des Tomodachis — Mai 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --ink-light: #3d2e10;
+    --paper: #f5eedc;
+    --paper-dark: #e8dcc0;
+    --paper-darker: #d9c99a;
+    --red: #8b1a1a;
+    --gold: #9a7c2a;
+    --rule: #b8a06a;
+    --shadow: rgba(26,18,9,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1f0e;
+    font-family: 'Crimson Text', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, #3d2a0e 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a1209 0%, transparent 50%);
+  }
+
+  .newspaper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newspaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+
+  .paper-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.6rem 0;
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .masthead-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.4rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── GRID ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1px 2fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2-equal {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .col-divider {
+    background: var(--rule);
+    width: 1px;
+    margin: 1.5rem 0;
+  }
+
+  .col {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* ── ARTICLES ── */
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-headline.large {
+    font-size: 1.6rem;
+  }
+
+  .article-headline.small {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .article-deck {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    border-left: 2px solid var(--red);
+    padding-left: 0.6rem;
+  }
+
+  .article-byline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article-body p { margin-bottom: 0.6rem; }
+  .article-body p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── PULL QUOTES ── */
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--red);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── BOXED ITEMS ── */
+  .box {
+    border: 1px solid var(--rule);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background: var(--paper-dark);
+    position: relative;
+  }
+
+  .box::before {
+    content: '§';
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper-dark);
+    padding: 0 0.5rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+  }
+
+  .box-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .box-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── PERSONALIA ── */
+  .persona-card {
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+  .persona-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .persona-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .persona-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag {
+    background: var(--paper-darker);
+    border: 1px solid var(--rule);
+    padding: 0.15rem 0.4rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+  }
+
+  .persona-quotes {
+    margin-bottom: 0.5rem;
+  }
+
+  .persona-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--rule);
+  }
+
+  .persona-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── GAZETTE ITEMS ── */
+  .gazette-items {
+    padding: 1.5rem 3rem;
+  }
+
+  .gag-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .gag-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .gag-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .gag-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── FULL WIDTH ── */
+  .full-width {
+    padding: 1.25rem 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: var(--paper-darker);
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── UTILITIES ── */
+  .text-center { text-align: center; }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .italic { font-style: italic; }
+
+  .drop-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--rule);
+    margin: 0.6rem auto;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 1rem 0;
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Saint-Empire des Tomodachis</span>
+      <span>Organe d'information mensuel de la communauté</span>
+      <span>N° 3 · Gratuit</span>
+    </div>
+    <div class="paper-name">La Gazette des Tomodachis</div>
+    <div class="paper-subtitle">Bulletin des Affaires Intérieures du Saint-Empire</div>
+    <div class="masthead-rule">✦ ✦ ✦</div>
+    <div class="masthead-info">
+      <span>Mai 2026 — De la 1ère à la 31ème Journée</span>
+      <span>Rédigée par la rédaction · free007</span>
+      <span>63 305 messages recensés · 41 049 en salon général</span>
+    </div>
+  </div>
+
+  <!-- SECTION I : UNE -->
+  <div class="section-header">I. — Chronique du Salon Général</div>
+
+  <!-- ARTICLE PRINCIPAL : ARTHUR -->
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">La Chute de la Maison Arthur</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Le 24 mai, une story sur les réseaux sociaux déchaîne les archives du Saint-Empire</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="grid-2" style="border-bottom: none;">
+    <div class="col">
+      <div class="article-byline">Par la rédaction · 24 Mai 2026</div>
+      <div class="article-body">
+        <p>Il y a des matinées qui commencent ordinairement et finissent en tribunal. Celle du 24 mai en fut la démonstration la plus complète que le Saint-Empire ait connue depuis longtemps. À 10h46, Pocoudonworld posta une série de points d'interrogation assourdissante, suivie de la phrase : <em>« Putain de merde me dis pas que c'est Arthur. »</em> Dead_kage confirma quelques instants plus tard. La machine était lancée — et elle ne s'arrêterait pas avant la nuit.</p>
+        <p>Le déclencheur fut une story Instagram relayée par Falundrim depuis le compte d'une cosplayeuse modèle. Celle-ci y nommait sans détour le compte <strong>arthur.c_photos</strong>, décrivant un individu ciblant des mineures avec son appareil photo, prenant des clichés sous leurs jupes et commentant à une cosplayeuse de <strong>13 ans</strong> : <em>« C'est dommage que tu portes un short sous ta jupe. »</em> Elle signalait sa présence à la Japan Party et appelait le milieu à le bannir de toutes les conventions à venir. Le salon général reconnut le profil immédiatement.</p>
+        <p>Free007 décida d'ouvrir les archives personnelles : <em>« Ah par contre petite anecdote mais en 2024 Arthur m'avait invité chez lui et il avait une photo d'Ichi dans sa chambre je balance ça là. »</em> Puis : <em>« La carte en question que Arthur gardait dans sa chambre presque 2 ans après qu'Ichi ne lui parlait pourtant plus. »</em> Le niveau de malaise collectif monta d'un cran supplémentaire.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="pull-quote">« Arthur il était au fond du trou dans mon estime après ses trashs sur les tomos et il a réussi à descendre encore plus. »<br><span style="font-size:0.75rem; color:var(--ink-light);">— Free007, 24 mai, 11h24</span></div>
+
+      <div class="article-body">
+        <p>Reveur8951 formula ce que beaucoup pensaient tout bas : <em>« Je m'attendais à ce que Arthur soit un harceleur sexuel mais de là à être pedo bon. »</em> Teufei demanda des clarifications. La discussion révéla que les cosplayeuses du circuit l'avaient depuis longtemps catalogué en personne à éviter, information qui circulait en dehors du Saint-Empire mais qui n'y était jamais parvenue officiellement — jusqu'à ce samedi matin.</p>
+        <p>Namiette confirma avoir fait <em>« tout pour le séparer de ces gens-là »</em> quand Arthur se plaignait en privé — et nota qu'il se faisait désormais cancel sur les réseaux. Pocoudonworld rappela qu'il ne l'avait jamais supporté depuis le jour où il l'avait <em>« soûlé dès cinq minutes »</em> lors de leur première rencontre. Hoshiiyomi observa que le monde cosplay en parlait désormais comme on parlait d'Orton en 2009.</p>
+        <p>Sufeet clôtura le chapitre en termes définitifs : <em>« Arthur il a gâché ce prénom à jamais pour moi, je vois mon voisin en bizarre maintenant. »</em> Pocoudonworld, pragmatique, annonça avoir retiré Arthur de sa liste d'amis. Free007 confirma l'avoir bloqué. À 14h32, on nota que cela avait tout de même pris plusieurs heures de discussion pour arriver à ce résultat qui semblait inévitable depuis la matinée.</p>
+      </div>
+	  <div style="text-align:center; margin: 1rem 0;">
+		<img src="story_arthur.jpg" style="max-width:50%; border: 2px solid var(--rule);">
+	  <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--ink-light); text-transform:uppercase; margin-top:0.4rem;">Pièce à conviction · Story Instagram · munkalm · 24 mai</div>
+</div>
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem; border-bottom: 2px solid var(--rule);">
+    <div class="box">
+      <div class="box-title">Avis de la Rédaction — Affaire Arthur</div>
+      <div class="box-body">Notons pour l'histoire que la communauté avait déjà identifié depuis longtemps des signaux d'alarme chez cette personne, et que son éviction du serveur avait précédé ces révélations. Le 24 mai n'est donc pas le début d'une histoire, mais sa conclusion documentée. Certains comportements laissent des traces plus tenaces que l'on ne l'espère. Les archives du Saint-Empire en témoignent.</div>
+    </div>
+  </div>
+
+  <!-- GRILLE 2 : PSG + couples -->
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Paris, Capitale d'Europe — Le PSG Sacré Champion</div>
+      <div class="article-deck">Le 30 mai au soir, le salon général vibra comme il sait le faire lors des grandes occasions.</div>
+      <div class="article-byline">Par la rédaction · 30 Mai 2026</div>
+      <div class="article-body">
+        <p>Despey avait prévenu dès la veille : <em>« demain il fait 33 degrés à 18h je vais me mettre sous bière pendant la finale c'est sûr. »</em> À 19h30, Free007 fut le premier à lancer les hostilités avec un retentissant <em>« DEMBELE LDC CDM BALLON D'OR »</em> — le genre d'affirmation qui se vérifie dans l'instant ou jamais.</p>
+        <p>La suite fut à la hauteur. Le PSG remporta sa deuxième Ligue des Champions consécutive face à Arsenal, dans une finale que Pocoudonworld commenta avec l'objectivité attendue : <em>« putain de sa mère le PSG qui fait le doublé. »</em> Despey, présumé sous bière depuis plusieurs heures, laissa exploser une joie en majuscules qui dépassa les normes habituelles même pour lui.</p>
+        <p>Le compte rendu de Despey le lendemain fut laconique mais suffisant : <em>« On est double champion d'Europe. »</em> Kaijuu, qui avait menacé de ne pas allumer la télé en raison de l'arbitrage catastrophique de la campagne, n'en dit pas davantage. Ce silence équivalut à une capitulation.</p>
+        <p>Mariedioa, résidant à deux pas du Parc des Princes le soir de la finale, prit soin de le noter dans le salon bonheur-positivité avec la solennité que l'occasion méritait. C'est ainsi que l'histoire s'écrit : un message à 22h10 et une adresse dans le 16e.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Affaires de Cœur & Aventures Estivales</div>
+      <div class="article-deck">Mai, mois des illusions entretenues, des IRL improvisées et des aveux à demi-mots.</div>
+      <div class="article-byline">Par la rédaction · Correspondance sentimentale</div>
+      <div class="article-body">
+        <p>Shinymin ouvrit le bal des confessions le 20 mai au matin, avec la franchise douce-amère qui la caractérise : <em>« yes c'est lui — il me ghost pas vraiment vu qu'il me répond mais bon j'dois avoir l'air vrm désespérée et giga conne ça me saoule. »</em> Puis, quelques échanges plus tard : <em>« en fait je préfère que ça me travaille plutôt qu'affronter la dure vérité — ça me va de vivre dans une illusion. »</em> Free007 lui conseilla de lui poser la question directement. Elle envoya un gif de pleurs. Le dossier est toujours ouvert.</p>
+        <p>L'IRL du 20-21 mai réserva ses propres suspenses. Lenny (Ynnel13) débarqua sur Paris sans prévenir personne jusqu'au dernier moment — fidèle à sa réputation. Xkaijuu annonça qu'il suivrait <em>« l'IRL Lenny × Enzo depuis la dashcam de la Skoda de Arthur »</em>, ce qui fut l'une des phrases les plus denses de ce mois. Rpazaideuh confirma que les retrouvailles eurent lieu, en petit comité, dans une ambiance que le communiqué officiel décrit comme <em>« deux connards qui savent pas quoi dire dans un vieux Bills Burger »</em> — ce qui, dans le vocabulaire du Saint-Empire, est un terme d'affection.</p>
+
+        <div class="pull-quote" style="font-size:0.85rem;">« ça annonce les IRL à minuit le jour même en surprise comme l'album de Beyoncé en 2016. »<br><span style="font-size:0.7rem; color:var(--ink-light);">— Despey, 20 mai, 23h34</span></div>
+
+        <p>La préparation de l'IRL de Lille (7 juin) mobilisa en parallèle une logistique considérable depuis le 2 mai : billets à 10€ sur Trainline, musées gratuits le premier dimanche du mois, et une liste de participants qui atteignit les douze personnes. Free007 se réjouit de la chose. La rédaction note que douze tomodachis dans un même musée lillois représente un événement statistiquement rare qui mérite d'être consigné.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION II : AUTRES SALONS -->
+  <div class="section-header">II. — Dépêches des Salons Particuliers</div>
+
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Neverness to Everness : Naissance d'un Sanctuaire</div>
+      <div class="article-deck">Le 5 mai, free007 créait le salon dédié au nouveau gacha de l'Empire. L'émoji fut la première bataille rangée.</div>
+      <div class="article-byline">Par la rédaction · Salon 🎲neverness-to-everness</div>
+      <div class="article-body">
+        <p>Tout commence avec un ping solennel le 5 mai au soir : free007 conviait les pionniers du jeu dans un nouveau salon distinct du général, avec la promesse que les conversations NTE cesseraient de noyer les autres sujets. L'accueil fut enthousiaste — ce genre d'attention de l'administration est toujours bien reçu.</p>
+        <p>Mais l'urgence immédiate fut de choisir un émoji pour le nom du salon. Jenseth proposa 🪐 pour ressemblance avec l'Annulith du jeu, puis 🔑 pour les Tri-Key de pull d'armes, et enfin 💽 pour la référence au vinyle omniprésent dans l'esthétique NTE. Elomeurt proposa 🍆💦, avec la cohérence qu'on lui connaît. Le 💽 l'emporta démocratiquement.</p>
+        <p>Jenseth fixa rapidement le ton intellectuel du salon en comparant ses discussions avec Ertiks à une preuve que <em>« avoir des avis radicalement opposés n'empêche pas la bonne entente quand on est un minimum civilisé. »</em> La rédaction considère cette formulation comme la plus civilisée de tout le mois de mai sur l'ensemble des salons confondus.</p>
+        <p>Shinymin, de son côté, révéla que son conjoint avait réalisé Nanally et Jiuyan dès son troisième reroll — <em>« la chance indécente »</em> fut la formulation officielle. La rédaction ne commentera pas.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Monopoly Communautaire : Le Projet du Siècle en Chantier</div>
+      <div class="article-deck">Le 22 mai naissait dans le salon dédié l'esquisse d'un plateau de jeu à l'effigie du Saint-Empire.</div>
+      <div class="article-byline">Par la rédaction · Salon 🏠monopoly-kj</div>
+      <div class="article-body">
+        <p>Falundrim avait posé les premières bases dans le salon avec une proposition ambitieuse : remplacer les gares classiques par les lieux de rencontre emblématiques de la communauté — le Tassili Snack, le Banana Café, l'Afterlife — et les compagnies d'eau et d'électricité par le Topic et le Discord. La logique était imparable.</p>
+        <p>Free007 dressa rapidement l'inventaire de ce qu'il faudrait personnaliser : 40 cases, 22 propriétés, 4 gares-lieux, 16 cartes chance, 16 cartes communauté. <em>« Faut pas oublier les 3 clans : Aniki, Tokisaki, Scarlet »</em> fut la précision de la rédaction. Pocoudonworld réclama immédiatement que le bar figure sur le plateau. Il allait de soi que ce serait le cas.</p>
+        <p>Dead_kage proposa la <em>« Cave du dépucelage »</em> en lieu de la prison. Pocoudonworld suggéra une case douane exigeant de céder une waifu pour passer. Free007 nota que tout cela serait mieux conçu en vocal lors d'une soirée dédiée, <em>« sinon ça va être la cacophonie. »</em> C'est déjà un peu la cacophonie — mais la bonne sorte.</p>
+
+        <div class="box" style="margin-top:1rem;">
+          <div class="box-title">Extrait de Carte Chance (version préliminaire)</div>
+          <div class="box-body" style="font-style:italic;">« Aller au Pocobar. Rendez-vous directement à la prison. Ne passez pas par la case départ, ne touchez pas ¥20 000. »<br><br>« Poudre d'escampette : Vous êtes libéré du Pocobar. Cette carte peut être conservée jusqu'à ce qu'elle soit utilisée. »</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION III : PETITE GAZETTE -->
+  <div class="section-header">III. — Petite Gazette & Faits Divers</div>
+
+  <div class="gazette-items">
+
+    <div class="gag-item">
+      <div class="gag-title">Natsume et les Parents : Le Feuilleton Continue</div>
+      <div class="gag-body">Mai fut, pour Teufei (alias Natsume), un mois où la situation familiale fut de nouveau mise sous la loupe collective. Le 3 mai, le général se coalisa pour décrire avec précision la dynamique toxique en œuvre : <em>« son père est une ordure complète — ultra narcissique, lâche, violent »</em> selon Reveur8951, qui admit avoir accumulé des centaines de milliers de messages privés sur le sujet. Mycenasilvae résuma la situation avec l'efficacité qui la caractérise : <em>« Natsume c'est un peu Cendrillon au final. »</em> Free007 soutint que couper avec ses parents est un acte terrible qui ne se justifie que dans des cas extrêmes — et que cette situation en était un. La résolution de ce feuilleton reste en suspens. Le Saint-Empire, lui, continue d'écouter.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Ynnel13 Convoqué à Compiègne pour Son Concours</div>
+      <div class="gag-body">À 2h32 du matin le 5 mai, Ynnel13 découvrit que son concours se déroulerait à Compiègne — ville choisie par l'administration nationale avec la bienveillance qu'on lui connaît. Bilan estimé : 400 euros entre le transport, l'hébergement et les imprévus. <em>« Si j'y vais en train c'est cher + casse-couilles, si j'y vais en voiture vu le prix de l'essence c'est tout aussi cher »</em>, calcula-t-il. La rédaction rappelle que chaque discipline en France ne dispose que d'un seul lycée hôte. Un second concours à Reims était prévu en cas d'échec. Le serveur a retenu son souffle.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">L'Arrivée de Faucon : Retour d'un Ancien</div>
+      <div class="gag-body">Le 9 mai au soir, un nouveau pseudo fit son apparition dans le salon général sous une identité que Free007 annonça avec mystère : <em>« D'ailleurs maintenant il va y avoir une belle surprise demain... »</em> Faucon fit son entrée le lendemain, reconnu par les anciens, inconnu des nouveaux. Free007 organisa une séance d'identification informelle — <em>« je note que Faucon ne te reconnaît pas »</em> — avant de rappeler au passage qu'il aurait 32 ans cette année. Un silence collectif salua l'annonce.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Kaijuu et la Question Flirt</div>
+      <div class="gag-body">Le 21 mai, Xkaijuu livra une confession inattendue : <em>« J'ai un problème, j'aime trop flirter IRL mais c'est que avec les hommes ou les femmes âgées, je dois trouver la source de ce blocage. »</em> Falundrim commenta sobrement. Le serveur décida collectivement de ne pas tirer davantage le fil. La rédaction respecte ce choix.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Le Poco Bar Accueille Kris Pour Un Anniversaire Houleux</div>
+      <div class="gag-body">Le 3 mai, le salon le-poco-bar fut le théâtre d'une célébration d'anniversaire tendue entre Pocoudonworld et Kris (moiouimoilarchiviste). Des fleurs lancées, des piques échangées, une dispute sur le sens de la mode et la valeur respective de chacun dans le panthéon des husbandos. Pocoudonworld rappela avoir atteint la demi-finale du tournoi. Kris n'en fut pas impressionnée. On en est là.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Deoon Avait Peur, Mais Le PSG a Gagné Quand Même</div>
+      <div class="gag-body">Le 20 mai, Deoon postait, la gorge serrée : <em>« j'ai trop peur man... »</em> au sujet de la finale à venir. Le 30 mai à 21h15, il confirma en six mots que la peur était passée. Une trajectoire émotionnelle qui aura duré dix jours pour aboutir à une certitude désormais gravée dans les archives : <em>« on est double champion d'Europe. »</em></div>
+    </div>
+
+  </div>
+
+  <!-- SECTION IV : PERSONNALITÉS -->
+  <div class="section-header">IV. — Portrait des Figures du Saint-Empire</div>
+
+  <div class="full-width">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Galerie des Personnages Notables</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1.5rem;">Portraits établis d'après les archives du mois de mai, par la rédaction</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Elomeurt</div>
+        <div class="persona-title">La Formule Vivante · 5 505 msgs · #1 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">dates courtes charcuterie</span>
+          <span class="tag">lesbienne asex. confirmée</span>
+          <span class="tag">hifi mass effect board</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« COUPE MOI LA FIBRE IGNORABLE »</div>
+          <div class="persona-quote">« j'ai fait un high five à Vador IRL NOFAKE »</div>
+        </div>
+        <div class="persona-body">Premier pour le troisième mois consécutif — une domination qui commence à ressembler à du règne. Elomeurt est la seule personne à avoir géré 139 dates courtes en charcuterie, fait un high five à Dark Vador en IRL, et lancé l'idée d'une partie de jeu de plateau Mass Effect lors de la même semaine. Le « IGNORABLE » en fin de phrase reste son point de ponctuation le plus prolifique.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Ertiks</div>
+        <div class="persona-title">Le Taiseux Présent · 3 500 msgs · #2 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">voie de merde tentée</span>
+          <span class="tag">boss full physique</span>
+          <span class="tag">SMT sous la couette</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Demain je repars tenter la voie de merde »</div>
+          <div class="persona-quote">« ya des boss je les tabasse juste en full physique comme un animal »</div>
+        </div>
+        <div class="persona-body">Second du mois, Ertiks maintient son rythme avec la régularité d'une machine mal huilée mais parfaitement fiable. Il tenta en mai une voie d'escalade qu'il qualifie lui-même de voie de merde — ce qui dans son vocabulaire pourrait aussi bien vouloir dire « défi existentiel » que « 6a+ mouillé ». Il tabassa des boss en full physique. La rédaction approuve la méthode.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Xkaijuu</div>
+        <div class="persona-title">L'Oracle du Général · 3 267 msgs · #3 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">iPhone XR hérité</span>
+          <span class="tag">flirt avec les seniors</span>
+          <span class="tag">papy aux gros sacs aidé</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« j'ai aidé un papy en galère avec ses gros sacs DÉLICATEMENT — je voulais pas lui casser un os »</div>
+          <div class="persona-quote">« Arthur… ★frappe la table★ »</div>
+        </div>
+        <div class="persona-body">Kaijuu est l'une des rares personnes capables d'aider un papy dans la rue avec ses gros sacs, d'hériter d'un iPhone XR de 2018, de soupçonner Florentino Perez d'être payé par Arthur pour lui casser les pieds, et d'émettre une théorie des bg selon la couleur de pseudo — le tout dans la même semaine. L'énergie est constante. La cohérence est optionnelle.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Mycenasilvae</div>
+        <div class="persona-title">L'Artiste de Nice · 2 963 msgs · #4 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">pissaladière mangée</span>
+          <span class="tag">femme de 2m15</span>
+          <span class="tag">MIAM BCP DE VIANDE</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« CE MIDI C'EST PISSALADIÈRE »</div>
+          <div class="persona-quote">« Les oignons étaient pas assez cuits, et la pâte non plus »</div>
+        </div>
+        <div class="persona-body">Mai fut le mois de la pissaladière pour Mashi — spécialité du Sud-Est servie avec la solennité d'un repas de roi, critiquée avec l'exigence d'un chef étoilé. Les oignons pas assez cuits, la pâte idem. Elle attend toujours sa pissaladière parfaite. En attendant, elle consomme BEAUCOUP DE VIANDE et projette d'emmener ses amis à Carpentras. Personne ne sait encore pourquoi Carpentras.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Shinymin</div>
+        <div class="persona-title">La Romantique en Illusion · 2 721 msgs · #5 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">vit dans une illusion</span>
+          <span class="tag">conjoint Gilles</span>
+          <span class="tag">colosse de 160 cm</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« ça me va de vivre dans une illusion »</div>
+          <div class="persona-quote">« je suis grande et imposante mais n'aie pas peur de moi je mords pas »</div>
+        </div>
+        <div class="persona-body">Shinymin navigue en mai entre deux états : la tendresse sincère qu'elle offre sans compter à ceux qui en ont besoin — Natsume, les nouveaux, ceux qui doutent d'eux-mêmes — et l'illusion confortable qu'elle entretient pour elle-même à propos d'un garçon qui répond mais ne dit rien. Free007 lui a suggéré d'affronter la vérité. Elle a préféré le gif de pleurs. La rédaction la comprend parfaitement.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Free007</div>
+        <div class="persona-title">L'Administrateur Archiviste · 2 351 msgs · #6 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">IRL Lille organisée</span>
+          <span class="tag">archives Arthur ouvertes</span>
+          <span class="tag">Cyberpunk en cours</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« je balance tout mais je fais tout pour éviter Arthur depuis l'an dernier »</div>
+          <div class="persona-quote">« D'ailleurs maintenant c'est Poco le chef de la commu même si je suis toujours là pour l'épauler »</div>
+        </div>
+        <div class="persona-body">Mai fut un mois chargé pour l'administration. Organisation de l'IRL Lille avec une précision quasi logistique, ouverture des archives personnelles sur Arthur avec un calme qui n'appartient qu'à lui, accueil de Faucon avec la chaleur attendue, et suivi de Natsume. A également retrouvé un CV de son père datant de 1997 et en a tiré une réflexion sur le recrutement à l'ère pré-IA. Pas de repos pour les narrateurs.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Despey</div>
+        <div class="persona-title">Le Supporter Champion · 1 626 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">bière finale 33°C</span>
+          <span class="tag">double champion d'Europe</span>
+          <span class="tag">oui life assumé</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« On est double champion d'Europe lkdhshsjskslslmslqkqkqkqkqksiskiakzzj »</div>
+          <div class="persona-quote">« La pire équipe que j'ai jamais vu en finale, ils méritent vraiment rien »</div>
+        </div>
+        <div class="persona-body">Despey fut en mai l'incarnation la plus pure de ce que signifie être un supporteur du PSG : inquiet jusqu'au coup de sifflet final, euphorique pendant vingt secondes, puis immédiatement critique envers l'adversaire vaincu. Sa série de caractères aléatoires à 21h16 le 30 mai restera dans les archives comme la réaction la plus honnête à un titre européen jamais consignée dans le Saint-Empire.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Nagisaharu</div>
+        <div class="persona-title">La Physicienne en Exil · 1 568 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">MATLAB 1000 lignes inutiles</span>
+          <span class="tag">7/11 sous la pluie</span>
+          <span class="tag">recalée par Maid Café</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Physicienne le jour à Osaka, Maid la nuit à Akihabara »</div>
+          <div class="persona-quote">« Quand j'ai dit au prof que mon code faisait 1000 lignes et qu'il m'a dit que ça devrait en faire 50 grand max »</div>
+        </div>
+        <div class="persona-body">Nagisaharu vit son rêve au Japon — ce que Free007 rappela en faisant le bilan d'une génération : <em>« Ynnel va devenir prof, Nagi vit son rêve au Japon. »</em> La réalité du rêve comprend des repas de fortune au 7/11 mangés debout au-dessus de son évier, une semaine entière passée à modéliser le mauvais problème en MATLAB (1000 lignes pour un résultat attendu en 50), et la terreur du bruit de sachet de snack dans le silence de mort du labo. Elle tenta sa chance comme serveuse dans un Maid Café à Akihabara et fut recalée — pour raison de <em>« trop grande beauté faisant de l'ombre aux autres serveuses »</em>, selon son propre rapport. La rédaction ne saurait confirmer ni infirmer. Elle recousit elle-même un bouton de jupe et se déclara <em>« self-made woman »</em>. C'est suffisant.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Pocoudonworld</div>
+        <div class="persona-title">Le Chef Pragmatique · 1 646 msgs</div>
+        <div class="persona-tags">
+          <span class="tag">Arthur retiré des potes</span>
+          <span class="tag">IRL Lille enthousiaste</span>
+          <span class="tag">Portugal CdM prédit</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« je viens de retirer Arthur de mes potes »</div>
+          <div class="persona-quote">« putain de sa mère le PSG qui fait le doublé »</div>
+        </div>
+        <div class="persona-body">Chef de communauté officiellement reconnu en mai par Free007 lui-même — <em>« c'est Poco le chef désormais »</em> — Pocoudonworld cumula en mai les casquettes : organisateur logistique de l'IRL Lille, commentateur sportif du PSG, arbitre moral de l'affaire Arthur, et rival sentimental de Kris dans le Poco Bar. Un agenda chargé pour quelqu'un qui prétend y aller tranquillement.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE ALERTE -->
+  <div class="section-header">V. — L'Alerte en Mai : Le Podium Tient</div>
+
+  <div style="padding: 2rem 2rem 0; border-bottom: 2px solid var(--rule);">
+
+    <!-- Titre et intro sur toute la largeur -->
+    <div style="text-align:center; margin-bottom: 1.25rem;">
+      <div class="article-headline large" style="font-size:2rem;">Alertes &amp; Atomes — Le Palmarès de Mai</div>
+      <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin: 0.3rem 0;">Anthropologie culturelle · tout le mois</div>
+      <div class="article-deck" style="max-width:620px; margin:0.5rem auto 0; border-left:none; text-align:center; padding-left:0;">L'emoji phare du Saint-Empire résiste à l'épreuve du temps, du PSG et des révélations. Le podium de mai confirme les mêmes dominateurs qu'en avril — avec quelques surprises dans le classement.</div>
+    </div>
+
+    <!-- Texte en deux colonnes -->
+    <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:0; margin-bottom:1.25rem;">
+      <div style="padding: 0 1.25rem 0 0;">
+        <div class="article-body">
+          <p>Mai 2026 aura confirmé ce que les habitués savaient déjà : l'alerte n'est pas un émoji, c'est une institution. Elle accompagna l'annonce des révélations sur Arthur, la victoire du PSG en Ligue des Champions, la découverte d'un compteur Geiger DIY à la fête de la fac d'Osaka — et, comme toujours, des dizaines de situations qui n'appellent aucune autre réponse.</p>
+          <p>Xkaijuu déposa en mai l'un de ses plus beaux tableaux : parti aider un papy dans la rue avec ses gros sacs <em>« DÉLICATEMENT »</em> pour ne pas lui casser un os, il revint avec un récit en temps réel qui méritait chaque réaction reçue. Elomeurt, pour sa part, livra l'épopée la plus alarmante du mois côté supermarché — la palette de coupelles de yaourt déplacée par <em>« ce FILS DE PUTE »</em> dans sa propre réserve. Nagisaharu enfin, depuis Osaka, fit son entrée dans le podium avec une constance qui ne doit rien au hasard : itadakimasu au Burger King, MATLAB 1000 lignes, et le casque qui coupe quand elle chante.</p>
+        </div>
+        <div class="pull-quote" style="margin-top:1rem;">« En exclus ça sort du four : y a un papy en galère dehors donc je vais pour l'aider DÉLICATEMENT avec ses gros sacs, je veux pas lui casser un os »<br><small>— Xkaijuu, 12 mai</small></div>
+      </div>
+      <div style="background:var(--rule); width:1px; margin: 0;"></div>
+      <div style="padding: 0 0 0 1.25rem;">
+        <div class="article-headline small" style="margin-bottom:0.4rem;">Palmarès de l'Alerte — Mai 2026</div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin-bottom:0.6rem;">Statistiques officielles · compilation mensuelle</div>
+        <div class="article-body">
+          <p>Les archives de mai livrent leur verdict. Le podium des réactions alerte et atome (et dérivés) est le suivant :</p>
+          <p><strong class="red">#1 — Xkaijuu</strong> : 2 031 réactions. Kaijuu reprend la première place avec autorité après avoir aidé un papy, menacer de prendre le shinkansen à minuit pour poser une question en IRL, et réfléchi à voix haute sur le sens de la maturité quand les jeunes l'appellent « monsieur ».</p>
+          <p><strong class="red">#2 — Elomeurt</strong> : 1 971 réactions. Toujours là. Toujours au rayon yaourts. Toujours aussi furieuse contre ceux qui déplacent ses palettes. La régularité d'une horloge atomique.</p>
+          <p><strong class="red">#3 — Nagisaharu</strong> : 1 011 réactions. Entrée fracassante dans le podium depuis le Japon. Des groupes de lycéens qui font l'itadakimasu au Burger King, un programme MATLAB résolvant le mauvais problème pendant une semaine entière, et un Maid Café qui n'a pas su la retenir. Le serveur a réagi en conséquence.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Séparateur ornemental -->
+    <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin-bottom:1rem;">— ✦ Top 3 des Posts · Palmarès par Réactions ✦ —</div>
+
+    <!-- 3 médias empilés -->
+    <div style="display:flex; flex-direction:column; gap:1.75rem; padding-bottom:1.75rem;">
+
+      <!-- TOP 1 : miniature pleine largeur + popup vidéo -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥇 Post #1</div>
+        <div onclick="openVideoPopup()" style="position:relative; cursor:pointer; border:1px solid var(--rule); background:#000; line-height:0;">
+          <img src="top1_thumb.jpg" alt="Miniature Post #1" style="width:100%; display:block; opacity:0.85;">
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+            <div style="width:72px; height:72px; border-radius:50%; background:rgba(0,0,0,0.65); border:3px solid rgba(255,255,255,0.85); display:flex; align-items:center; justify-content:center;">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="white"><polygon points="7,4 21,12 7,20"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="font-family:'IM Fell English', serif; font-style:italic; font-size:0.75rem; color:var(--ink-light); text-align:center; margin-top:0.4rem; border-top:1px solid var(--rule); padding-top:0.35rem;">
+          haychocobananas — 17 alertes
+        </div>
+      </div>
+
+      <!-- TOP 2 : image cliquable lightbox -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥈 Post #2</div>
+        <img src="top2.jpg" alt="Post #2" onclick="openLightbox(this.src)" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top2.jpg manquant</span>
+        </div>
+        <div style="font-family:'IM Fell English', serif; font-style:italic; font-size:0.75rem; color:var(--ink-light); text-align:center; margin-top:0.4rem; border-top:1px solid var(--rule); padding-top:0.35rem;">
+          nagisaharu — 16 alertes
+        </div>
+      </div>
+
+      <!-- TOP 3 : image cliquable lightbox -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥉 Post #3</div>
+        <img src="top3.jpg" alt="Post #3" onclick="openLightbox(this.src)" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top3.jpg manquant</span>
+        </div>
+        <div style="font-family:'IM Fell English', serif; font-style:italic; font-size:0.75rem; color:var(--ink-light); text-align:center; margin-top:0.4rem; border-top:1px solid var(--rule); padding-top:0.35rem;">
+          despey — 14 alertes
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- FIN PAGE ALERTE -->
+
+  <!-- BOX FINAL -->
+  <div class="full-width">
+    <div class="box" style="max-width:640px; margin:0 auto;">
+      <div class="box-title">Avis de la Rédaction</div>
+      <div class="box-body" style="text-align:center; font-style:italic;">
+        Mai 2026 fut un mois de révélations, de victoires et d'illusions préservées. Arthur fut jugé et archivé. Paris porta ses champions sous la Tour Eiffel. Shinymin continua de préférer l'illusion à la vérité — ce qui est, à certaines heures, la sagesse la plus honnête. Un Monopoly à l'effigie de la communauté fut esquissé ; un salon gacha fut créé ; Lenny arriva sur Paris à l'improviste, comme d'habitude. L'IRL de Lille attend juin avec impatience.
+        <br><br>
+        Le Saint-Empire tourne. Pas toujours rond. Mais il tourne.
+        <br><br>
+        <span class="gold">— La Gazette des Tomodachis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    La Gazette des Tomodachis · Mai 2026 · Tous droits réservés au Saint-Empire · Reproduction autorisée avec mention de la source · Imprimée sur papier virtuel recyclé
+  </div>
+
+</div>
+<!-- POPUP VIDÉO -->
+<div id="video-popup" onclick="closeVideoPopup(event)" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:9999; align-items:center; justify-content:center;">
+  <div style="position:relative; width:50%; max-width:700px;" onclick="event.stopPropagation()">
+    <button onclick="closeVideoPopup(event)" style="position:absolute; top:-2rem; right:0; background:none; border:none; color:#fff; font-size:1.4rem; cursor:pointer; opacity:0.8; line-height:1;">✕</button>
+    <video id="popup-video" src="top1.mp4" controls autoplay style="width:100%; display:block; border:1px solid rgba(255,255,255,0.15); background:#000;"></video>
+  </div>
+</div>
+
+<!-- LIGHTBOX IMAGES -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center; padding:1.5rem;">
+  <img id="lightbox-img" src="" style="max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.8);">
+</div>
+
+<script>
+  function openVideoPopup() {
+    var popup = document.getElementById('video-popup');
+    popup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideoPopup(e) {
+    var popup = document.getElementById('video-popup');
+    var video = document.getElementById('popup-video');
+    popup.style.display = 'none';
+    video.pause();
+    video.currentTime = 0;
+    document.body.style.overflow = '';
+  }
+  function openLightbox(src) {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeVideoPopup(e);
+      closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>
