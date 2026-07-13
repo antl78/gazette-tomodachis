@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Gazette des Tomodachis — Juin 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --ink-light: #3d2e10;
+    --paper: #f5eedc;
+    --paper-dark: #e8dcc0;
+    --paper-darker: #d9c99a;
+    --red: #8b1a1a;
+    --gold: #9a7c2a;
+    --rule: #b8a06a;
+    --shadow: rgba(26,18,9,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1f0e;
+    font-family: 'Crimson Text', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, #3d2a0e 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a1209 0%, transparent 50%);
+  }
+
+  .newspaper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newspaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+
+  .paper-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.6rem 0;
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .masthead-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.4rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── GRID ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1px 2fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2-equal {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .col-divider {
+    background: var(--rule);
+    width: 1px;
+    margin: 1.5rem 0;
+  }
+
+  .col {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* ── ARTICLES ── */
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-headline.large {
+    font-size: 1.6rem;
+  }
+
+  .article-headline.small {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .article-deck {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    border-left: 2px solid var(--red);
+    padding-left: 0.6rem;
+  }
+
+  .article-byline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article-body p { margin-bottom: 0.6rem; }
+  .article-body p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── PULL QUOTES ── */
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--red);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── BOXED ITEMS ── */
+  .box {
+    border: 1px solid var(--rule);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background: var(--paper-dark);
+    position: relative;
+  }
+
+  .box::before {
+    content: '§';
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper-dark);
+    padding: 0 0.5rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+  }
+
+  .box-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .box-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── PERSONALIA ── */
+  .persona-card {
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+  .persona-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .persona-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .persona-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag {
+    background: var(--paper-darker);
+    border: 1px solid var(--rule);
+    padding: 0.15rem 0.4rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+  }
+
+  .persona-quotes {
+    margin-bottom: 0.5rem;
+  }
+
+  .persona-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--rule);
+  }
+
+  .persona-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── GAZETTE ITEMS ── */
+  .gazette-items {
+    padding: 1.5rem 3rem;
+  }
+
+  .gag-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .gag-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .gag-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .gag-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── FULL WIDTH ── */
+  .full-width {
+    padding: 1.25rem 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: var(--paper-darker);
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── UTILITIES ── */
+  .text-center { text-align: center; }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .italic { font-style: italic; }
+
+  .drop-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--rule);
+    margin: 0.6rem auto;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 1rem 0;
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Saint-Empire des Tomodachis</span>
+      <span>Organe d'information mensuel de la communauté</span>
+      <span>N° 4 · Gratuit</span>
+    </div>
+    <div class="paper-name">La Gazette des Tomodachis</div>
+    <div class="paper-subtitle">Bulletin des Affaires Intérieures du Saint-Empire</div>
+    <div class="masthead-rule">✦ ✦ ✦</div>
+    <div class="masthead-info">
+      <span>Juin 2026 — De la 1ère à la 30ème Journée</span>
+      <span>Rédigée par la rédaction · free007</span>
+      <span>77 368 messages recensés · 45 819 en salon général</span>
+    </div>
+  </div>
+
+  <!-- SECTION I : UNE -->
+  <div class="section-header">I. — Chronique du Salon Général</div>
+
+  <!-- ARTICLE PRINCIPAL : IRL LILLE -->
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">L'IRL Lille : Neuf Tomos Contre Vents et Canicule</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Le 7 juin, le Saint-Empire pose enfin le pied à Lille Flandres — une deuxième édition s'annonce déjà pour l'été</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="grid-2" style="border-bottom: none;">
+    <div class="col">
+      <div class="article-byline">Par la rédaction · 7 Juin 2026</div>
+      <div class="article-body">
+        <p>Tout commença le 5 juin par un appel aux troupes de free007 : <em>« tu veux visiter des lieux en particulier ? On se retrouvera d'abord à la gare de Lille Flandres mais faudrait un repère vu que la gare est grande. »</em> Mariedioa avoua ne rien connaître de la ville et redouter <em>« un planning de mec pressé »</em>, tandis que pocoudonworld glissait un timide <em>« euralille aussi dans un sens »</em> — l'organisation restait, à ce stade, largement improvisée.</p>
+        <p>Thrarx, hôte des lieux, livra le programme définitif au petit matin du 7 : déjeuner à la foodcourt du Kitchen Market, visite du Palais des Beaux-Arts (gratuit, premier dimanche du mois oblige), musée d'histoire naturelle en option jugée <em>« pas sensationnelle selon mes critères »</em>, balade au parc de la Citadelle, et détour par le Dernier Bar avant la Fin du Monde — où mariedioa découvrit avec ravissement qu'il existait une antenne lilloise de son repaire parisien favori.</p>
+        <p>La logistique ferroviaire occupa ensuite pocoudonworld pendant deux jours pleins : Bruxelles-Tournai ou Gand, correspondance de six minutes, trains supprimés à l'improviste. Le soir venu pourtant, plus aucune trace de stress : free007 boucla la journée d'un message ému, remerciant <em>« Thrarx qui nous a magnifiquement guidé dans Lille »</em> et saluant Tsukii, dont la présence — malgré les efforts que cela lui coûtait — n'était pas passée inaperçue.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="pull-quote">« Pendant ce temps : IRL Lille = 9 tomos présents, et encore plus la prochaine fois. »<br><span style="font-size:0.75rem; color:var(--ink-light);">— free007, 11 juin</span></div>
+
+      <div class="article-body">
+        <p>Le compte-rendu officiel, livré par pocoudonworld deux jours plus tard, tenait en une liste presque administrative : Vieille Bourse (<em>« très très chouette »</em>), Food Court (<em>« une sorte de centre commercial avec plein de restos, incroyable »</em>), Palais des Beaux-Arts gratuit grâce au dimanche, Citadelle et Vieux Lille en guise de dessert. Rien d'épique sur le papier — et pourtant, l'écho dans le général dura près d'une semaine.</p>
+        <p>Reveur8951, resté à quai cette fois, ne cacha pas ses regrets : <em>« Pitié dis que t'as assez d'argent pour un second roadtrip Lille en juillet je veux être là cette fois. »</em> Falundrim, lui, tourna la fatalité en private joke récurrent : <em>« les gars qui décident de irl lille quand je vais plus à lille, le complot. »</em> Et elomeurt de conclure, mi-blague mi-vrai chagrin, qu'une IRL Lille sans Dylan ne comptait presque pas.</p>
+        <p>La demande était telle que free007 annonça dès le 19 juin l'organisation d'une deuxième édition, initialement calée au dimanche 2 août pour profiter des mêmes musées gratuits et du même billet à 20€. Devant l'afflux de contraintes d'agenda, un sondage fut ouvert le 21 juin pour trouver, entre le 18 juillet et le 30 août, une date qui convienne enfin à tout le monde.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem; border-bottom: 2px solid var(--rule);">
+    <div class="box">
+      <div class="box-title">Avis de la Rédaction — IRL Lille</div>
+      <div class="box-body">Neuf personnes ont suffi à faire de ce dimanche de juin un souvenir que la moitié du serveur regrette déjà de ne pas avoir vécu. La rédaction y voit la confirmation d'une tendance : après Paris, après la Japan Expo, le Saint-Empire prend goût aux retrouvailles en chair et en os — quitte à recompter les trains Bruxelles-Gand jusqu'à l'obsession. Rendez-vous est pris pour l'été.</div>
+    </div>
+  </div>
+
+  <!-- GRILLE 2 : FOOT + CANICULE -->
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Mondial 2026 : Mbappé Contre Tout le Monde</div>
+      <div class="article-deck">Le 16 juin au soir, le général vécut en direct l'un des matchs les plus commentés du mois — une victoire arrachée dans la douleur.</div>
+      <div class="article-byline">Par la rédaction · 16 Juin 2026</div>
+      <div class="article-body">
+        <p>Le coup d'envoi ne présageait rien de bon. À peine la première mi-temps entamée, deoon lâchait un dépité <em>« Dembele me trahi »</em>, despey jugeait <em>« Le match de la France est une honte absolue »</em>, et roadou enchaînait sobrement : <em>« C'est catastrophique le niveau de jeu. »</em> Elomeurt, expéditif comme toujours, résuma la situation en un mot : <em>« la france est donc CHOPPED. »</em></p>
+        <p>Puis Mbappé s'en mêla — et le ton changea du tout au tout. Le général bascula en quelques minutes d'un procès en incompétence à un concert de majuscules : <em>« MBAPPE »</em>, répété en boucle par la moitié du salon, ponctua chacune de ses interventions. Sufeet salua <em>« le doublé de mbappe »</em> quand deoon, une phrase plus tôt sceptique, admit du bout des lèvres : <em>« On a marqué mais c'est Mbappe. »</em> S'ensuivit un débat interminable sur le mérite comparé de Mbappé, Kvaratskhelia et Doué, chacun ayant son camp et personne ne cédant un pouce.</p>
+        <p>Le score final, 2-1, fut deviné par plusieurs paris de dernière minute : free007 avait misé sur ce résultat exact dès 22h59, tandis que despey avouait avoir changé son pronostic de 3-1 à 2-1 <em>« une heure avant le match. »</em> Comme souvent, free007 confessa plus tard cumuler cet été deux passions de statisticien amateur : <em>« Cet été 2026 je commente sur le général le mondial de foot et la canicule en France. »</em></p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Canicule Historique : la France Cramée</div>
+      <div class="article-deck">Dès le 13 juin, les premiers records tombent — le pays entier passe le reste du mois à négocier avec le thermomètre.</div>
+      <div class="article-byline">Par la rédaction · Tout le mois</div>
+      <div class="article-body">
+        <p>Le 13 juin, un article du Monde annonçant 39°C à Paris et plus de 40°C dans le Sud circula dans le général comme une déclaration de guerre. Ertiks se targua d'avoir <em>« fait ma première nuit avec la clim »</em> en prévision ; la suite lui donna largement raison. Le 18, alerte rouge officielle : free007, en statisticien du malheur, y vit l'occasion de battre un totem vieux de 23 ans — <em>« c'est le temps qu'aura tenu la canicule de 2003 pour être battue, je pense que cette fois c'est la bonne »</em> — et annonça dans la foulée que le duo canicule/mondial ferait tout son été.</p>
+        <p>S'ensuivit un concert quotidien de plaintes devenu rituel : nuits à 30°C, glaces englouties malgré les bonnes résolutions, malaises en boutique — despey raconta être resté vingt minutes avec les pompiers pour une cliente prise de vertiges dans son magasin. Hoshiiyomi résuma l'ambiance collective d'une formule désormais culte : <em>« si mes murs chauffent trop je vais sortir tous les jours jusqu'à la fin de la vague de chaleur juste pour aller dans des endroits climatisés. »</em></p>
+        <p>Les relevés officiels donnèrent raison aux inquiets : 41,8°C à Poitiers, 41,9°C à Bordeaux, 43°C à Brive, 44,7°C aux Herbiers en Vendée — autant de records de chaleur toutes saisons confondues. Loin de faiblir, l'épisode fut prolongé à plusieurs reprises par Météo France, jusqu'à ce qu'une nouvelle vague soit déjà annoncée pour début juillet. La rédaction, elle, se contente de noter que le mois s'est achevé comme il a commencé : à l'ombre, un ventilateur à la main.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION II : AUTRES SALONS -->
+  <div class="section-header">II. — Dépêches des Salons Particuliers</div>
+
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">La Chasse à la Taupe</div>
+      <div class="article-deck">Depuis la mi-juin, une vague de signalements sur d'anciens messages fait tomber les comptes un par un — et personne ne sait qui tire les ficelles.</div>
+      <div class="article-byline">Par la rédaction · Salon ⚖conseil</div>
+      <div class="article-body">
+        <p>Tout commença par des bannissements en apparence isolés — Natsume, Demo, Funky, puis Sato à répétition — mais free007, en enquêteur méticuleux, remarqua vite le pattern : <em>« les quelques reports qu'on a subi étaient récents […] mais jamais sur des posts qui datent des anciens generals. »</em> Quelqu'un, ou quelque chose, remontait méthodiquement dans les archives du serveur pour y dénicher de quoi faire sauter des comptes.</p>
+        <p>Le 18 juin, la mesure devint officielle : <em>« Devant les nombreux reports récents sur de vieux messages, l'ancien général a été archivé »</em>, annonça free007 en @everyone, ouvrant un nouveau salon général à l'accès restreint et recommandant à chacun de se créer un compte secondaire — <em>« ça évitera des déconvenues, surtout ceux qui ont un statut proche du ban def. »</em></p>
+        <p>La traque du coupable devint un feuilleton en soi. Road tomba pour un <em>« tuer la gauche »</em> pris au pied de la lettre par l'automodération, quand d'autres écopèrent pour l'inverse politique exact — de quoi convaincre free007 que le signaleur, humain ou robot, <em>« s'en fout de qui soutient quelle politique, il cherche juste à emmerder le max de monde. »</em> Même Dead_kage y passa, muet deux heures pour une blague de mauvais goût postée dans husbando-war, générant une brève panique avant qu'on comprenne qu'il ne s'agissait, cette fois, que de l'automodération de Discord elle-même.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Japan Expo 2026 : Budgets et Rêves de Mariage</div>
+      <div class="article-deck">Dans le salon dédié à la convention de juillet, mariedioa orchestre déjà son planning au quart d'heure près, pendant que d'autres refont leurs comptes.</div>
+      <div class="article-byline">Par la rédaction · Salon Japan Expo 2026</div>
+      <div class="article-body">
+        <p>Mariedioa donna le ton dès le 1er juin : 80% de chances d'être retrouvée au Music Town Paradise, plan de bataille méthodique pour couvrir la nouvelle disposition du hall 3, et confirmation qu'elle serait présente <em>« tous les jours »</em> de l'édition du 9 au 12 juillet. Thrarx, lui, découvrait la tarification préférentielle avec un enthousiasme mesuré : <em>« me dit pas que c'est comme les festoches, plus tu achètes tôt moins tu payes cher ? »</em></p>
+        <p>Shinymin, elle, se heurta à un arbitrage plus cruel : <em>« j'aimerais bien y aller mais c'est une question de prix vraiment »</em>, confia-t-elle, avant de trancher sans détour — <em>« j'économise pour acheter un logement et pour le mariage aussi, tout ça coûte cher. »</em> Thrarx promit alors de porter <em>« chacun de vous sur mes épaules »</em> le jour venu, quand mariedioa, imperturbable, répliqua n'avoir <em>« jamais mis le pied à un parc d'attraction »</em> — un aveu qui en dit long sur ses priorités.</p>
+        <p>Fin juin, mariedioa avait troqué l'enthousiasme pour la rigueur d'analyste : taux de remplissage récoltés en direct auprès des organisateurs (57% le samedi, capacité maximale de 70 000 visiteurs par jour), de quoi rassurer thrarx, subitement pris de doute sur son budget estival déjà largement entamé par d'autres projets.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION III : PETITE GAZETTE -->
+  <div class="section-header">III. — Petite Gazette & Faits Divers</div>
+
+  <div class="gazette-items">
+
+    <div class="gag-item">
+      <div class="gag-title">Nagisaharu et le Chercheur de l'Ascenseur</div>
+      <div class="gag-body">Le 11 juin à Osaka, Nagisaharu partagea l'une des scènes les plus délicieusement gênantes du mois : montée en ascenseur aux côtés d'un chercheur croisé au labo, salut poli, courbette de circonstance — puis, une fois l'homme descendu à son étage, la découverte dans le miroir de miettes de melon pan disséminées tout autour de la bouche depuis le début de l'échange. <em>« Il a dû se dire qu'au moins j'étais friande de la gastronomie locale »</em>, conclut-elle, fataliste, en désignant le Lawson du coin comme unique responsable.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Teufei et le Dilemme du Crapaud</div>
+      <div class="gag-body">Le 9 juin, Teufei sollicita l'avis collectif pour un choix vestimentaire capital : son entretien annuel approchant, sa cheffe lui avait demandé de porter <em>« un truc drôle »</em>, ayant remarqué son goût pour les grenouilles. Un collègue s'incrusta dans la conversation pour comparer Teufei à un crapaud — ce à quoi la cheffe en question aurait répondu qu'elle l'embrasserait volontiers s'il en était un. Le short frog detective fut, semble-t-il, validé par consensus général.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">FC Naru contre les Haters : le Procès du Bot</div>
+      <div class="gag-body">Le soir du match de France, en marge du direct, Elomeurt lança un référendum informel sur le sort de Narumanu — coupable, selon elle, d'un bot jugé médiocre. L'affaire dégénéra en véritable tirage au sort façon séance de tirs au but, organisé via les commandes du bot du serveur : <em>« FC Narumanu »</em> contre <em>« Les Haters de Naru »</em>, arrêts de tête, de bide et pire encore, le tout commenté en direct par free007 comme un vrai résumé sportif. Le score final n'a pas franchement tranché le débat, mais l'activité du salon, elle, explosa cette nuit-là.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">1amyste Banni à Vie… d'Ankama</div>
+      <div class="gag-body">Le 8 juin, 1amyste découvrit avec effroi qu'il ne pouvait plus se connecter ni à Dofus ni à son espace compte Ankama, un message glacial annonçant un bannissement définitif. Ertiks se souvint alors du sort d'Ylli, banni trois jours du chan communautaire de Wakfu pour avoir trop souvent posté <em>« un kikoojap mignon pour me mordiller l'oreille »</em>. De quoi confirmer une règle ancienne du Saint-Empire : les modérateurs d'Ankama n'ont jamais eu le sens de l'humour des Tomodachis.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Moukou, le Fantôme du Serveur</div>
+      <div class="gag-body">Le 10 juin, free007 fit une découverte administrative digne d'une enquête : Moukou, ancien membre du serveur, s'était vu bannir définitivement de Discord lui-même — jusqu'à la suppression de ses anciens messages — sans que son compte ne soit pour autant expulsé du Saint-Empire. Une anomalie vite corrigée dans le salon ⚖conseil, mais qui rappelle qu'un compte peut survivre bien après que son propriétaire a officiellement cessé d'exister aux yeux de la plateforme.</div>
+    </div>
+
+  </div>
+
+  <!-- SECTION IV : PERSONNALITÉS -->
+  <div class="section-header">IV. — Portrait des Figures du Saint-Empire</div>
+
+  <div class="full-width">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Galerie des Personnages Notables</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1.5rem;">Portraits établis d'après les archives du mois de juin, par la rédaction.</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Elomeurt</div>
+        <div class="persona-title">La Souveraine Inlassable · 4 942 msgs · #3 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#2 du général</span>
+          <span class="tag">procès de Narumanu</span>
+          <span class="tag">canicule à jar jar ville</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« 34 grand degrés celsius à jar jar ville on est où là »</div>
+          <div class="persona-quote">« irl lille sans dylan noooooon »</div>
+        </div>
+        <div class="persona-body">Quatrième mois consécutif dans le top 3 du classement, un règne qui ne se dément pas. Juin l'aura vue déclencher, en pleine soirée de mondial, un référendum improvisé sur le sort de Narumanu, réglé par tirs au but interposés via le bot du serveur — la rédaction n'a toujours pas compris la logique exacte du scrutin, mais le spectacle valait le détour.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Xkaijuu</div>
+        <div class="persona-title">Le Roi de l'Alerte · 4 323 msgs · #5 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">2 679 réactions alerte</span>
+          <span class="tag">commentateur du mondial</span>
+          <span class="tag">guerre Mbappé-Kvara</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Ce soir à tête reposée, ce que je retiendrai c'est les 30 min de Dembélé avant d'être bench, un vrai soldat »</div>
+          <div class="persona-quote">« Kvara lui-même ne sait pas qu'il est meilleur que Mbappé »</div>
+        </div>
+        <div class="persona-body">Loin, très loin devant au classement des réactions alerte et atome ce mois-ci — plus de 1000 devant Elomeurt. Kaijuu aura porté à lui seul une bonne partie du commentaire sportif de juin, capable de démolir Mbappé un instant et de le sacraliser la minute suivante, sans jamais perdre une once d'énergie.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Despey</div>
+        <div class="persona-title">Le Vendeur Sous Canicule · 1 843 msgs · #13 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">-75% sur le carrelage</span>
+          <span class="tag">honte absolue puis extase</span>
+          <span class="tag">pompiers en boutique</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Je suis au taf je deviens fou j'ai fais -75% sur le carrelage à un mec qui a dit au loin "décevant ce direct" »</div>
+          <div class="persona-quote">« Le match de la France est une honte absolue »</div>
+        </div>
+        <div class="persona-body">Entre le magasin de carrelage et le canapé devant le mondial, Despey aura vécu juin sur les montagnes russes habituelles : désespoir sportif suivi d'extase, et un vrai souci pour ses clients pris de malaise sous la chaleur — vingt minutes au téléphone avec les pompiers pour l'une d'entre elles, sans jamais perdre son sens de la formule absurde.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Nagisaharu</div>
+        <div class="persona-title">La Physicienne en Exil · 1 894 msgs · #12 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">miettes de melon pan</span>
+          <span class="tag">glooby blobz</span>
+          <span class="tag">toujours à Osaka</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Il a dû se dire qu'au moins j'étais friande de la gastronomie locale »</div>
+          <div class="persona-quote">« Aujourd'hui c'est dégustation de glooby blobz »</div>
+        </div>
+        <div class="persona-body">Toujours au Japon, toujours aussi sujette aux petites catastrophes du quotidien — cette fois un chercheur croisé en ascenseur et découvert, une fois parti, avoir eu une conversation entière face à un visage constellé de miettes de melon pan. La rédaction salue la constance dans l'art de l'auto-dérision.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Shinymin</div>
+        <div class="persona-title">La Fiancée Pragmatique · 4 324 msgs · #4 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">économise pour un logement</span>
+          <span class="tag">Japan Expo sacrifiée</span>
+          <span class="tag">conjoint Gilles</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« J'économise pour acheter un logement et pour le mariage aussi, tout ça coûte cher »</div>
+          <div class="persona-quote">« Je sens que je vais pas du tout renta le ticket »</div>
+        </div>
+        <div class="persona-body">Du fantôme sentimental de mai à la fiancée qui fait ses comptes en juin : Shinymin a troqué l'illusion contre le tableur Excel, renonçant à contrecœur à la Japan Expo pour préserver l'épargne du couple. Un arc de personnage que la rédaction n'espérait pas voir évoluer aussi vite — et dont elle se réjouit sincèrement.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Free007</div>
+        <div class="persona-title">L'Administrateur Assiégé · 1 998 msgs · #11 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">IRL Lille organisée</span>
+          <span class="tag">taupe traquée</span>
+          <span class="tag">stats canicule & foot</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Cet été 2026 je commente sur le général le mondial de foot et la canicule en France »</div>
+          <div class="persona-quote">« Devant les nombreux reports récents sur de vieux messages, l'ancien général a été archivé »</div>
+        </div>
+        <div class="persona-body">Un mois à trois fronts pour l'administrateur : orchestrer l'IRL Lille avec la précision qu'on lui connaît, gérer dans l'urgence une vague de bannissements dont l'origine reste mystérieuse, et trouver malgré tout le temps de suivre heure par heure les records de chaleur comme d'autres suivent la bourse. Pas de vacances pour les statisticiens du dimanche.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Ertiks</div>
+        <div class="persona-title">Le Taiseux Climatisé · 3 135 msgs · #6 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">clim installée à temps</span>
+          <span class="tag">nuits blanches sous 30°</span>
+          <span class="tag">toujours sur PoE</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« En s2s j'ai fait ma première nuit avec la clim, je suis paré pour les canicules »</div>
+          <div class="persona-quote">« Mon seul problème c'est la nuit, j'ai un mal fou à dormir avec la chaleur »</div>
+        </div>
+        <div class="persona-body">Sixième du classement, égal à lui-même : peu de mots, mais toujours au bon endroit au bon moment. Seul membre du top 6 à avoir anticipé la canicule en installant sa climatisation avant tout le monde — une prévoyance qui ne l'a pourtant pas empêché de se plaindre des nuits d'insomnie comme n'importe qui d'autre.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Mycenasilvae</div>
+        <div class="persona-title">L'Artiste de Nice, Toujours en Été · 3 085 msgs · #7 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">35° le dream</span>
+          <span class="tag">rhume + canicule combo</span>
+          <span class="tag">conseillère sentimentale</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« 35° dehors aujourd'hui, le dream »</div>
+          <div class="persona-quote">« Un rhume et une canicule, combo horrible »</div>
+        </div>
+        <div class="persona-body">Seule personne du serveur à s'être réjouie ouvertement de la canicule plutôt que de la subir, Mycenasilvae confirme sa passion niçoise pour le soleil. Entre deux enthousiasmes météorologiques, elle continue de distribuer avec aplomb des conseils sentimentaux à qui veut bien les entendre — et même à ceux qui ne demandaient rien.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">WheelFyze</div>
+        <div class="persona-title">Le Chasseur de Waifus Assidu · 6 287 msgs · #1 du mois toutes catégories</div>
+        <div class="persona-tags">
+          <span class="tag">5 348 msgs au salon ⚙bot</span>
+          <span class="tag">roulette Mudae en continu</span>
+          <span class="tag">canicule mal vécue aussi</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Il faut s'y habituer, mtn été = 40° mini (et c'est que le début), pour ça que hiver &gt; été »</div>
+          <div class="persona-quote">« On peut très bien rester en intérieur même quand il fait chaud à l'extérieur, c'est pas incompatible »</div>
+        </div>
+        <div class="persona-body">Premier du classement toutes catégories confondues — mais 5 348 de ses 6 287 messages de juin furent adressés non pas à ses camarades tomodachis, mais au bot Mudae, sommé de faire tourner sa roulette de waifus jusqu'à buter contre la limite des 19 tirages par heure. Un dévouement qui forcera la rédaction, l'an prochain, à statuer une bonne fois pour toutes sur ce qui constitue vraiment de la conversation.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE ALERTE -->
+  <div class="section-header">V. — L'Alerte en Juin : le Règne de Kaijuu</div>
+
+  <div style="padding: 2rem 2rem 0; border-bottom: 2px solid var(--rule);">
+
+    <!-- Titre et intro sur toute la largeur -->
+    <div style="text-align:center; margin-bottom: 1.25rem;">
+      <div class="article-headline large" style="font-size:2rem;">Alertes &amp; Atomes — Le Palmarès de Juin</div>
+      <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin: 0.3rem 0;">Anthropologie culturelle · tout le mois</div>
+      <div class="article-deck" style="max-width:620px; margin:0.5rem auto 0; border-left:none; text-align:center; padding-left:0;">L'émoji fétiche du Saint-Empire a survécu au mondial, à la canicule et à la chasse à la taupe. Le podium de juin livre un vainqueur sans partage.</div>
+    </div>
+
+    <!-- Texte en deux colonnes -->
+    <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:0; margin-bottom:1.25rem;">
+      <div style="padding: 0 1.25rem 0 0;">
+        <div class="article-body">
+          <p>Juin aura confirmé que l'alerte reste la réponse universelle du Saint-Empire, qu'il s'agisse de commenter un doublé de Mbappé, de déplorer 41 degrés à l'ombre, ou de suivre en direct la traque d'un signaleur fantôme. Mais le mois restera surtout marqué par une domination sans précédent : un seul membre a raflé plus plus de 1000 alertes par rapport à son plus proche poursuivant.</p>
+          <p>Xkaijuu écrasa la concurrence avec 2 679 réactions alerte et atome cumulées sur le mois — porté par un commentaire ininterrompu du mondial et une capacité rare à faire réagir sur à peu près n'importe quel sujet, du foot à la canicule en passant par les considérations existentielles sur la vieillesse. Elomeurt, fidèle à son rang de tête au classement général annuel, complète le podium en seconde position, tandis que Nagisaharu s'invite en troisième place depuis Osaka, confirmant sa capacité à transformer n'importe quelle mésaventure quotidienne en petit événement collectif.</p>
+        </div>
+      </div>
+      <div style="background:var(--rule); width:1px; margin: 0;"></div>
+      <div style="padding: 0 0 0 1.25rem;">
+        <div class="article-headline small" style="margin-bottom:0.4rem;">Palmarès de l'Alerte — Juin 2026</div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin-bottom:0.6rem;">Statistiques officielles · compilation mensuelle</div>
+        <div class="article-body">
+          <p>Les archives de juin livrent leur verdict. Le podium des réactions alerte et atome (et dérivés) est le suivant :</p>
+          <p><strong class="red">#1 — Xkaijuu</strong> : 2 679 réactions. Une domination sans appel, portée par le mondial et une énergie de commentateur de tous les instants.</p>
+          <p><strong class="red">#2 — Elomeurt</strong> : 1 642 réactions. Toujours au sommet du classement général de 2026, elle confirme sa place au podium de l'alerte.</p>
+          <p><strong class="red">#3 — Nagisaharu</strong> : 948 réactions. Depuis le Japon, elle continue de faire rire le serveur avec ses petites catastrophes du quotidien.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Séparateur ornemental -->
+    <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin-bottom:1rem;">— ✦ Top 3 des Posts · Palmarès par Réactions ✦ —</div>
+
+    <!-- 3 médias empilés -->
+    <div style="display:flex; flex-direction:column; gap:1.75rem; padding-bottom:1.75rem;">
+
+      <!-- TOP 1 : image cliquable lightbox -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥇 Post #1</div>
+        <img src="top1.jpg" alt="Post #1" onclick="openLightbox(this.src)" style="width:50%; margin: 0 auto; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top1.jpg manquant</span>
+        </div>
+      </div>
+
+      <!-- TOP 2 : image cliquable lightbox -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥈 Post #2</div>
+        <img src="top2.jpg" alt="Post #2" onclick="openLightbox(this.src)" style="width:60%; margin: 0 auto; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top2.jpg manquant</span>
+        </div>
+      </div>
+
+      <!-- TOP 3 : image cliquable lightbox -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥉 Post #3</div>
+        <img src="top3.jpg" alt="Post #3" onclick="openLightbox(this.src)" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top3.jpg manquant</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- FIN PAGE ALERTE -->
+
+  <!-- BOX FINAL -->
+  <div class="full-width">
+    <div class="box" style="max-width:640px; margin:0 auto;">
+      <div class="box-title">Avis de la Rédaction</div>
+      <div class="box-body" style="text-align:center; font-style:italic;">
+        Juin 2026 fut un mois à trois températures : celle du thermomètre, qui a battu des records dans toute la France ; celle du général, chauffé à blanc par un mondial disputé jusqu'au bout ; et celle, plus froide, d'une chasse à la taupe qui n'a toujours pas livré son coupable. Neuf tomodachis ont posé le pied à Lille et en réclament déjà davantage. Le Palais des Beaux-Arts a gagné neuf visiteurs, le général a changé d'adresse, et Xkaijuu a écrasé le classement de l'alerte comme jamais.
+        <br><br>
+        Le Saint-Empire tourne. À l'ombre, de préférence. Mais il tourne.
+        <br><br>
+        <span class="gold">— La Gazette des Tomodachis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    La Gazette des Tomodachis · Juin 2026 · Tous droits réservés au Saint-Empire · Reproduction autorisée avec mention de la source · Imprimée sur papier virtuel recyclé
+  </div>
+
+</div>
+
+<!-- LIGHTBOX IMAGES -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center; padding:1.5rem;">
+  <img id="lightbox-img" src="" style="max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.8);">
+</div>
+
+<script>
+  function openLightbox(src) {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>
