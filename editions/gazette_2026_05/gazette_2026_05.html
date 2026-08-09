@@ -415,7 +415,7 @@
   <!-- MASTHEAD -->
   <div class="masthead">
     <div class="masthead-top">
-      <span>Saint-Empire des Tomodachis</span>
+      <span>Saint-Empire des Tomodachis · Fondé en 2018</span>
       <span>Organe d'information mensuel de la communauté</span>
       <span>N° 3 · Gratuit</span>
     </div>
@@ -424,7 +424,7 @@
     <div class="masthead-rule">✦ ✦ ✦</div>
     <div class="masthead-info">
       <span>Mai 2026 — De la 1ère à la 31ème Journée</span>
-      <span>Rédigée par la rédaction · free007</span>
+      <span>Rédigée par la rédaction · free007, Claude.</span>
       <span>63 305 messages recensés · 41 049 en salon général</span>
     </div>
   </div>
@@ -774,10 +774,11 @@
     <!-- Séparateur ornemental -->
     <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin-bottom:1rem;">— ✦ Top 3 des Posts · Palmarès par Réactions ✦ —</div>
 
+    <!-- 3 images en pleine largeur, côte à côte -->
     <!-- 3 médias empilés -->
     <div style="display:flex; flex-direction:column; gap:1.75rem; padding-bottom:1.75rem;">
 
-      <!-- TOP 1 : miniature pleine largeur + popup vidéo -->
+      <!-- TOP 1 : miniature pleine largeur + popup vidéo (sans autoplay) -->
       <div>
         <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥇 Post #1</div>
         <div onclick="openVideoPopup()" style="position:relative; cursor:pointer; border:1px solid var(--rule); background:#000; line-height:0;">
@@ -846,7 +847,7 @@
 <div id="video-popup" onclick="closeVideoPopup(event)" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:9999; align-items:center; justify-content:center;">
   <div style="position:relative; width:50%; max-width:700px;" onclick="event.stopPropagation()">
     <button onclick="closeVideoPopup(event)" style="position:absolute; top:-2rem; right:0; background:none; border:none; color:#fff; font-size:1.4rem; cursor:pointer; opacity:0.8; line-height:1;">✕</button>
-    <video id="popup-video" src="top1.mp4" controls autoplay style="width:100%; display:block; border:1px solid rgba(255,255,255,0.15); background:#000;"></video>
+    <video id="popup-video" src="top1.mp4" controls style="width:100%; display:block; border:1px solid rgba(255,255,255,0.15); background:#000;"></video>
   </div>
 </div>
 
