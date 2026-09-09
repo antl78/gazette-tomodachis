@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Gazette des Tomodachis — Août 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --ink-light: #3d2e10;
+    --paper: #f5eedc;
+    --paper-dark: #e8dcc0;
+    --paper-darker: #d9c99a;
+    --red: #8b1a1a;
+    --gold: #9a7c2a;
+    --rule: #b8a06a;
+    --shadow: rgba(26,18,9,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1f0e;
+    font-family: 'Crimson Text', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, #3d2a0e 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a1209 0%, transparent 50%);
+  }
+
+  .newspaper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newspaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+
+  .paper-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.6rem 0;
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .masthead-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.4rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── GRID ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1px 2fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2-equal {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .col-divider {
+    background: var(--rule);
+    width: 1px;
+    margin: 1.5rem 0;
+  }
+
+  .col {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* ── ARTICLES ── */
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-headline.large {
+    font-size: 1.6rem;
+  }
+
+  .article-headline.small {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .article-deck {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    border-left: 2px solid var(--red);
+    padding-left: 0.6rem;
+  }
+
+  .article-byline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article-body p { margin-bottom: 0.6rem; }
+  .article-body p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── PULL QUOTES ── */
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--red);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── BOXED ITEMS ── */
+  .box {
+    border: 1px solid var(--rule);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background: var(--paper-dark);
+    position: relative;
+  }
+
+  .box::before {
+    content: '§';
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper-dark);
+    padding: 0 0.5rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+  }
+
+  .box-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .box-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── PERSONALIA ── */
+  .persona-card {
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+  .persona-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .persona-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .persona-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag {
+    background: var(--paper-darker);
+    border: 1px solid var(--rule);
+    padding: 0.15rem 0.4rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+  }
+
+  .persona-quotes {
+    margin-bottom: 0.5rem;
+  }
+
+  .persona-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--rule);
+  }
+
+  .persona-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── GAZETTE ITEMS ── */
+  .gazette-items {
+    padding: 1.5rem 3rem;
+  }
+
+  .gag-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .gag-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .gag-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .gag-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── FULL WIDTH ── */
+  .full-width {
+    padding: 1.25rem 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── FLASH / DERNIÈRE HEURE ── */
+  .flash-box {
+    margin: 0 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border: 3px double var(--red);
+    background: var(--paper-dark);
+    position: relative;
+  }
+  .flash-tag {
+    display: inline-block;
+    background: var(--red);
+    color: var(--paper);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: var(--paper-darker);
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── UTILITIES ── */
+  .text-center { text-align: center; }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .italic { font-style: italic; }
+
+  .drop-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--rule);
+    margin: 0.6rem auto;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 1rem 0;
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Saint-Empire des Tomodachis</span>
+      <span>Organe d'information mensuel de la communauté</span>
+      <span>N° 6 · Gratuit</span>
+    </div>
+    <div class="paper-name">La Gazette des Tomodachis</div>
+    <div class="paper-subtitle">Bulletin des Affaires Intérieures du Saint-Empire</div>
+    <div class="masthead-rule">✦ ✦ ✦</div>
+    <div class="masthead-info">
+      <span>Août 2026 — De la 1ère à la 31ème Journée</span>
+      <span>Rédigée par la rédaction · free007</span>
+      <span>108 309 messages recensés · 67 402 en salon général</span>
+    </div>
+  </div>
+
+  <!-- SECTION I : UNE -->
+  <div class="section-header">I. — Chronique du Salon Général</div>
+
+  <!-- ARTICLE PRINCIPAL : SECRET KJ, LA FINALE -->
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Secret KJ, Saison 1 : Ikar0s Sacré Champion Toutes Catégories</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Le 8 août, après un mois de malus, de bonus et de voleurs fantômes, sufeet referme sa grande messe hebdomadaire sur un classement digne du golf — et une carte cadeau à 50€</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-byline">Par la rédaction · 1-8 Août 2026</div>
+    <div class="article-body">
+      <p>Le mois s'ouvrit là où juillet l'avait laissé : sufeet, seul maître à bord du salon secret-kj, y écrivant à lui seul 759 des 787 messages de la première semaine d'août. On y croisa encore « L'homme dentifrice ??? Que fais-tu ici ??? » (9 réactions alerte), la consigne redoutée de glisser « Palword c'est trop le goty » pour faire enrager la cantine (11 réactions), ou l'ordre sec de crier de peur à chaque apparition d'un voleur fantôme. Le suspense, lui, tenait à un fil : qui, des quatre finalistes Kaijuu, Free, Deon et Ikar0s, décrocherait la timide pantoufle du vainqueur ?</p>
+      <p>La réponse tomba le samedi 8 août à 21h42, en direct et dans le désordre — sufeet annonçant d'abord la mauvaise personne avant de se corriger aussitôt. « <strong>A LA QUATRIEME PLACE</strong> […] Bravo kaijuu », puis Free en troisième, Deon en second, laissant à Ikar0s (alias IkarosQuandOnParleArabe, dûment corrigé en direct par free007 lui-même) la première marche. Le classement final, façon golf où le petit score gagne, ne laissa planer aucun doute : « <strong>1er :</strong> Ikar0s - 17 points, <strong>2ème :</strong> Deon - 19 points, <strong>3ème :</strong> Free - 30 points, <strong>4ème :</strong> Kaijuu - 34 points. »</p>
+      <p>Le vainqueur reçut sa récompense en direct — une carte 50€ Instant Gaming envoyée en message privé par sufeet — sous les applaudissements du général, tandis que xkaijuu saluait la prose fleuve de son adversaire d'un definitif « il a lu l'équivalent de 2 umineko en message discord moi j'applaudis ». Free007, troisième malgré lui, s'en déclara pourtant « fier » : « C'est comme une victoire pour moi. » Merci fut aussi rendu à reveur8951, co-animateur qui n'était pas du tout le co-animateur en fait, sans qui « ça aurait pas été la même », selon ynnel13.</p>
+    </div>
+
+    <div class="pull-quote">« Bienvenue pour le dernier reveal de l'aventure SECRET KJ… Vous étiez au départ 21. Vous n'êtes maintenant plus que 4. »<br><span style="font-size:0.75rem; color:var(--ink-light);">— sufeet, ouverture de la grande finale, 8 août</span></div>
+
+    <div class="article-body">
+      <p>Restait à refermer le dossier. Trois semaines plus tard, le 23 août, free007 officialisa dans ses notes de changement l'archivage pur et simple du salon secret-kj, « ainsi que de la catégorie Fics qui n'est plus utilisée depuis de nombreuses années » — clôturant, sans cérémonie cette fois, l'aventure qui aura occupé le Saint-Empire tout un été.</p>
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem; border-bottom: 2px solid var(--rule);">
+    <div class="box">
+      <div class="box-title">Avis de la Rédaction — Secret KJ</div>
+      <div class="box-body">Une saison, un homme, 759 messages en une semaine : sufeet aura réussi l'exploit rare de transformer un salon annexe en évènement mensuel incontournable, avant de le voir archivé aussi discrètement qu'il avait été inauguré. Ikar0s repart avec le titre, la carte cadeau, et une réputation littéraire déjà établie. La rédaction se demande, comme tout le monde, si une saison 2 verra le jour — « voyez avec ynnel », a-t-on cru comprendre.</div>
+    </div>
+  </div>
+
+  <!-- GRILLE 2 : ECLIPSE + CANICULE -->
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">L'Éclipse du 12 Août : le Soleil se Voile, Timidement</div>
+      <div class="article-deck">27 ans presque jour pour jour après celle de 1999, une éclipse partielle traverse le ciel de France — entre nostalgie d'enfance, lunettes de dernière minute et déceptions en cascade.</div>
+      <div class="article-byline">Par la rédaction · 12 Août 2026</div>
+      <div class="article-body">
+        <p>L'annonce donna le ton dès le 1er août : free007 comptait voir l'éclipse « dans le Pays Basque », seul coin de France où le phénomène frôlait la totalité. « C'est bizarre je ne vois aucune hype en France » s'étonnait-il, avant de doucher l'enthousiasme ambiant d'un « c'est de la merde un peu » tiré de sa propre expérience de 1999. La communauté, elle, s'organisa dans la panique des derniers jours — <em>« on les trouve où les lunettes pour éclipse à montpellier »</em> demandait wheelfyze le matin même, quand shinymin recevait les siennes gratuitement via un groupe Facebook de quartier.</p>
+        <p>Le 11 août à 23h53, free007 livra la note la plus touchante du mois : <em>« à la veille de l'éclipse de 2026 et 27 ans jour pour jour après celle de 1999, je me suis replongé dans l'été de mes 5 ans »</em>, comparant point par point les deux années — 1999 plus grise mais plus fraîche, 2026 sous un ciel bleu et une canicule. Le 12 au soir, le Saint-Empire regarda le ciel en ordre dispersé : despey en trottinette, sterno à la pêche avec apéro, noxiousdtr depuis son canapé, et lupin_red carrément à une mini « IRL éclipse » où <em>« cora m'a arraché les lunettes »</em>. Les avis divergèrent sec — mycenasilvae la trouva « top », sufeet la jugea <em>« même pas top 5 »</em>, et hoshiiyomi, fidèle à lui-même, s'inquiéta : <em>« j'ai pas vu grand chose et je vois toujours plus rien, c'est normal ? »</em></p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Canicule : l'Été 2026 Boucle sa Trilogie</div>
+      <div class="article-deck">Une troisième vague de chaleur traverse le mois d'août, prolongeant un été déjà classé le plus chaud jamais mesuré en France — au grand bonheur, paradoxal, de certains.</div>
+      <div class="article-byline">Par la rédaction · Tout le mois</div>
+      <div class="article-body">
+        <p>Après juin et juillet, août n'aura pas dérogé à la règle. Le 5 août, wheelfyze, médecin du travail de profession, raconta la journée la plus surréaliste de sa carrière : nuits sans sommeil à cause de la chaleur, une remplaçante prise d'un malaise violent en pleine visite médicale, un service fermé en urgence sur appel au PC Sécurité, et lui, contraint de rentrer travailler depuis chez lui — découvrant le télétravail pour la toute première fois. <em>« Vraiment wtf »</em>, conclut-il, encore <em>« chokbar »</em>.</p>
+        <p>Tout le monde ne partagea pas ce calvaire : pocoudonworld avoua sans détour être <em>« le seul à être content des canicules »</em>, la chaleur lui évitant d'être rappelé en intérim à l'entrepôt. Le 14 août, noxiousdtr rouvrit un vieux débat existentiel — <em>« j'espère qu'avec cette canicule vous comprenez mieux pourquoi hiver > été »</em> — quand jenseth, cinq jours plus tard, résumait l'état d'esprit général : <em>« j'en ai marre de cette canicule de con qui dure depuis 2-3 mois non stop. »</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION II : AUTRES SALONS -->
+  <div class="section-header">II. — Dépêches des Salons Particuliers</div>
+
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Nox : de Fantôme Légendaire à Animateur Officiel</div>
+      <div class="article-deck">Un mois après son retour annoncé le dernier soir de juillet, noxiousdtr ne se contente plus de hanter le serveur : il en anime les temps forts.</div>
+      <div class="article-byline">Par la rédaction · Salon 💬général & tomo-party</div>
+      <div class="article-body">
+        <p>La nouvelle du 31 juillet n'était donc pas un feu de paille. En août, Nox grimpe au 3e rang du serveur, retrouvant en un mois un rythme de croisière digne de ses grandes années. Mieux : c'est lui qui prend en main l'organisation complète du Tomo Party saison 3, pose les épreuves, arbitre les scores et gère en direct les désistements de dernière minute.</p>
+        <p>Entre deux annonces, il aura aussi trouvé le temps de relancer le débat météorologique du mois — <em>« hiver > été »</em>, dixit lui-même — et de recevoir un accueil chaleureux et unanime à chacune de ses apparitions : <em>« salam nox »</em>, lui lance simplement pocoudonworld le 31 août, comme si l'année d'absence n'avait jamais existé.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Shichiefs, la Révélation du Mois</div>
+      <div class="article-deck">Avec 5 397 messages, dont 5 128 en salon général, un nom jusque-là peu visible dans nos colonnes s'installe en tête du classement du général — porté par des nuits entières de débats tous azimuts.</div>
+      <div class="article-byline">Par la rédaction · Salon 💬général</div>
+      <div class="article-body">
+        <p>Il n'apparaissait dans aucun podium avant cette date. En août, shichiefs devient, de loin, le membre le plus prolifique du salon général, avec une pointe à 825 messages sur la seule journée du 20 — record mensuel toutes personnes confondues. Sa spécialité : des sessions de discussion tard dans la nuit qui traversent, sans reprendre leur souffle, la géopolitique, l'histoire du XXe siècle et l'actualité internationale, jusqu'à ce que falundrim ou petitvelo tentent, sans grand succès, de changer de sujet.</p>
+        <p>Le reste du temps, shichiefs se contente de saluer les débats d'un laconique <em>« hilarant »</em> ou d'un <em>« bah historiquement ui mdrr »</em>, prouvant qu'on peut dominer le classement du mois sans jamais chercher à briller.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE TOMO PARTY -->
+  <div class="full-width">
+    <div class="article-headline" style="text-align:center; margin-bottom:0.25rem;">Tomo Party Saison 3 : Bayoneta l'Emporte pour 0,1 Point</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Le 16 août, après deux ans et demi d'attente et une bonne dose de désistements de dernière minute, deux équipes de six s'affrontent pendant six heures pour la plus serrée des victoires</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="full-width" style="border-bottom: 2px solid var(--rule);">
+    <div class="article-byline">Par la rédaction · 5 & 16 Août 2026</div>
+    <div class="article-body">
+      <p>Tout commence le 5 août, en fanfare : noxiousdtr annonce en @everyone le retour tant attendu du Tomo Party — « après 2 ans et demi d'attente, la troisième saison […] annonce du lourd ». Fini le format binôme, place aux équipes de six : d'un côté MOGO (Lenny, Queen, Kage, Free, Lupin, Kaijuu), de l'autre BAYONETA (Satori, Demo, Teefus, Kurona, Deon, Ikaros). Au menu, quatre épreuves maison — Match Memory, Time's Up, Les Enchères et La Bibliothèque — votées et calées, après plusieurs tergiversations de dates, au samedi 16 août, 20h30.</p>
+      <p>Le jour J faillit pourtant capoter avant même de commencer : Kaijuu porté forfait à la dernière minute, queencedia qui manque de peu de se désister à son tour (<em>« Tout mes cooequipiers se desiste je pue ou quoi »</em>), et Nox forcé de lancer un ultimatum au rôle d'équipe entier — « vous avez 20mn pour trouver quelqu'un ». La partie démarra malgré tout à l'heure dite, sur fond d'épreuve d'ouverture façon quiz vidéo mystère, immédiatement suivie d'un accès de rage collectif de sufeet - « ON LES BAISE DEMO » - qui donna le ton du reste de la soirée.</p>
+      <p>Le suspense grimpa crescendo jusqu'au bout de la nuit : Bayoneta breakait un large 260 à 170 en fin de soirée avant que Mogo ne recolle méthodiquement, manche après manche, jusqu'à un score final ahurissant de <strong>260,2 contre 260,1</strong> — soit un dixième de point d'écart pour départager trois heures de jeu. « victoire face aux MOGGED », lâcha elomeurt, pendant que despey saluait une soirée « parfaite, à part quand Lupin a pris la parole ». Sufeet, fair-play dans la défaite, referma la soirée d'un definitif <em>« je ne reviendrai plus au tomo party saison 3 perso. Mais à la saison 4 pk pas »</em>.</p>
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem; border-bottom: 2px solid var(--rule);">
+    <div class="box">
+      <div class="box-title">Avis de la Rédaction — Tomo Party</div>
+      <div class="box-body">Deux ans et demi d'attente pour trois heures de jeu et un dixième de point d'écart : la rédaction n'aurait pas osé inventer un tel scénario. Merci à Nox pour l'organisation, et rendez-vous, promis-juré-craché par ses propres joueurs perdants, à la saison 4.</div>
+    </div>
+  </div>
+
+  <!-- ARTICLE IRLs -->
+  <div class="full-width">
+    <div class="article-headline" style="text-align:center; margin-bottom:0.25rem;">Vers la Plus Grosse IRL depuis Quatre Ans</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Entre l'IRL Lille du début du mois, l'Animest de Nancy annoncé pour novembre et la grande IRL Paris officialisée le 23 août, le Saint-Empire ne cesse de se donner rendez-vous — sans oublier l'increvable running gag de l'IRL Algérie</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="full-width" style="border-bottom: 2px solid var(--rule);">
+    <div class="article-byline">Par la rédaction · Tout le mois</div>
+    <div class="article-body">
+      <p>Le mois s'ouvrit sur une IRL bien réelle : du 1er au 3 août, thrarx pilota à la minute près un séjour lillois (visite de la maison d'enfance de Charles De Gaulle comprise), pendant que mariedioa réorganisait son planning de concert et que reveur8951, pas au mieux de sa forme, promettait de venir quand même — <em>« j'attends ça depuis trop longtemps »</em>. Une mini-IRL improvisée dans une salle d'arcade suivit le 10, où deoon se plaignit publiquement d'un coup de foulard reçu <em>« devant les babies lilloises »</em>.</p>
+      <p>Mais la vraie nouvelle tomba le 23 août à 22h12, en @everyone : free007 officialisa la tenue d'une grande IRL Paris les 10 et 11 octobre — « contrairement à l'IRL Nancy, pas de conventions cette fois, visite de Paris probablement sur 2 jours ». L'enthousiasme fut immédiat : <em>« N'empêche la giga IRL pour octobre je me dis, probablement la plus grosse depuis 4 ans »</em>, insista-t-il deux jours plus tard, quand reveur8951 comptait déjà les jours (<em>« Je vais déjà à l'IRL Paris d'octobre habibi »</em>) et que pocoudonworld tentait, sans grand succès, de recruter pour un détour par le Luxembourg. En toile de fond, elomeurt annonça de son côté l'Animest de Nancy pour les 14 et 15 novembre, avec sa proposition d'hébergement désormais rituelle : <em>« react 🛏️ si vous avez besoin d'être hébergé dans mon appart. »</em></p>
+      <p>Reste, increvable, le folklore de l'IRL Algérie : depuis le 2 août, où il annonçait pourtant y « abandonner », aupremiercoup n'aura eu de cesse d'y faire revenir tout le monde, invoquant tour à tour « une belle algérienne » pour xkaijuu, une inhumation dans le désert proposée par free007 pour un troll récurrent, et jusqu'à un alignement providentiel avec l'éclipse de 2027 : <em>« Parfait, on pourra se voir à l'irl Algérie en août 2027. En plus l'éclipse passe bien par Oran. »</em> Une IRL qui, à ce rythme, n'aura besoin que d'un peu plus de temps pour devenir réalité.</p>
+    </div>
+  </div>
+
+  <!-- DERNIÈRE HEURE : ARCHIVAGE SECRET KJ -->
+  <div style="padding: 1.5rem 2rem 0.25rem;">
+    <div class="flash-box">
+      <span class="flash-tag">Dernière Heure — 23 Août, 17h13</span>
+      <div class="article-headline" style="margin-bottom:0.4rem;">Le Secret KJ Rejoint les Archives</div>
+      <div class="article-body">
+        <p>Dans une note de changement publiée en fin d'après-midi, free007 annonce coup sur coup deux décisions : le retour d'un ancien rôle donnant accès aux salons archivés du serveur, et l'archivage définitif du salon secret-kj — « ainsi que de la catégorie Fics qui n'est plus utilisée depuis de nombreuses années ». Quinze jours après le sacre d'Ikar0s, le rideau tombe donc officiellement sur la saison 1, sans cérémonie ni discours d'adieu, mais avec l'élégance discrète d'une simple ligne dans un changelog. La rédaction y voit un symbole : au Saint-Empire, même les légendes finissent en archive.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION III : PETITE GAZETTE -->
+  <div class="section-header">III. — Petite Gazette & Faits Divers</div>
+
+  <div class="gazette-items">
+
+    <div class="gag-item">
+      <div class="gag-title">Ellie Semoule et Consorts</div>
+      <div class="gag-body">Le 13 août, en pleine partie de jeu des prénoms improbables pour futures descendances, queencedia livra le post le plus liké du mois avec un sobre <em>« Ta sensi elle est grave élevé wsh »</em> — 78 réactions (toutes emotes confondues) plus tard, la proposition « Ellie Semoule » restera dans les annales, aux côtés d'« Abigail sinon rien ».</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Le Rollback le Plus Rapide de l'Histoire</div>
+      <div class="gag-body">Le 14 août, xkaijuu livra en @everyone le récit le plus commenté du mois (62 réactions) : une ancienne collègue croisée au travail, ravie qu'il se souvienne de son prénom, qui finit par lui montrer ses photos de vacances au Maroc — jusqu'à en faire défiler quelques-unes de trop. <em>« J'ai jamais vu un rollback aussi rapide »</em>, conclut-il, philosophe.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Bison, Reviens Bison</div>
+      <div class="gag-body">Le 13 août, despey ressortit un souvenir d'enfance impérissable : <em>« j'me rappelerais toute ma vie de la fois où j'étais au parc et le daron appelait sa fille pour qu'elle revienne "BISON REVIENS BISON" »</em>. La rédaction n'a toujours pas résolu l'énigme du prénom.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Bébé Satou a Huit Ans (et pas Huit Mois)</div>
+      <div class="gag-body">Dans les minutes qui suivirent la finale du Secret KJ, aupremiercoup se lança dans une enquête approfondie sur « bébé satou », d'abord ému (<em>« Pas touche à lui, c'est l'avenir du serveur »</em>) puis stupéfait par sa découverte : <em>« Il a 8 ans O_O'' »</em>. De quoi proposer, sondage à l'appui, son retour officiel aux parties de Gartic Phone.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">La Gazette se Fait sa Propre Actu</div>
+      <div class="gag-body">Le 9 août, free007 publia en @everyone l'édition de juillet de cette même Gazette, lien GitHub Pages à l'appui — devenant, l'espace d'une annonce, sa propre dépêche. La rédaction, flattée, en profite pour rappeler que la présente édition n°6 poursuit fidèlement la tradition.</div>
+    </div>
+
+  </div>
+
+  <!-- SECTION IV : PERSONNALITÉS -->
+  <div class="section-header">IV. — Portrait des Figures du Saint-Empire</div>
+
+  <div class="full-width">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Galerie des Personnages Notables</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1.5rem;">Portraits établis d'après les archives du mois d'août, par la rédaction.</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Ikar0s</div>
+        <div class="persona-title">Le Grand Vainqueur du Secret KJ · 1 530 msgs · #25 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">champion saison 1</span>
+          <span class="tag">carte cadeau 50€</span>
+          <span class="tag">« 2 umineko en messages »</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Wow Sufeet la carte 50 euro instant-gaming en mp pour la première place je m'y attendais pas merci »</div>
+          <div class="persona-quote">« C'était plus intéressant que l'arc réponse d'Umi »</div>
+        </div>
+        <div class="persona-body">Sacré champion toutes catégories du Secret KJ le 8 août avec le plus petit score (17 points, façon golf), Ikar0s aura marqué la saison par des messages fleuves qui, selon xkaijuu, équivalent à « 2 umineko en message discord ». Une victoire méritée, saluée jusque dans le camp adverse.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Sufeet</div>
+        <div class="persona-title">Le Maître du Jeu qui Referme Boutique · 3 672 msgs · #7 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">759/787 msgs au Secret KJ</span>
+          <span class="tag">#2 de l'alerte (3 365)</span>
+          <span class="tag">salon archivé le 23/08</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Bienvenue pour le dernier reveal de l'aventure SECRET KJ… »</div>
+          <div class="persona-quote">« L'homme dentifrice ??? Que fais-tu ici ??? »</div>
+        </div>
+        <div class="persona-body">Après avoir tenu quasiment seul le salon secret-kj pendant huit jours, sufeet organisa la finale la plus attendue de l'été avant de voir son royaume archivé sans fanfare deux semaines plus tard. De quoi lui laisser le temps de retrouver le général — et le podium de l'alerte, qu'il cède cette fois à un certain xkaijuu.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Noxiousdtr</div>
+        <div class="persona-title">Nox, de Fantôme à Animateur · 5 330 msgs · #3 du mois 🥉</div>
+        <div class="persona-tags">
+          <span class="tag">#3 du général</span>
+          <span class="tag">organisateur Tomo Party S3</span>
+          <span class="tag">#7 de l'alerte (1 547)</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« vous avez 20mn pour trouver quelqu'un »</div>
+          <div class="persona-quote">« j'espère qu'avec cette canicule vous comprenez mieux pourquoi hiver > été »</div>
+        </div>
+        <div class="persona-body">Un mois pile après son retour annoncé en grande pompe, Nox confirme qu'il ne s'agissait pas d'un feu de paille : troisième meilleur posteur du mois, organisateur en chef du Tomo Party saison 3 et arbitre impassible des scores les plus serrés de l'histoire du jeu. Le fantôme est redevenu, définitivement, un tomodachi actif.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Elomeurt</div>
+        <div class="persona-title">Sato, Toujours en Tête · 5 997 msgs · #1 du mois 🥇</div>
+        <div class="persona-tags">
+          <span class="tag">#4 du général</span>
+          <span class="tag">#3 de l'alerte (2 070)</span>
+          <span class="tag">présente à l'IRL Lille</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« victoire face aux MOGGED »</div>
+          <div class="persona-quote">« irl lille 0.2 »</div>
+        </div>
+        <div class="persona-body">Première du classement toutes catégories pour le sixième mois d'affilée, Sato n'aura raté ni l'IRL Lille de début de mois, ni la victoire au bout du suspense de son équipe Bayoneta au Tomo Party — remportée pour un dixième de point.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">WheelFyze</div>
+        <div class="persona-title">L'Accro du Mudae, en Pleine Progression · 7 744 msgs · #1 du mois toutes catégories</div>
+        <div class="persona-tags">
+          <span class="tag">86% des msgs au salon ⚙bot</span>
+          <span class="tag">journée de travail surréaliste</span>
+          <span class="tag">médecin du travail</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Vraiment wtf, c'est surtout le changement de personnalité, j'étais chokbar »</div>
+        </div>
+        <div class="persona-body">Numéro un incontesté du classement toutes catégories, WheelFyze consacre désormais 86% de ses messages au bot Mudae — en progression sur les 76% de juillet. Une addiction stable, entrecoupée d'un récit de journée de travail digne d'un roman, entre canicule, télétravail découvert sur le tard et service médical fermé en urgence.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Xkaijuu</div>
+        <div class="persona-title">Le Nouveau Roi de l'Alerte · 5 076 msgs · #4 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#1 de l'alerte (3 886)</span>
+          <span class="tag">#2 du général</span>
+          <span class="tag">rollback le plus rapide du mois</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« J'ai jamais vu un rollback aussi rapide »</div>
+          <div class="persona-quote">« il a lu l'équivalent de 2 umineko en message discord moi j'applaudis »</div>
+        </div>
+        <div class="persona-body">Détrônant Sufeet après le règne de juillet, Xkaijuu prend la tête du classement de l'alerte avec 3 886 réactions, porté par son récit de rencontre professionnelle du 14 août — 62 réactions à lui seul — devenu le post le plus commenté du mois.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Shichiefs</div>
+        <div class="persona-title">Le Phénomène Discret · 5 397 msgs · #2 du mois 🥈</div>
+        <div class="persona-tags">
+          <span class="tag">#1 du général</span>
+          <span class="tag">825 msgs le 20 août (record)</span>
+          <span class="tag">débatteur nocturne</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« hilarant. »</div>
+          <div class="persona-quote">« bah historiquement ui mdrr »</div>
+        </div>
+        <div class="persona-body">Absent de tous nos classements de juillet, shichiefs s'impose du jour au lendemain comme le membre le plus actif du général — porté par des marathons de discussion nocturnes qui traversent l'histoire et la géopolitique sans jamais reprendre leur souffle.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Free007</div>
+        <div class="persona-title">L'Administrateur-Annonceur · 2 495 msgs · #12 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">IRL Paris officialisée</span>
+          <span class="tag">Secret KJ archivé</span>
+          <span class="tag">gazette de juillet publiée</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« N'empêche la giga IRL pour octobre, probablement la plus grosse depuis 4 ans »</div>
+          <div class="persona-quote">« C'est comme une victoire pour moi » (3e du Secret KJ)</div>
+        </div>
+        <div class="persona-body">Entre l'annonce de la grande IRL Paris d'octobre, l'archivage officiel du Secret KJ et la republication de la propre Gazette du Saint-Empire, l'administrateur aura passé le mois à faire l'actualité autant qu'à la commenter — sans oublier de finir 3e du Secret KJ, dont il se dit encore fier.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Aupremiercoup</div>
+        <div class="persona-title">Le VRP de l'IRL Algérie · 1 966 msgs · #20 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">campagne IRL Algérie</span>
+          <span class="tag">enquête bébé satou</span>
+          <span class="tag">rdv pris pour 2027</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Donc IRL Algérie obligatoire »</div>
+          <div class="persona-quote">« l'éclipse passe bien par Oran et les environs »</div>
+        </div>
+        <div class="persona-body">Après une brève tentative d'abandon le 2 août, aupremiercoup relança sa campagne pour l'IRL Algérie avec une énergie intacte tout le mois, allant jusqu'à caler le projet sur l'éclipse de 2027. La rédaction prend acte : rendez-vous est pris, en théorie, dans un an.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE ALERTE -->
+  <div class="section-header">V. — L'Alerte en Août : Xkaijuu Détrône Sufeet</div>
+
+  <div style="padding: 2rem 2rem 0; border-bottom: 2px solid var(--rule);">
+
+    <!-- Titre et intro sur toute la largeur -->
+    <div style="text-align:center; margin-bottom: 1.25rem;">
+      <div class="article-headline large" style="font-size:2rem;">Alertes &amp; Atomes — Le Palmarès d'Août</div>
+      <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin: 0.3rem 0;">Anthropologie culturelle · tout le mois</div>
+      <div class="article-deck" style="max-width:620px; margin:0.5rem auto 0; border-left:none; text-align:center; padding-left:0;">Entre la finale du Secret KJ et le Tomo Party, l'émoji fétiche du Saint-Empire change de maître : place à Xkaijuu.</div>
+    </div>
+
+    <!-- Texte en deux colonnes -->
+    <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:0; margin-bottom:1.25rem;">
+      <div style="padding: 0 1.25rem 0 0;">
+        <div class="article-body">
+          <p>Août aura été un mois plus calme pour l'alerte que juillet : 34 052 réactions de la famille alerte/atome recensées ce mois-ci, contre 37 231 le mois précédent. Mais le classement, lui, connaît un vrai bouleversement : après le sacre écrasant de Sufeet en juillet (4 054 réactions), c'est Xkaijuu qui prend la couronne cette fois, porté par ses récits du quotidien plus que par ses annonces.</p>
+          <p>Xkaijuu rafle la mise avec 3 191 réactions cumulées, Sufeet recule en deuxième position avec 2 815 réactions — logique, une fois le Secret KJ refermé à la mi-mois — tandis qu'Elomeurt s'installe sur la troisième marche avec 1 864 réactions, fidèle à sa présence de tous les instants sur le général.</p>
+        </div>
+      </div>
+      <div style="background:var(--rule); width:1px; margin: 0;"></div>
+      <div style="padding: 0 0 0 1.25rem;">
+        <div class="article-headline small" style="margin-bottom:0.4rem;">Palmarès de l'Alerte — Août 2026</div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin-bottom:0.6rem;">Statistiques officielles · compilation mensuelle</div>
+        <div class="article-body">
+          <p>Les archives d'août livrent leur verdict. Le podium des réactions alerte et atome (et dérivés) est le suivant :</p>
+          <p><strong class="red">#1 — Xkaijuu</strong> : 3 191 réactions. Le nouveau roi de l'alerte, couronné loin du Secret KJ.</p>
+          <p><strong class="red">#2 — Sufeet</strong> : 2 815 réactions. Détrôné, mais toujours solidement installé sur le podium.</p>
+          <p><strong class="red">#3 — Elomeurt</strong> : 1 864 réactions. Fidèle au poste, mois après mois.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Séparateur ornemental -->
+    <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin-bottom:1rem;">— ✦ Top 3 des Posts · Palmarès par Réactions ✦ —</div>
+
+    <!-- 3 médias empilés -->
+    <div style="display:flex; flex-direction:column; gap:1.75rem; padding-bottom:1.75rem;">
+
+      <!-- TOP 1 : image cliquable lightbox -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥇 Post #1 — Xkaijuu, 22 réactions</div>
+        <img src="top1.jpg" alt="Post #1" onclick="openLightbox(this.src)" style="width:50%; margin: 0 auto; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top1.jpg manquant</span>
+        </div>
+      </div>
+
+      <!-- TOP 2 : image cliquable lightbox -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥈 Post #2 — Sufeet, 15 réactions</div>
+        <img src="top2.jpg" alt="Post #2" onclick="openLightbox(this.src)" style="width:60%; margin: 0 auto; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top2.jpg manquant</span>
+        </div>
+      </div>
+
+      <!-- TOP 3 : image cliquable lightbox -->
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥉 Post #3 — Sufeet, 15 réactions</div>
+        <img src="top3.jpg" alt="Post #3" onclick="openLightbox(this.src)" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; border:1px dashed var(--rule); padding:3rem 1rem; text-align:center; font-family:'IM Fell English',serif; font-style:italic; font-size:0.82rem; color:var(--ink-light); flex-direction:column; align-items:center; gap:0.4rem; background:var(--paper-dark);">
+          <span style="font-size:1.5rem; opacity:0.3;">☐</span>
+          <span>top3.jpg manquant</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- FIN PAGE ALERTE -->
+
+  <!-- BOX FINAL -->
+  <div class="full-width">
+    <div class="box" style="max-width:640px; margin:0 auto;">
+      <div class="box-title">Avis de la Rédaction</div>
+      <div class="box-body" style="text-align:center; font-style:italic;">
+        Août 2026 aura été le mois des clôtures et des ouvertures : le Secret KJ s'est achevé sur le sacre d'Ikar0s avant de rejoindre les archives, le Tomo Party a rendu son verdict le plus serré de son histoire, et Nox a confirmé qu'il n'était pas revenu pour hanter le serveur en silence. Entre-temps, le ciel s'est voilé le temps d'une éclipse, la canicule a bouclé sa trilogie estivale, et le Saint-Empire a commencé à préparer sa plus grosse IRL depuis quatre ans — sans jamais renoncer, bien sûr, à la sacro-sainte IRL Algérie.
+        <br><br>
+        Le Saint-Empire tourne une page. Il en écrit déjà la suivante.
+        <br><br>
+        <span class="gold">— La Gazette des Tomodachis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    La Gazette des Tomodachis · Août 2026 · Tous droits réservés au Saint-Empire · Reproduction autorisée avec mention de la source · Imprimée sur papier virtuel recyclé
+  </div>
+
+</div>
+
+<!-- LIGHTBOX IMAGES -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center; padding:1.5rem;">
+  <img id="lightbox-img" src="" style="max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.8);">
+</div>
+
+<script>
+  function openLightbox(src) {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>
