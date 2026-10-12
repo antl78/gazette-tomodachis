@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Gazette des Tomodachis — Septembre 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --ink-light: #3d2e10;
+    --paper: #f5eedc;
+    --paper-dark: #e8dcc0;
+    --paper-darker: #d9c99a;
+    --red: #8b1a1a;
+    --gold: #9a7c2a;
+    --rule: #b8a06a;
+    --shadow: rgba(26,18,9,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1f0e;
+    font-family: 'Crimson Text', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, #3d2a0e 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a1209 0%, transparent 50%);
+  }
+
+  .newspaper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newspaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+
+  .paper-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.6rem 0;
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .masthead-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.4rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── GRID ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1px 2fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2-equal {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .col-divider {
+    background: var(--rule);
+    width: 1px;
+    margin: 1.5rem 0;
+  }
+
+  .col {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* ── ARTICLES ── */
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-headline.large {
+    font-size: 1.6rem;
+  }
+
+  .article-headline.small {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .article-deck {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    border-left: 2px solid var(--red);
+    padding-left: 0.6rem;
+  }
+
+  .article-byline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article-body p { margin-bottom: 0.6rem; }
+  .article-body p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── PULL QUOTES ── */
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--red);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── BOXED ITEMS ── */
+  .box {
+    border: 1px solid var(--rule);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background: var(--paper-dark);
+    position: relative;
+  }
+
+  .box::before {
+    content: '§';
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper-dark);
+    padding: 0 0.5rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+  }
+
+  .box-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .box-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── PERSONALIA ── */
+  .persona-card {
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+  .persona-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .persona-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .persona-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag {
+    background: var(--paper-darker);
+    border: 1px solid var(--rule);
+    padding: 0.15rem 0.4rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+  }
+
+  .persona-quotes {
+    margin-bottom: 0.5rem;
+  }
+
+  .persona-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--rule);
+  }
+
+  .persona-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── GAZETTE ITEMS ── */
+  .gazette-items {
+    padding: 1.5rem 3rem;
+  }
+
+  .gag-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .gag-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .gag-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .gag-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── FULL WIDTH ── */
+  .full-width {
+    padding: 1.25rem 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── FLASH / DERNIÈRE HEURE ── */
+  .flash-box {
+    margin: 0 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border: 3px double var(--red);
+    background: var(--paper-dark);
+    position: relative;
+  }
+  .flash-tag {
+    display: inline-block;
+    background: var(--red);
+    color: var(--paper);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: var(--paper-darker);
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── UTILITIES ── */
+  .text-center { text-align: center; }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .italic { font-style: italic; }
+
+  .drop-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--rule);
+    margin: 0.6rem auto;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── GALERIE WIKIMASTERS ── */
+  .wm-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+    margin: 1rem 0 0.5rem;
+  }
+  .wm-item img {
+    width: 100%;
+    border: 1px solid var(--rule);
+    display: block;
+    background: var(--paper-dark);
+    cursor: zoom-in;
+  }
+  .wm-caption {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.25rem;
+  }
+  .wm-legend {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    text-align: center;
+    margin-top: 0.35rem;
+    line-height: 1.35;
+  }
+  .img-missing {
+    display: none;
+    border: 1px dashed var(--rule);
+    padding: 2.5rem 0.75rem;
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--paper-dark);
+  }
+
+  /* ── LEXIQUE ── */
+  .lexique {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem 1.5rem;
+    margin-top: 0.75rem;
+  }
+  .lex-entry {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--ink);
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.45rem;
+  }
+  .lex-word {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--red);
+  }
+  .lex-count {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-left: 0.3rem;
+  }
+
+  @media (max-width: 720px) {
+    .grid-3, .grid-2, .grid-2-equal { grid-template-columns: 1fr; padding: 0 1rem; }
+    .col-divider { display: none; }
+    .wm-gallery, .lexique { grid-template-columns: 1fr; }
+    .masthead-top, .masthead-info { flex-direction: column; gap: 0.2rem; }
+    .gazette-items { padding: 1.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Saint-Empire des Tomodachis</span>
+      <span>Organe d'information mensuel de la communauté</span>
+      <span>N° 7 · Gratuit</span>
+    </div>
+    <div class="paper-name">La Gazette des Tomodachis</div>
+    <div class="paper-subtitle">Bulletin des Affaires Intérieures du Saint-Empire</div>
+    <div class="masthead-rule">✦ ✦ ✦</div>
+    <div class="masthead-info">
+      <span>Septembre 2026 — De la 1ère à la 30ème Journée</span>
+      <span>Rédigée par la rédaction · free007</span>
+      <span>92 640 messages recensés · 53 030 en salon général</span>
+    </div>
+  </div>
+
+  <!-- SECTION I : UNE -->
+  <div class="section-header">I. — Chronique du Salon Général</div>
+
+  <!-- ARTICLE PRINCIPAL : WIKIMASTERS -->
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">La Fièvre WikiMasters s'Empare du Saint-Empire</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Le 18 septembre, un obscur jeu de cartes à collectionner fabriqué à partir des pages Wikipédia débarque sur le général. Quatre jours plus tard, le général vit sa journée la plus bavarde du mois — entre enchères nocturnes, vitrines scandaleuses et monnaies imaginaires</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-byline">Par la rédaction · 18-30 Septembre 2026</div>
+    <div class="article-body">
+      <p>Tout commença le vendredi 18 septembre à 8h52, par une invitation anodine signée Igno (3113) : <em>« Viens jouer à WikiMasters Juju je vais avoir Klo Pelgag. »</em> Le principe, résumé dans la soirée par la Juju en question — ._.__.__.___.__.__._. de son pseudo, Jiva pour les intimes, première évangéliste et future pilier de la guilde du serveur —, tient en une phrase : on ouvre des paquets de cartes qui sont autant d'articles de l'encyclopédie, plus ou moins rares selon la fréquentation de la page (<em>« légendaire c'est que la page est très consultée »</em>), puis on les échange, on les vend aux enchères ou on les oppose en duel de QCM. <em>« Un gâcha Wikipedia »</em>, trancha aupremiercoup. <em>« Tu roll des cartes sauf que les cartes c'est des pages Wikipedia mdrrr »</em>, compléta shinymin. Jiva avouait d'ailleurs dès le premier soir : <em>« j'ai passé toute ma journée dessus tabarnak. »</em></p>
+      <p>La contagion fut fulgurante. Les mentions du jeu et de son vocabulaire passent de 44 messages le 18 à 98 le 19, 144 le 20, avant d'atteindre 170 le mardi 22 septembre — qui devient, avec 3 084 messages, la journée la plus active du général de tout le mois. On s'y dispute la <em>vitrine</em> (les cartes exposées sur son profil), on s'y invite en <em>guilde</em>, on s'y ruine en <em>wikibidous</em>, monnaie officieuse qui connaîtra en quinze jours une bonne trentaine de déclinaisons : wikidoudous, wikigoufs, wikifilous, wikidrums, wikiboums… Le 22, free007 résume l'affaire avec le flegme d'un administrateur dépassé : <em>« Bah là ça fait 4 jours qu'on est à fond dessus c'est comme un TCG mais avec les pages Wikipedia. »</em></p>
+      <p>Chacun y trouva son graal. Teufei décrocha la carte « inséparable » et déclara sa campagne terminée (<em>« wikimaster ne m'intéresse plus c'était bien une journée »</em>) ; Igno tira Haaland <em>« après plus de 2000 cartes nulles »</em> ; xkaijuu vit <em>« un fier charentais »</em> miser 499 sur sa carte Charente-Maritime ; free007 rafla le parc de la Villette pour 15 wikidrums. Wheelfyze, lui, signa ce qu'il appelle lui-même <em>« le braquage du siècle »</em> en s'offrant pour 200 une carte SR dont les offres grimpèrent ensuite à 650 — non sans avoir, le 22, écourté une consultation et <em>« tracé en vélo pour vite me poser devant le pc »</em> à l'annonce d'une enchère d'une heure. Le tout sous l'œil sage de remimi8760, seule voix de la raison boursière : <em>« Il faut regarder les thèmes avant de jeter une carte, c'est plus important que sa rareté. »</em></p>
+    </div>
+
+    <div class="pull-quote">« Être pauvre sur wikimasters c pire qu’être moche »<br><span style="font-size:0.75rem; color:var(--ink-light);">— xkaijuu, 22 septembre, à l'apogée de la crise</span></div>
+
+    <div class="article-body">
+      <p>Le revers de la médaille ne tarda pas. Le site, que free007 soupçonne d'être <em>« vibecodée »</em>, s'effondre régulièrement sous la charge — <em>« serveur surchargé votre paquet n'a pas été ouvert »</em> hurle xkaijuu dès le 20 —, part en maintenance le 21 (<em>« laisser moi ouvrir des PACK »</em>) avant un <em>« wikimasters refonctionne!!!!!! »</em> salvateur sept minutes plus tard, et inspire à l'administrateur une prière désormais célèbre : <em>« "Claude fais en sorte que mon site de jeu de cartes wiki ne lag plus" »</em>. Le général, lui, change de visage : <em>« t'ouvre discord les channel c 40 screen wikimasters »</em>, constate shichiefs, avant de lancer l'alerte générale — <em>« wikimaster est entrain de tuer saint empire et free fait rien »</em>. L'intéressé avait pourtant tendu la perche dès le 21 : <em>« vous aimeriez rester sur le général ou créer un salon à part ? »</em>. Aucun salon dédié n'a vu le jour à ce jour.</p>
+      <p>Puis, comme toute fièvre, celle-ci retomba : 59 messages le 24, 23 le 27 — date à laquelle Jiva elle-même s'étonnait que <em>« le délire wikimasters existe encore :o »</em>. Les irréductibles, eux, ne lâchent rien : despey ouvre ses paquets <em>« sur l'écran du taf »</em> devant des collègues médusés, hoshiiyomi remporte le 28 sa carte Medalist d'un <em>« all in la dernière minute »</em> à 2 000, et aupremiercoup propose le 30 que chacun ajoute son pseudo WikiMasters à son pseudo Discord. La rédaction prend date.</p>
+    </div>
+
+    <!-- GALERIE WIKIMASTERS -->
+    <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin:1.25rem 0 0.25rem;">— ✦ WikiMasters en Images · Les Florilège des Meilleures Cartes ✦ —</div>
+    <div class="wm-gallery">
+
+      <div class="wm-item">
+        <div class="wm-caption">Xkaijuu · 20/09 · 9 alertes</div>
+        <img src="wm1.png" alt="WikiMasters #1" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>wm1.png manquant</span></div>
+        <div class="wm-legend">« Mais svppppp comment ne pas hurler de rire c le gacha du siècle » — avant de conclure : « je conserve lattouchement sexuel désolé »</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Queencedia · 20/09 · 8 alertes</div>
+        <img src="wm2.png" alt="WikiMasters #2" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>wm2.png manquant</span></div>
+        <div class="wm-legend">La carte qui a fait réagir tout le général, un dimanche après-midi</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Despey · 20/09 · 7 alertes</div>
+        <img src="wm3.png" alt="WikiMasters #3" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>wm3.png manquant</span></div>
+        <div class="wm-legend">« Trop bien la carte du film d’animation » — à propos de la carte Paprika, homonyme du film de Satoshi Kon</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Ikar0s · 22/09 · 8 alertes</div>
+        <img src="wm4.jpg" alt="WikiMasters #4" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>wm4.jpg manquant</span></div>
+        <div class="wm-legend">Au cœur de la flambée des prix du 22, à 1h du matin</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Xkaijuu · 20/09 · 7 alertes</div>
+        <img src="wm5.png" alt="WikiMasters #5" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>wm5.png manquant</span></div>
+        <div class="wm-legend">« MDRRR JAI DROP DEON […] c bon j’arrête de jouer » — « Comme par hasard la carte est gold », note sufeet</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Hoshiiyomi · 28/09 · 7 alertes</div>
+        <img src="wm6.png" alt="WikiMasters #6" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>wm6.png manquant</span></div>
+        <div class="wm-legend">« J'ai fait un all in la dernière minute, je crois que la personne était pas prête à foutre 2000 »</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem; border-bottom: 2px solid var(--rule);">
+    <div class="box">
+      <div class="box-title">Avis de la Rédaction — WikiMasters</div>
+      <div class="box-body">Cinq jours ont suffi pour transformer une encyclopédie en économie parallèle, avec sa monnaie aux trente noms, ses spéculateurs (<em>« t'achetes une carte a 900 tu la revends 1600 10min plus tard c pris »</em>, dixit nastenkatouka), ses guildes et ses trésoriers autoproclamés — <em>« N'oubliez pas de mettre vos wikibous dans le coffre de guilde (moi) (je suis trésorier) »</em>, rappelait queencedia. Remimi8760 y voyait un jeu qui <em>« va peut être pousser vers un peu de curiosité »</em> ; sufeet, un placement d'avenir : <em>« Son prix wikimaster va exploser c'est le bitcoin 19.0 »</em>. La rédaction, elle, rappelle simplement que <em>« Wikimaster n'a pas de page Wiki »</em> — et n'aura donc jamais sa propre carte.</div>
+    </div>
+  </div>
+
+  <!-- GRILLE 2 : ZELDA + TEAM MALAISE -->
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Zelda Direct : Ocarina Revient, Xkaijuu Perd le Sommeil</div>
+      <div class="article-deck">Deux Directs en deux jours, un remake d'Ocarina of Time daté au 5 novembre et une Switch 2 collector introuvable : la journée du 8 septembre reste la plus active du mois toutes catégories confondues, avec 4 763 messages.</div>
+      <div class="article-byline">Par la rédaction · 8-19 Septembre 2026</div>
+      <div class="article-body">
+        <p>Le 8 septembre à 16h, Nintendo consacre un Direct entier à Zelda. Le salon jeux-vidéo s'enflamme, entre sarcasmes (<em>« mais du coup pk ils ont skip zelda 2 »</em>, s'interroge elomeurt), lucidité (<em>« mais zelda c le 5 novembre MDRRRRRRRRRR »</em>, rappelle shichiefs) et verdicts définitifs — <em>« le pire direct de l'HISTOIRE. il faut donc le meilleur demain pour contrebalancer »</em>, tranche despey. Le lendemain, le Direct généraliste ne fait pas mieux selon ertiks, qui lâche l'un des messages les plus applaudis de la soirée : <em>« en vrai ils devraient faire un evenement dédié a la licence, genre "zelda direct" »</em>. Ikar0s, seul contre tous, le jugera pourtant <em>« Le MEILLEUR direct de l'histoire »</em>.</p>
+        <p>Mais le vrai feuilleton se joua ailleurs. Dès 16h45, xkaijuu déplore avoir fait <em>« la file d’attente sur le shop en ligne Nintendo après le Direct pour rien »</em>, faute de précommande pour sa Switch 2 édition Ocarina of Time. Suivront dix jours de quête : une précommande annoncée le 10, une confession le 12 (<em>« depuis mardi j’ai perdu le sommeil je mz réveil plusieurs fois par nuit pour Check les stock de la collector »</em>), la promesse le 13 d'une <em>« preuve photographique du bundle complet Nintendo Store à 784 euros »</em> et, le 19, un restock daté qui s'avère vide. Il signe à lui seul 34 des 94 mentions du mot « collector » ce mois-ci.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">La Team Malaise, Nouvelle Institution</div>
+      <div class="article-deck">Un ping collectif, une anecdote embarrassante, des dizaines d'alertes : le format venu de nagisaharu et deoon s'impose comme le rendez-vous le plus rentable du mois.</div>
+      <div class="article-byline">Par la rédaction · Salon 💬général</div>
+      <div class="article-body">
+        <p>Le 7 septembre, nagisaharu convoque six membres pour un récit fondateur : <em>« Je me suis fait bully par une machine à café. »</em> Le lendemain, deoon répond par un <em>« Ok Avenger du malaise ! RASSEMBLEMENT »</em> et un long récit d'inventaire de bureau raté, conclu d'un post-scriptum qui récolte 9 alertes prison : <em>« (bonus, 2 bureaux après ils m'appellent Bob l'éponge à cause de mon fond d'écran mtn) »</em>. Le genre est né.</p>
+        <p>Nagisaharu en devient la maîtresse incontestée. Le 19, un cappuccino noisette XL de la BU lettres lui vaut 9 alertes — <em>« C'est pas il me sort une putain de gourde du brave »</em>. Le 21, elle rentre dans un appartement qui <em>« sent violemment l'ail »</em>. Le 25 enfin, sous la bannière <em>« J'invoque la team malaise. »</em>, elle raconte s'être trompée d'étage, avoir tenté d'ouvrir la porte d'une inconnue et fui par l'ascenseur : <em>« Si Squeezie ou Feldup en parle, c'était moi. »</em> Avec seulement 1 141 messages, elle se hisse au 10e rang de l'alerte.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION II : AUTRES SALONS -->
+  <div class="section-header">II. — Dépêches des Salons Particuliers</div>
+
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Pokérace 5 : Kage Relance la Course, sur Platine</div>
+      <div class="article-deck">Plus d'un an après la précédente édition, dead_kage rouvre les inscriptions d'un format repensé : sans live, sans limite de séance, et avec une seule règle d'or — finir le jeu en un minimum de temps.</div>
+      <div class="article-byline">Par la rédaction · Salon 🎉communauté & fil Pokérace</div>
+      <div class="article-body">
+        <p>L'annonce tomba le 1er septembre à 22h50 en @everyone : <em>« Elle aura mis plus d'un an à sortir […] mais ça y est je me motive à reprendre les Pokérace »</em>. Au programme, une première : la course se joue sur Pokémon Platine, en <em>« no live (nolife xptdrrr les anciens ont la ref bref) »</em>, avec un Nuzlocke modifié où les Pokémon ne meurent plus mais restent limités à un par zone. Le vainqueur sera celui qui battra la Ligue avec le temps de jeu le plus bas.</p>
+        <p>La date butoir a été fixée au lundi 7 décembre à minuit, et l'accélérateur d'émulateur proscrit dès le 4. Dans le fil dédié, ikar0s mène déjà la discussion (57 messages), chantant les louanges de son Boskara qui <em>« a solo l'arène car il a MORSURE »</em>, quand sufeet, bloqué, appelle à l'aide : <em>« Des conseils pour ce combat ? Je suis bloqué ça me TEND »</em>.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Monopoly KJ : les Hôtels Deviennent des Alertes Prison</div>
+      <div class="article-deck">Free007 poursuit le chantier de son Monopoly maison et soumet aux joueurs les noms des cases du plateau — avec une règle inédite, votée par la communauté.</div>
+      <div class="article-byline">Par la rédaction · Salon 🏠monopoly-kj</div>
+      <div class="article-body">
+        <p>Le 10 septembre, free007 présente ses avancées : pions customisables, plus grands et animés. <em>« c'était un projet qui nous tenait à coeur depuis super longtemps, et c'était toujours resté au stade de délire »</em>, rappelle-t-il. Le 23, il dévoile ses premières propositions de cases — HLM de Natsume, Crous d'Anok, BK de Barbès — et retient les suggestions de Douarnenez <em>« (emblématique dans la commu suite à la chanson) »</em> et du <em>« Auchan de Nancy (mythique aussi grâce à Sato) »</em>.</p>
+        <p>Le soir même, un sondage ressuscite une vieille idée d'elomeurt : <em>« au lieu d'acheter des maisons pour les up en hôtel tu achètes des alertes à convertir en alertes prison »</em>. Verdict à minuit passé : <em>« On adopte donc ce nouveau système original et correspondant à la commu. »</em> Le Saint-Empire tient enfin son Monopoly — et sa monnaie de référence.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE IRLs -->
+  <div class="full-width">
+    <div class="article-headline" style="text-align:center; margin-bottom:0.25rem;">IRL Paris : le Compte à Rebours Est Lancé</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Entre un séjour belge de trois jours, l'organisation des 10 et 11 octobre à Paris et un appartement nancéien que l'on rêve de remplir pour l'Animest, septembre aura surtout servi à préparer les rendez-vous de l'automne</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="full-width" style="border-bottom: 2px solid var(--rule);">
+    <div class="article-byline">Par la rédaction · Tout le mois</div>
+    <div class="article-body">
+      <p>Le mois s'ouvrit sur une IRL en Belgique, entre les Liégeois reveur8951 et pocoudonworld, et .deardeath venue spécialement d'Angers pour l'occasion. Le bilan fut tendre : <em>« Merci pour ces trois journées »</em>, écrit reveur8951 le 11 au soir, après avoir raconté la veille l'épopée d'une gaufre de Bruxelles à l'Oreo qui <em>« a coûté 8 euros »</em> et que notre invitée mit trois heures à finir. Free007 saluait le lendemain une année charnière : <em>« Globalement niveau IRLs on a franchi un grand cap cette année »</em>, avec des rencontres plus nombreuses, plus longues et de plus en plus souvent hors de Paris.</p>
+      <p>Le 14 septembre, place à l'organisation : en @everyone, free007 demande aux participants de l'IRL Paris <em>« quels jours vous venez »</em>, sondage à l'appui. S'ensuit un grand débat ferroviaire — elomeurt s'étonne que son TGV <em>« Nancy Paris peut s4arreter gare de lyon »</em>, mariedioa défend la gare de Bercy comme <em>« l'élite »</em> et la gare Montparnasse se fait étriller par à peu près tout le monde. Aupremiercoup propose un logement gratuit à qui en aurait besoin, reveur8951 annonce venir avec une <em>« coiffure de rock Lee »</em> après un passage malheureux chez le coiffeur, et mariedioa, voyant Deon et Demo inscrits, prévient : <em>« si on commence à s'y fier, on est mal barré »</em>. Quant au programme, free007 reste ouvert : <em>« même une ballade dans Paris ou se poser dans un parc gratuit ça me va »</em>.</p>
+      <p>À l'horizon de novembre, l'Animest de Nancy prend aussi forme. Le 27, reveur8951 supplie elomeurt de faire <em>« rentrer un MAX de personnes dans ton cagibi pour l’IRL Nancy »</em> ; l'hôtesse répond par un plan de son salon, <em>« l'agencement hypothétique »</em> des invités, qui récolte 10 alertes et huit réponses — record de réponses du mois, à égalité.</p>
+    </div>
+  </div>
+
+  <!-- DERNIÈRE HEURE -->
+  <div style="padding: 1.5rem 2rem 0.25rem;">
+    <div class="flash-box">
+      <span class="flash-tag">Dernière Heure — 22 & 27 Septembre</span>
+      <div class="article-headline" style="margin-bottom:0.4rem;">50 Nuances de Kikoojaps n'Était Pas le Plus Gros Topic Francophone</div>
+      <div class="article-body">
+        <p>Coup de tonnerre le 22 septembre à 12h44 : free007, qui croyait le topic « 50 nuances de kikoojaps » et ses 25 splits imbattables, découvre sur Hardware.fr un topic football plus imposant — <em>« 3 millions de posts contre 2,5 millions pour nous »</em>, concède-t-il, non sans préciser que <em>« ça a leur a pris 20 ans tout de même »</em>. Cinq jours plus tard, l'administrateur contre-attaque à sa manière : il annonce scraper les messages du vieux topic JVC <em>« grâce à un nouveau programme »</em>, déjà <em>« au split 12 »</em>. La rédaction en est convaincue : les archives du Saint-Empire n'ont pas fini de parler.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION III : PETITE GAZETTE -->
+  <div class="section-header">III. — Petite Gazette & Faits Divers</div>
+
+  <div class="gazette-items">
+
+    <div class="gag-item">
+      <div class="gag-title">Soixante-Sept Ans de Mariage</div>
+      <div class="gag-body">Le 22 septembre, despey raconte en 😊bonheur-positivité un client d'environ 85 ans qui n'appelle sa femme que <em>« mon lapin »</em> au téléphone : <em>« ils en sont à 67 ans de mariage »</em> (9 alertes). Sufeet, incapable de résister au mème du moment, répond d'un <em>« 67 ans de marriage ?? Ils ont du en connaître des hauts et des bas 🤣 🤣 »</em> — et autant d'alertes.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Un Copypasta Est Né</div>
+      <div class="gag-body">Le 10 septembre, un message d'affection sincère posté en 😊bonheur-positivité — <em>« tu sais que tu me manques déjà et que j'ai hâte de te revoir samedi ? »</em> — est aussitôt recopié mot pour mot par dead_kage (6 alertes), puis par free007 lui-même, qui prophétise : <em>« Trop tard ça deviendra un pavé copypasta de la commu maintenant »</em>. Le même matin, l'administrateur rappelait qu'<em>« Ça fait 10 (dix (ten (diez))) ans bientôt qu'on se connaît pour les plus anciens »</em>.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">4h50 du Matin, Devant les Cartes Pokémon</div>
+      <div class="gag-body">Avant WikiMasters, il y eut les vraies cartes. Le 16 septembre, elomeurt raconte être arrivée au travail à 4h50 pour y trouver <em>« au moins une 10aine de bougs dehors qui attendaient déjà pour les cartes pokemon »</em> — et apprendre que certains étaient là <em>« à UNE HEURE (1h) DU SBAH »</em>. Deux jours plus tard, le Saint-Empire découvrait qu'on pouvait faire la même chose depuis son canapé.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Le Milkshake de la Discorde</div>
+      <div class="gag-body">Le 16 septembre, free007 commande un milkshake banane et découvre qu'on y a ajouté du beurre de cacahuète : <em>« j'ai l'impression de boire 4k calories d'un coup »</em>. Le lendemain, bilan nuancé : <em>« le milkshake au beurre de cacahuète hier il m'a calé pour toute la nuit »</em>.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">La Gazette, Encore et Toujours</div>
+      <div class="gag-body">Le 10 septembre à 9h43, free007 annonçait en @everyone la sortie du n°6 de cette Gazette — Secret KJ, éclipse, Tomo Party et IRL au sommaire. Le même jour, aupremiercoup souhaitait un <em>« Joyeux anniversaire RPZ 🥳 »</em> qui récoltait 8 alertes. La rédaction se joint, avec un peu de retard, aux félicitations.</div>
+    </div>
+
+  </div>
+
+  <!-- SECTION IV : PERSONNALITÉS -->
+  <div class="section-header">IV. — Portrait des Figures du Saint-Empire</div>
+
+  <div class="full-width">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Galerie des Personnages Notables</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1.5rem;">Portraits établis d'après les archives du mois de septembre, par la rédaction.</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Elomeurt</div>
+        <div class="persona-title">Sato, Reine du Général et de l'Alerte · 6 093 msgs · #1 du mois 🥇</div>
+        <div class="persona-tags">
+          <span class="tag">#1 du général (4 544)</span>
+          <span class="tag">#1 de l'alerte</span>
+          <span class="tag">1ère posteuse WikiMasters</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« regardez pour quel genre de cartes kaijuu vend sa famille »</div>
+          <div class="persona-quote">« voilà l'agencement hypothétique pour uniquement le SALON »</div>
+        </div>
+        <div class="persona-body">Triplé historique pour Sato : première du général, première de l'alerte et commentatrice la plus prolifique de la crise WikiMasters, dont elle a scruté chaque vitrine avec un œil de critique d'art. Elle trouve encore le temps de planifier l'accueil de l'Animest dans son salon nancéien.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Xkaijuu</div>
+        <div class="persona-title">Le Chevalier du Collector · 2 936 msgs · #6 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#2 de l'alerte</span>
+          <span class="tag">#4 du général</span>
+          <span class="tag">34 mentions de « collector »</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Être pauvre sur wikimasters c pire qu’être moche »</div>
+          <div class="persona-quote">« depuis mardi j’ai perdu le sommeil […] pour Check les stock de la collector »</div>
+        </div>
+        <div class="persona-body">Roi déchu de l'alerte d'août, Xkaijuu conserve la deuxième marche grâce à un mois partagé entre la chasse à la Switch 2 édition Ocarina of Time et les enchères WikiMasters. Il est aussi l'auteur du troisième post le plus réactionné du mois.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Jiva</div>
+        <div class="persona-title">La Patiente Zéro de WikiMasters · 1 020 msgs · #29 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">2e posteuse WikiMasters</span>
+          <span class="tag">recruteuse de guilde</span>
+          <span class="tag">pseudo : ._.__.__.___.__.__._.</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« j'ai passé toute ma journée dessus tabarnak »</div>
+          <div class="persona-quote">« wikimasters refonctionne!!!!!! »</div>
+        </div>
+        <div class="persona-body">Première à expliquer les règles, première à partager le lien, première à recruter pour la guilde (<em>« 10 membres dans la guilde déjà »</em>), la membre au pseudo de points et de tirets a fait plus que quiconque pour contaminer le général. Le 27, elle s'étonnait pourtant que le délire existe encore.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">WheelFyze</div>
+        <div class="persona-title">Le Braqueur de Cartes · 8 171 msgs · #22 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">84% des msgs au salon ⚙bot</span>
+          <span class="tag">« braquage du siècle »</span>
+          <span class="tag">consultation écourtée</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« J'ai vraiment fait le braquage du siècle »</div>
+          <div class="persona-quote">« là je suis à 30, je liquide mes cartes une par une »</div>
+        </div>
+        <div class="persona-body">Toujours numéro un toutes catégories grâce à Mudae, Fyze a trouvé en WikiMasters un second gacha à sa mesure — qu'il fait tourner en parallèle de <em>« gunevo, le wiki gacha et le mudae bot »</em>. Il n'hésite pas à enfourcher son vélo en pleine journée de travail pour remporter une enchère.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Ertiks</div>
+        <div class="persona-title">La Révélation du Mois · 4 890 msgs · #2 du mois 🥈</div>
+        <div class="persona-tags">
+          <span class="tag">#5 du général</span>
+          <span class="tag">1 290 msgs en jeux-vidéo</span>
+          <span class="tag">466 msgs le 7 septembre</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« LETZGOOOOOOOOOOOOOOOO »</div>
+          <div class="persona-quote">« en vrai ils devraient faire un evenement dédié a la licence, genre "zelda direct" »</div>
+        </div>
+        <div class="persona-body">Absent de nos colonnes d'août, ertiks surgit directement sur le podium, porté par une présence constante entre le général et le salon jeux-vidéo, où il commente chaque Direct. Son cri de victoire à chaque tirage WikiMasters est devenu une signature.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Shichiefs</div>
+        <div class="persona-title">Le Lanceur d'Alerte · 3 970 msgs · #3 du mois 🥉</div>
+        <div class="persona-tags">
+          <span class="tag">#2 du général (3 851)</span>
+          <span class="tag">461 msgs le 15 (record)</span>
+          <span class="tag">anti-WikiMasters</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« wikimaster est entrain de tuer saint empire et free fait rien »</div>
+          <div class="persona-quote">« kaijuu me degoute tellement a jouer a wikimasters »</div>
+        </div>
+        <div class="persona-body">Révélation d'août, Shichiefs confirme en septembre : deuxième du général et auteur du record quotidien du mois (461 messages le 15). Il fut aussi la principale voix de la résistance face à l'invasion des cartes, avec un succès tout relatif.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Sufeet</div>
+        <div class="persona-title">Le Spéculateur Sentimental · 2 726 msgs · #9 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#3 de l'alerte (1 245)</span>
+          <span class="tag">#6 du général</span>
+          <span class="tag">bloqué à la Pokérace</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Son prix wikimaster va exploser c'est le bitcoin 19.0 »</div>
+          <div class="persona-quote">« Je suis allé voir les cartes les plus chères de wiki master »</div>
+        </div>
+        <div class="persona-body">Sans Secret KJ à animer, sufeet reste sur le podium de l'alerte grâce à ses réparties — dont un « 67 ans de marriage » parfaitement placé. Il a vendu 60 une légendaire cotée 500, mais garde confiance en l'avenir du marché.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Free007</div>
+        <div class="persona-title">L'Administrateur Bâtisseur · 1 916 msgs · #18 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">Gazette n°6 publiée</span>
+          <span class="tag">Monopoly KJ en chantier</span>
+          <span class="tag">IRL Paris J-10</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« "Claude fais en sorte que mon site de jeu de cartes wiki ne lag plus" »</div>
+          <div class="persona-quote">« Ça fait 10 (dix (ten (diez))) ans bientôt qu'on se connaît »</div>
+        </div>
+        <div class="persona-body">Gazette, Monopoly, IRL Paris, scraping du topic JVC : l'administrateur aura mené quatre chantiers de front, tout en tenant la chronique des parcs parisiens gagnés aux enchères pour 15 wikidrums.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Nagisaharu</div>
+        <div class="persona-title">La Cheffe de la Team Malaise · 1 141 msgs · #27 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#10 de l'alerte (675)</span>
+          <span class="tag">gourde du brave</span>
+          <span class="tag">erreur d'étage</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« J'invoque la team malaise. »</div>
+          <div class="persona-quote">« C'est pas il me sort une putain de gourde du brave »</div>
+        </div>
+        <div class="persona-body">Peu de messages, mais un rendement exceptionnel : chaque mésaventure de nagisaharu, des machines à café rebelles aux portes de voisins, se transforme en pluie d'alertes. C'est aussi elle qui a posé la question qui résume le mois : apprend-on des choses sur WikiMasters, ou ouvre-t-on <em>« juste des packs comme une mama au PMU »</em> ?</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE ALERTE -->
+  <div class="section-header">V. — L'Alerte en Septembre : Elomeurt Reprend la Couronne</div>
+
+  <div style="padding: 2rem 2rem 0; border-bottom: 2px solid var(--rule);">
+
+    <div style="text-align:center; margin-bottom: 1.25rem;">
+      <div class="article-headline large" style="font-size:2rem;">Alertes &amp; Atomes — Le Palmarès de Septembre</div>
+      <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin: 0.3rem 0;">Anthropologie culturelle · tout le mois</div>
+      <div class="article-deck" style="max-width:620px; margin:0.5rem auto 0; border-left:none; text-align:center; padding-left:0;">Un mois après le sacre de Xkaijuu, la couronne revient à Elomeurt, avec une avance confortable. Et le Monopoly KJ officialise ce que tout le monde savait : au Saint-Empire, l'alerte prison vaut plus qu'un hôtel.</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:0; margin-bottom:1.25rem;">
+      <div style="padding: 0 1.25rem 0 0;">
+        <div class="article-body">
+          <p>Elomeurt reprend la tête avec 1 770 alertes, 373 de plus que Xkaijuu, le tenant du titre, qui reste solidement sur le podium malgré un mois passé à guetter les restocks de Nintendo.</p>
+          <p>Sufeet complète le podium avec 1 220 alertes.</p>
+        </div>
+      </div>
+      <div style="background:var(--rule); width:1px; margin: 0;"></div>
+      <div style="padding: 0 0 0 1.25rem;">
+        <div class="article-headline small" style="margin-bottom:0.4rem;">Palmarès de l'Alerte — Septembre 2026</div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin-bottom:0.6rem;">Statistiques officielles · compilation mensuelle</div>
+        <div class="article-body">
+          <p>Les archives de septembre livrent leur verdict. Le podium des réactions alerte et atome (et dérivés), à l'emote dominante, est le suivant :</p>
+          <p><strong class="red">#1 — Elomeurt</strong> : 1 770 alertes. Reine du général, reine de l'alerte.</p>
+          <p><strong class="red">#2 — Xkaijuu</strong> : 1 397 alertes. Détrôné, à 373 longueurs.</p>
+          <p><strong class="red">#3 — Sufeet</strong> : 1 220 alertes. Fidèle au podium, Secret KJ ou pas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin-bottom:1rem;">— ✦ Top 3 des Posts · Palmarès à l'Emote Dominante ✦ —</div>
+
+    <div style="display:flex; flex-direction:column; gap:1.75rem; padding-bottom:1.75rem;">
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥇 Post #1 — Igno (3113), 18 alertes · 24/09, 🎉communauté</div>
+        <img src="top1.jpg" alt="Post #1" onclick="openLightbox(this.src)" style="width:50%; margin: 0 auto; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>top1.jpg manquant</span></div>
+      </div>
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥈 Post #2 — Ynnel13, 14 alertes · 09/09</div>
+        <img src="top2.jpg" alt="Post #2" onclick="openLightbox(this.src)" style="width:60%; margin: 0 auto; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>top2.jpg manquant</span></div>
+      </div>
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥉 Post #3 — Teufei, 13 alertes · 17/09</div>
+        <img src="top3.jpg" alt="Post #3" onclick="openLightbox(this.src)" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>top3.jpg manquant</span></div>
+      </div>
+
+    </div>
+  </div>
+  <!-- FIN PAGE ALERTE -->
+
+  <!-- SECTION VI : LEXIQUE -->
+  <div class="section-header">VI. — Lexique du Mois</div>
+
+  <div class="full-width">
+    <div style="text-align:center;">
+      <div class="article-headline" style="margin-bottom:0.2rem;">Petit Dictionnaire du Saint-Empire — Septembre 2026</div>
+      <div style="font-family:'IM Fell English', serif; font-style:italic; font-size:0.78rem; color:var(--ink-light);">Les mots qui ont fait le mois, hors vocabulaire courant · nombre de messages les employant</div>
+    </div>
+    <div class="lexique">
+      <div class="lex-entry"><span class="lex-word">WikiMasters</span><span class="lex-count">91 msgs · 25 membres</span><br>n. m. Jeu de cartes tirées de Wikipédia. Cause présumée de la mort du Saint-Empire selon shichiefs.</div>
+      <div class="lex-entry"><span class="lex-word">Wikibidous</span><span class="lex-count">51 msgs · ~30 variantes</span><br>n. m. pl. Monnaie de WikiMasters, que personne n'appelle deux fois de la même façon (wikidoudous, wikigoufs, wikidrums…).</div>
+      <div class="lex-entry"><span class="lex-word">Vitrine</span><span class="lex-count">36 msgs</span><br>n. f. Cartes exposées sur un profil. Objet de jugements esthétiques et moraux sans appel.</div>
+      <div class="lex-entry"><span class="lex-word">Guilde</span><span class="lex-count">53 msgs</span><br>n. f. Rassemblement de joueurs WikiMasters. Voir aussi : « la guilde justice », trésorier autoproclamé.</div>
+      <div class="lex-entry"><span class="lex-word">Enchère</span><span class="lex-count">60 msgs</span><br>n. f. Duel nocturne au wikibidou près. Les enchères de 12 h sont unanimement condamnées.</div>
+      <div class="lex-entry"><span class="lex-word">Collector</span><span class="lex-count">94 msgs · dont 34 de Xkaijuu</span><br>n. m. Édition limitée introuvable. Synonyme : Switch 2 Ocarina of Time.</div>
+      <div class="lex-entry"><span class="lex-word">Goat</span><span class="lex-count">159 msgs · 28 membres</span><br>n. m. Le plus grand de tous les temps. Décerné sans modération, notamment par Xkaijuu.</div>
+      <div class="lex-entry"><span class="lex-word">Larp</span><span class="lex-count">97 msgs</span><br>v. Jouer un rôle, se faire passer pour ce qu'on n'est pas. Accusation favorite du général.</div>
+      <div class="lex-entry"><span class="lex-word">Peak</span><span class="lex-count">97 msgs</span><br>adj. Sommet absolu de la qualité. S'applique aussi bien à un jeu qu'à une carte.</div>
+      <div class="lex-entry"><span class="lex-word">Six Seven / 67</span><span class="lex-count">125 msgs</span><br>interj. Mème de cour de récréation passé au Saint-Empire. Voir : 67 ans de mariage.</div>
+      <div class="lex-entry"><span class="lex-word">Slop</span><span class="lex-count">50 msgs</span><br>n. m. Contenu bas de gamme, souvent généré par IA. Dérivé : « wikislop », la carte commune sans valeur.</div>
+      <div class="lex-entry"><span class="lex-word">Malaise (team)</span><span class="lex-count">43 msgs</span><br>n. m. Récit d'humiliation ordinaire, à partager avec ping collectif. Maîtresse : nagisaharu.</div>
+    </div>
+  </div>
+
+  <!-- BOX FINAL -->
+  <div class="full-width">
+    <div class="box" style="max-width:640px; margin:0 auto;">
+      <div class="box-title">Avis de la Rédaction</div>
+      <div class="box-body" style="text-align:center; font-style:italic;">
+        Septembre 2026 aura été le mois où le Saint-Empire s'est découvert collectionneur : collectionneur de cartes Pokémon devant les magasins à l'aube, de Switch 2 collector introuvables, et surtout de pages Wikipédia transformées en trésors de guilde. Entre deux enchères, la Pokérace a repris, le Monopoly KJ a adopté l'alerte prison comme étalon, la team malaise a trouvé son chef et l'IRL Paris a pris forme pour octobre.
+        <br><br>
+        Le Saint-Empire ouvre des paquets. Il en garde les meilleures cartes.
+        <br><br>
+        <span class="gold">— La Gazette des Tomodachis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    La Gazette des Tomodachis · Septembre 2026 · Tous droits réservés au Saint-Empire · Reproduction autorisée avec mention de la source · Imprimée sur papier virtuel recyclé
+  </div>
+
+</div>
+
+<!-- LIGHTBOX IMAGES -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center; padding:1.5rem;">
+  <img id="lightbox-img" src="" style="max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.8);">
+</div>
+
+<script>
+  function openLightbox(src) {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>
