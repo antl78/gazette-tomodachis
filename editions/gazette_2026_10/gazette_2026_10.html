@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Gazette des Tomodachis — Octobre 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --ink-light: #3d2e10;
+    --paper: #f5eedc;
+    --paper-dark: #e8dcc0;
+    --paper-darker: #d9c99a;
+    --red: #8b1a1a;
+    --gold: #9a7c2a;
+    --rule: #b8a06a;
+    --shadow: rgba(26,18,9,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a1f0e;
+    font-family: 'Crimson Text', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, #3d2a0e 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #1a1209 0%, transparent 50%);
+  }
+
+  .newspaper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newspaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dark) 100%);
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+
+  .paper-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.6rem 0;
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .masthead-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.4rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── GRID ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1px 2fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .grid-2-equal {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    padding: 0 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .col-divider {
+    background: var(--rule);
+    width: 1px;
+    margin: 1.5rem 0;
+  }
+
+  .col {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* ── ARTICLES ── */
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-headline.large {
+    font-size: 1.6rem;
+  }
+
+  .article-headline.small {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .article-deck {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    border-left: 2px solid var(--red);
+    padding-left: 0.6rem;
+  }
+
+  .article-byline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article-body p { margin-bottom: 0.6rem; }
+  .article-body p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.75;
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    color: var(--red);
+  }
+
+  /* ── PULL QUOTES ── */
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--red);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── BOXED ITEMS ── */
+  .box {
+    border: 1px solid var(--rule);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background: var(--paper-dark);
+    position: relative;
+  }
+
+  .box::before {
+    content: '§';
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper-dark);
+    padding: 0 0.5rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+  }
+
+  .box-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .box-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── PERSONALIA ── */
+  .persona-card {
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+  .persona-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .persona-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .persona-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag {
+    background: var(--paper-darker);
+    border: 1px solid var(--rule);
+    padding: 0.15rem 0.4rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+  }
+
+  .persona-quotes {
+    margin-bottom: 0.5rem;
+  }
+
+  .persona-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--rule);
+  }
+
+  .persona-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── GAZETTE ITEMS ── */
+  .gazette-items {
+    padding: 1.5rem 3rem;
+  }
+
+  .gag-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .gag-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .gag-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .gag-body {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ── FULL WIDTH ── */
+  .full-width {
+    padding: 1.25rem 2rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  /* ── FLASH / DERNIÈRE HEURE ── */
+  .flash-box {
+    margin: 0 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border: 3px double var(--red);
+    background: var(--paper-dark);
+    position: relative;
+  }
+  .flash-tag {
+    display: inline-block;
+    background: var(--red);
+    color: var(--paper);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: var(--paper-darker);
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── UTILITIES ── */
+  .text-center { text-align: center; }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .italic { font-style: italic; }
+
+  .drop-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--rule);
+    margin: 0.6rem auto;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 1rem 0;
+  }
+
+  /* ── GALERIE WIKIMASTERS ── */
+  .wm-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+    margin: 1rem 0 0.5rem;
+  }
+  .wm-item img {
+    width: 100%;
+    border: 1px solid var(--rule);
+    display: block;
+    background: var(--paper-dark);
+    cursor: zoom-in;
+  }
+  .wm-caption {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.25rem;
+  }
+  .wm-legend {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    text-align: center;
+    margin-top: 0.35rem;
+    line-height: 1.35;
+  }
+  .img-missing {
+    display: none;
+    border: 1px dashed var(--rule);
+    padding: 2.5rem 0.75rem;
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--paper-dark);
+  }
+
+  /* ── LEXIQUE ── */
+  .lexique {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem 1.5rem;
+    margin-top: 0.75rem;
+  }
+  .lex-entry {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--ink);
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 0.45rem;
+  }
+  .lex-word {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--red);
+  }
+  .lex-count {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-left: 0.3rem;
+  }
+
+  @media (max-width: 720px) {
+    .grid-3, .grid-2, .grid-2-equal { grid-template-columns: 1fr; padding: 0 1rem; }
+    .col-divider { display: none; }
+    .wm-gallery, .lexique { grid-template-columns: 1fr; }
+    .masthead-top, .masthead-info { flex-direction: column; gap: 0.2rem; }
+    .gazette-items { padding: 1.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<div class="newspaper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Saint-Empire des Tomodachis</span>
+      <span>Organe d'information mensuel de la communauté</span>
+      <span>N° 8 · Gratuit</span>
+    </div>
+    <div class="paper-name">La Gazette des Tomodachis</div>
+    <div class="paper-subtitle">Bulletin des Affaires Intérieures du Saint-Empire</div>
+    <div class="masthead-rule">✦ ✦ ✦</div>
+    <div class="masthead-info">
+      <span>Octobre 2026 — De la 1ère à la 31ème Journée</span>
+      <span>Rédigée par la rédaction · free007</span>
+      <span>72 824 messages recensés · 43 218 en salon général</span>
+    </div>
+  </div>
+
+  <!-- SECTION I : UNE -->
+  <div class="section-header">I. — Chronique du Saint-Empire</div>
+
+  <!-- ARTICLE PRINCIPAL : IRL PARIS -->
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">IRL Paris : Deux Jours, Quinze Tomodachis et Toutes les Lignes de Métro</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Les 10 et 11 octobre, le Saint-Empire a quitté ses salons pour arpenter la capitale, de l'Opéra à la tour Eiffel, entre trains supprimés, Belges égarés et restaurants chinois. Le général, lui, n'avait jamais été aussi calme</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-byline">Par la rédaction · Salon sorties-à-paris · 1er-12 Octobre 2026</div>
+    <div class="article-body">
+      <p>Tout commença le 1er octobre par un rappel à l'ordre de l'administrateur : <em>« Bon alors, la date approche, faudrait s'organiser vraiment pour le coup »</em>. La Geek Room d'Asnières, salle d'arcade à l'entrée salée, divisa d'emblée (<em>« Ah ouais nan ça pique un trop pour moi là désolée »</em>, tranche ineptie) ; free007 remit en service <em>« le bon vieux tableau des grandes IRLs »</em> et mariedioa s'improvisa bulletin de trafic de la RATP — ligne 6 fermée le dimanche, ligne 13 coupée jusqu'à midi, et cette pique pour la 12 : <em>« qui prend la 12 en 2026 ? »</em>. Le 7 au soir, rpazaideuh annonçait la couleur : <em>« ah merde on vient de passer à 13 personnes »</em>. Ils seront finalement une quinzaine.</p>
+      <p>Le samedi, rendez-vous était donné à 15h à la sortie 1 de la station Opéra. Encore fallait-il y arriver. Free007, parti de chez lui à 13h, enchaîna correspondance ratée et RER en retard (<em>« Je vais mettre 2h30 pour un trajet de 1h30 normalement »</em>) ; pocoudonworld, débarqué de Bruxelles en Flixbus, resta bloqué sur la ligne 13 ; et reveur8951, perdu devant les tourniquets, ne dut son salut qu'à un inconnu compatissant, à qui il confia : <em>« Merci je suis belge je comprends pas trop comment ça fonctionne »</em>. Pendant ce temps, lupin_red tenait parole : <em>« Jvais visiter la salle d'arcade tout seul mon pote »</em>. Réunie aux Galeries Lafayette, la troupe descendit la rue Sainte-Anne, passa par la pyramide du Louvre, les Tuileries et la Concorde — remimi8760 faisant, selon mariedioa, <em>« un cours d'histoire »</em> — avant un dîner à Montparnasse où, d'après despey, il fallait <em>« attendre une heure pour avoir une bière »</em>. Le lendemain, le même despey racontait en ping collectif comment Lupin avait sorti de son sac à dos <em>« une photo imprimé de Kaijuu pp kameto »</em> : 16 alertes prison, l'un des posts les plus applaudis du mois. Bilan de pocoudonworld en rentrant à l'hôtel : <em>« C'était incroyable comme journée 😍🤩 »</em>.</p>
+    </div>
+
+    <div class="pull-quote">« on avait dit 11h30 du matin pas 11h30 du soir 🧐 »<br><span style="font-size:0.75rem; color:var(--ink-light);">— mariedioa, 11 octobre, à l'adresse des retardataires du déjeuner</span></div>
+
+    <div class="article-body">
+      <p>Le dimanche, rendez-vous à 11h30 Porte de Choisy pour un déjeuner au Chine Masséna, dans le quartier chinois. Mariedioa en dressa le procès-verbal à 12h21 : <em>« RPZ et Déon pensent que l'IRL est à 11h30 du soir »</em>, Pleinair (aupremiercoup) affiche deux heures de retard, et Queen avoue avoir lu 13h30. Ce dernier, arrivé directement Porte Maillot, y croisa un vendeur de montres pour le moins insistant (<em>« Il etait bizzare il m'a dit c'est des montres a 10k »</em>) ; lupin_red le retint de justesse devant le Palais des Congrès alors qu'il était <em>« en train de pleurer "jveux partir" »</em> (8 alertes). Après avoir raccompagné pocoudonworld à son bus, les survivants filèrent au Trocadéro, sous la tour Eiffel, aux Invalides puis au Grand Palais, avant un dernier repas japonais. Seul despey manqua l'appel, terrassé par une demi-gastro — la faute, selon lui, à quelques verres tardifs dans le froid ; selon mariedioa, aux piments du dîner de la veille.</p>
+      <p>Les retours furent unanimes. <em>« un WE mémorable je me suis beaucoup amusé et ça rebooste le moral ce genre d'événements ! »</em>, écrivait free007 le dimanche soir ; reveur8951, depuis son car, saluait <em>« autant de nouvelles têtes »</em> et une capitale <em>« très belle »</em> ; lupin_red, enfin, eut une <em>« P'tite pensée pour rêveur qui va écrire 20 mp "J'ai trop kiffé te rencontrer khey" dans la soirée »</em> (7 alertes). Pendant ce temps, le général tombait à 294 messages le samedi et 271 le dimanche, ses deux journées les plus calmes du mois — la troisième en compte encore 814.</p>
+      <p>La suite est déjà écrite : à Nancy, pour l'Animest de novembre, elomeurt a lancé l'appel à <em>« ceux qui comptent dormir dans mon magnifique salon en compagnie de mes 20 dvd star wars 3 »</em>, aupremiercoup a ouvert un tableur pour mutualiser les frais, et le menu du restaurant est connu depuis le 19 octobre. Il a été voté par tout le serveur — voir ci-dessous.</p>
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem; border-bottom: 2px solid var(--rule);">
+    <div class="box">
+      <div class="box-title">Avis de la Rédaction — L'IRL en Chiffres</div>
+      <div class="box-body">Le salon sorties-à-paris a compté 1 595 messages en octobre, dont 617 le samedi et 532 le dimanche, écrits par 23 membres. Mariedioa, guide autoproclamé de la capitale, en signe à lui seul 273, devant free007 (205) et aupremiercoup (159). Les Parisiens, eux, retiendront surtout que leur réseau de transports reste, aux yeux des visiteurs, un labyrinthe : <em>« Mec je capte vraiment rien »</em>, résumait reveur8951 le samedi à 14h27.</div>
+    </div>
+  </div>
+
+  <!-- ARTICLE FOOD WARS -->
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Food Wars 2026 : le Steak Frites Mange Tout le Monde</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1rem;">Né « Tournoi du goût » pour la semaine du goût, rebaptisé en cours de route, le premier tournoi culinaire du Saint-Empire a vu 64 plats s'affronter pendant douze jours, deux séances de tirs au but et la naissance d'une bourse aux paris</div>
+    <div class="drop-rule"></div>
+  </div>
+
+  <div class="full-width" style="border-bottom: none;">
+    <div class="article-byline">Par la rédaction · Salon food-wars, 📣annonces & 💵pari-mutuel-kikoojap · 7-19 Octobre 2026</div>
+    <div class="article-body">
+      <p>Le 7 octobre à 12h24, free007 annonçait en @everyone que la semaine suivante serait celle du goût, et que <em>« pour la première fois, nous allons organiser un tournoi non pas de personnages, mais un tournoi des aliments, des plats et des desserts ! »</em>. Trois propositions par membre, une seule condition : que ce soit <em>« comestible pour le commun des mortels »</em>. Quatre minutes plus tard, drum.fern ouvrait le bal avec <em>« twix frit reese's kfc »</em>. Suivirent la trilogie belge de narumanu — frites, frites épicées, moules frites, 12 alertes —, le <em>« Riz aux oreo »</em> de nagisaharu (12 alertes également, suivi d'un sobre <em>« J'ai mes limites »</em>), les soupes d'elomeurt (<em>« je vis pour les soupes »</em>) et une sélection suisse de xenonpup incluant une ration militaire <em>« 100% naturel (et 100% dégueulasse) »</em>. Le 10 à minuit pile, queencedia procédait à un ultime remplacement : <em>« Je replace les carbos par un steack frites »</em>. Personne ne le savait encore, mais le vainqueur venait de s'inscrire.</p>
+      <p>Le 12 au soir, le verdict des inscriptions tomba : <em>« 64 aliments/plats/desserts ont été inscrits pour ce tournoi du goût exceptionnel ! C'est encore plus que pour les 2 derniers Waifu Wars ! »</em>. Seize poules plus tard, l'organisateur jurait, épuisé, qu'il ne referait <em>« plus jamais »</em> de phase à seize groupes, <em>« c'est bien trop galère à compter »</em>. Noxiousdtr veillait au respect des formes — <em>« Non mais on va pas bacler des votes très importants par contre »</em> — et une égalité parfaite, 22 à 22, entre le magret de canard et le bokit fut tranchée le 14 aux tirs au but : <em>« La France de la métropole face à la France de l'outre-mer »</em>. Panenka manquée de noxiousdtr, arrêt sur la frappe d'aupremiercoup : le bokit passa. Le soir même, free007 dévoilait deux nouveautés : le tournoi s'appellerait désormais Food Wars et reviendrait chaque année en octobre, et ynnel13 ouvrait le Pari Mutuel Kikoojap, où chacun pouvait miser ses 100 € fictifs sur ses plats favoris.</p>
+    </div>
+
+    <div class="pull-quote">« C'est un CRIME culinaire »<br><span style="font-size:0.75rem; color:var(--ink-light);">— queencedia, 7 octobre, devant l'inscription de la mitraillette</span></div>
+
+    <div class="article-body">
+      <p>Les huitièmes de finale offrirent un drame familial : le chili con carne et le bokit, tous deux proposés par Igno (3113), se neutralisèrent 18 à 18. Nouvelle séance de tirs au but le 16, si longue que free007 finit par s'exclamer <em>« CA VA JAMAIS SE TERMINER »</em>, jusqu'au tir décisif qui qualifia le chili. Le chili élimina ensuite la mitraillette en quart, à la grande surprise de son propre parrain (<em>« le serveur décide d'avoir du goût tout d'un coup »</em>), avant de tomber en demi-finale. Dans l'autre moitié du tableau, une croisade occupa tout le mois : celle de wheelfyze contre le tiramisu de pocoudonworld, entamée dès le 7 par un <em>« oh non pas l'horrible tiramisu.... »</em> et conclue le 18 par un soulagement sans retenue, le steak frites l'ayant sorti en demi : <em>« l'horrible tiramisu est tombé »</em>.</p>
+      <p>La finale opposa donc la tarte au citron d'ynnel13 au steak frites de queencedia. Le 19 octobre à 21h20, le verdict tomba : <em>« Et c'est le Steak frites qui remporte le Food Wars 2026 !! »</em>, sur un score de 21 à 16 — une finale qui, note ynnel13, a réuni moins de votants que les huitièmes. Le plat servira de menu au restaurant de l'IRL Animest. Arrabiata, partisan malheureux du magret, n'a pas désarmé : <em>« Les gens qui votent steak frites n'ont absolument aucun goût »</em>.</p>
+    </div>
+
+    <!-- GALERIE FOOD WARS -->
+    <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin:1.25rem 0 0.25rem;">— ✦ Food Wars en Images · Les Inscriptions les Plus Applaudies ✦ —</div>
+    <div class="wm-gallery">
+
+      <div class="wm-item">
+        <div class="wm-caption">Queencedia · 10/10 · 14 alertes</div>
+        <img src="fw1.jpg" alt="Food Wars #1" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>fw1.jpg manquant</span></div>
+        <div class="wm-legend">« Je replace les carbos par un steack frites » — l'inscription de dernière minute du futur champion</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Narumanu · 07/10 · 12 alertes</div>
+        <img src="fw2.jpg" alt="Food Wars #2" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>fw2.jpg manquant</span></div>
+        <div class="wm-legend">Frites, frites épicées, moules frites : le programme le plus cohérent du tournoi</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Nagisaharu · 11/10 · 12 alertes</div>
+        <img src="fw3.jpg" alt="Food Wars #3" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>fw3.jpg manquant</span></div>
+        <div class="wm-legend">« Riz aux oreo » — « ne me dis pas que c'est de toi », s'inquiète elomeurt</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Sufeet · 07/10 · 10 alertes</div>
+        <img src="fw4.jpg" alt="Food Wars #4" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>fw4.jpg manquant</span></div>
+        <div class="wm-legend">« La salade offerte au buffalo, le 4eme pain au chocolat offert pour 3 achetés, le sandwich de la hess »</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Cegi · 07/10 · 8 alertes</div>
+        <img src="fw5.jpg" alt="Food Wars #5" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>fw5.jpg manquant</span></div>
+        <div class="wm-legend">Le Tacos XL, qualifié pour la deuxième phase de poules — « Mon ventre tank pourtant »</div>
+      </div>
+
+      <div class="wm-item">
+        <div class="wm-caption">Queencedia · 07/10 · 11 alertes</div>
+        <img src="fw6.jpg" alt="Food Wars #6" onclick="openLightbox(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>fw6.jpg manquant</span></div>
+        <div class="wm-legend">Posté une minute après l'inscription du Tacos XL bœuf haché merguez cordon bleu sauce fromagère BBQ</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem; border-bottom: 2px solid var(--rule);">
+    <div class="box">
+      <div class="box-title">Avis de la Rédaction — Le Pari Mutuel Kikoojap</div>
+      <div class="box-body">Ouvert le 14 octobre par ynnel13, qui avait <em>« préparé un magnifique tableau excel pour faire les cotes »</em>, le PMK a vu dix-huit membres se ruiner ou s'enrichir en 478 messages. Lupin_red, en tête après les huitièmes avec 548,60 €, finit à zéro dès le tour suivant ; queencedia avait tout perdu dès sa première mise. Noxiousdtr, lui, grimpa de 260 € à 7 235,80 € en un seul tour avant de conclure à 14 083,95 €, loin devant Kuro (3 151,87 €) et pocoudonworld (836,36 €), troisième <em>« en ayant misé qu'une seule fois »</em>. Mention spéciale à Igno, <em>« top 5 en n'ayant gagné aucune mise »</em>. Ynnel13 propose déjà la suite : <em>« un tournoi de boissons pour la prochaine fois »</em>.</div>
+    </div>
+  </div>
+
+  <!-- GRILLE 2 : MODÉRATION + MONOPOLY -->
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Deux Nouvelles Têtes à la Modération : Teefus et Minji</div>
+      <div class="article-deck">Une annonce en forme d'énigme, trois jours de suspense et presque personne pour trouver la réponse : le 25 octobre, sufeet et shinymin rejoignent officiellement l'équipe de modération.</div>
+      <div class="article-byline">Par la rédaction · 📣annonces & 💬général · 22-28 Octobre 2026</div>
+      <div class="article-body">
+        <p>Le 22 octobre à 21h44, free007 lance un @everyone sibyllin : <em>« 2 nouveaux changements importants sur le serveur. Mais c'est à vous de deviner, voici les indices. Bonne chance. »</em> Le message récolte 17 alertes prison — deuxième post le plus réactionné du mois — et dead_kage ajoute le lendemain <em>« un nouvel indice »</em>. Jiva est la seule à viser juste dès l'aube du 23 (<em>« depuis quand minji & teef sont modo 👀 »</em>). Le 25, dead_kage abat les cartes : <em>« Personne n'a deviné donc on va dire nous même ce qui a changé. »</em></p>
+        <p>Les heureux élus sont donc Teefus (sufeet), quatrième de l'alerte ce mois-ci, et Minji (shinymin). Le général accueille la nouvelle à sa façon : <em>« Genre c'est moi en modo là »</em>, s'étrangle noxiousdtr, tandis que mycenasilvae suggère à Minji d'ouvrir <em>« un salon coquetterie »</em>. Sufeet, lui, glisse dès le 28 un <em>« je suis modo depuis 2j »</em> en plein débat politique. Le même jour, la modération au complet prend une première décision : le salon 📰actualités-politique-débat remonte tout en haut de la liste, <em>« nous espérons que cela incite les personnes à parler de politique dans le salon approprié »</em>.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Monopoly KJ : le Plateau Est Complet</div>
+      <div class="article-deck">Bêta multijoueur, gares rebaptisées en clans, références aux jeux fétiches de la communauté : free007 a bouclé en une semaine la carte de son Monopoly maison.</div>
+      <div class="article-byline">Par la rédaction · Salon 🏠monopoly-kj · 13-18 Octobre 2026</div>
+      <div class="article-body">
+        <p>Le 13 octobre, free007 appelle les volontaires à tester <em>« pour la 1e fois le multi »</em> : <em>« J'ai hébergé le Monopoly sur un serveur gratuit (Render). »</em> Il propose dans la foulée de renommer les quatre gares, jusqu'ici baptisées comme les autres cases, d'après les clans de la communauté. Proposition adoptée, et le 17, le vote désigne la <em>« Banque Populaire KJ »</em> comme quatrième clan, ce qui <em>« rend bien hommage aux origines de ce serveur »</em>.</p>
+        <p>Restaient six cases. Aupremiercoup suggère <em>« les chambres de nos amis pseudos-roses »</em> ; free007 retient plutôt des clins d'œil aux licences fétiches du serveur, de l'<em>« Académie du Pic de l'Espoir »</em> pour Danganronpa à Rhodes Island pour Arknights, en passant par le Café Leblanc de Persona. Le 18, le plateau définitif est publié, l'Animest y gagne sa case, et elomeurt y trouve aussitôt à redire : <em>« DEUX nancy mention mais AUCUNE de metz, paix sur vous le 57 »</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION II : AUTRES SALONS -->
+  <div class="section-header">II. — Dépêches des Salons Particuliers</div>
+
+  <div class="grid-2-equal">
+    <div class="col">
+      <div class="article-headline">Arknights : Tout le Monde Stronghold</div>
+      <div class="article-deck">Troisième salon de discussion le plus actif du mois avec 3 253 messages, 🐇arknights a trouvé son passe-temps d'octobre : Stronghold Protocol, le mode stratégie du jeu, dans une version non officielle traduite par des fans et jouable sur navigateur.</div>
+      <div class="article-byline">Par la rédaction · Salon 🐇arknights</div>
+      <div class="article-body">
+        <p>Le mot « stronghold » revient dans 84 messages, presque tous signés du même noyau : dead_kage, ynnel13 et falundrim. Les invitations <em>« Kage invites you to Stronghold Protocol: Alliance [Ultimate Simulation] »</em> pleuvent chaque soir, et la question rituelle d'ynnel13 — <em>« ca stronghold? »</em> — devient un appel à la mobilisation. Il confie même avoir <em>« envie de strongholder sur le pc du taff »</em>.</p>
+        <p>Le 15 au soir, dead_kage et falundrim ouvrent salon sur salon. Les novices restent à convaincre : <em>« Je sais même p1s ce qu on gagne en stronghold »</em>, avoue sufeet, quand shinymin demande <em>« ca marche comment le nouveau stronghold dcp jai pas suivi »</em>. Le 23, ynnel13 sonnait pourtant l'alarme : <em>« le lobby stronghold est mort. »</em> Dès le lendemain, dead_kage réclamait pourtant un <em>« STRONGHOLD PROTOCOL 3 »</em>.</p>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="article-headline">Les Lettres Reviennent, Secret KJ Fait son Bilan</div>
+      <div class="article-deck">Le salon littérature rouvre sous le nom de 📖club-de-lecture, porté par un sufeet en lecteur évangéliste. Le même sufeet sonde les joueurs de la saison 1 de Secret KJ.</div>
+      <div class="article-byline">Par la rédaction · 📖club-de-lecture & 📣annonces</div>
+      <div class="article-body">
+        <p>Le 15 octobre à 23h13, free007 annonce la <em>« Réouverture du salon littérature »</em>, rebaptisé 📖club-de-lecture. Sufeet accueille aussitôt les arrivants d'un <em>« Bienvenue et lisez LOTM, RI, The wandering inn. »</em>, non sans regretter de ne pas avoir osé le nom de <em>« tarot club »</em>. Il signe 99 des 267 messages du salon ce mois-ci, loin devant Cegi (33) et Igno (30).</p>
+        <p>Le 27, sufeet change de casquette et mentionne les participants de Secret KJ pour <em>« récupérer des retours/avis sur la saison 1 »</em> : durée du jeu, équité des secrets, difficulté des indices. Une saison 2 ? Rien d'officiel, mais l'appel aux retours ressemble fort à des préparatifs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DERNIÈRE HEURE -->
+  <div style="padding: 1.5rem 2rem 0.25rem;">
+    <div class="flash-box">
+      <span class="flash-tag">Dernière Heure — 16 Octobre</span>
+      <div class="article-headline" style="margin-bottom:0.4rem;">Les 10 Ans du Saint-Empire : un « Gros Programme » en Préparation</div>
+      <div class="article-body">
+        <p>Au détour d'une discussion sur les vieux délires de la communauté, free007 a levé le voile, le 16 octobre peu après 18h, sur l'année 2027, celle des dix ans. Au menu : le récit des <em>« plus gros délires de la commu »</em>, des <em>« interviews de tomos »</em> et, à la fin de l'année, <em>« un tournoi géant des délires pour élire LE délire de la commu qui aura le plus marqué les 10 ans »</em>, avec <em>« un système de championnat et tout »</em>. L'administrateur dispose déjà d'une base solide : <em>« j'ai encore les archives du wiki KJ »</em>. Rendez-vous est pris : <em>« vous aurez un teaser durant le Pocothon de fin décembre 2026 »</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION III : PETITE GAZETTE -->
+  <div class="section-header">III. — Petite Gazette & Faits Divers</div>
+
+  <div class="gazette-items">
+
+    <div class="gag-item">
+      <div class="gag-title">Stevie Wonder et le Fils Adoptif</div>
+      <div class="gag-body">Le 16 octobre, despey raconte en ping collectif son concert de Stevie Wonder avec sa mère, qui passa la soirée à discuter avec un jeune voisin de gradin : <em>« en fait c'est un petit goat de 17 ans fan de stevie wonder qui est venu solo au concert »</em>, batteur en école de musique. Despey, lui, la soupçonne d'avoir <em>« trouvé un nouveau fils »</em> (14 alertes).</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Le Développeur Qui Lisait les Critiques</div>
+      <div class="gag-body">Le 13 octobre, anokturnus donne l'alerte en 🎮jeux-vidéo : <em>« le dev de poorzzle a encore mis un comm sous ma review »</em>. Le jeu, vendu selon lui 60 € pendant deux ans, est soudain repassé à 1 €, et son auteur a <em>« juste modifié le comm où il m'insultait mes morts »</em> (11 alertes). Elomeurt en tire la morale : <em>« les hommes mentent mais pas steam db »</em>.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">L'Homme Poire Cherche un Programme</div>
+      <div class="gag-body">Le 7 octobre, sufeet sollicite 💪fitness-santé : <em>« quelqu'un a une routine pour qu'un homme poire devient fit++ sans suivre d'exercices intenses, avec une alimentation libre (4x macdo par semaine) »</em>, précisant en passant qu'il mange des chips en écrivant. Quatorze alertes prison, mais aucun programme.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Booba contre Sinik, Encore et Toujours</div>
+      <div class="gag-body">Le 25 octobre au soir, le général se transforme en tribunal du rap français : despey, petitvelo et noxiousdtr y jugent Booba, Sinik, Rohff et Sefyu une bonne partie de la soirée, quand noxiousdtr ne livre pas sa propre définition de la communauté (<em>« Définition des KJ : tjrs être dans les extrêmes »</em>). Lupin_red, de passage, constate : <em>« ça ils parlent mais jamais sur le salon rap hein »</em>.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">Communiqué Officiel sur les Pseudos Roses</div>
+      <div class="gag-body">Le 28 octobre, elomeurt publie sur le général un faux communiqué au ton gouvernemental : <em>« Nous savons que la situation concernant les pseudos roses sur le SAINT EMPIRE devient de plus en plus critique, et nous partageons votre agacement. »</em> Huit alertes, et aucune mesure concrète annoncée à ce jour.</div>
+    </div>
+
+    <div class="gag-item">
+      <div class="gag-title">La Gazette, Huitième du Nom</div>
+      <div class="gag-body">Le 12 octobre à 18h47, free007 annonçait en @everyone la sortie du n°7 de cette Gazette — WikiMasters, Zelda Direct, Team Malaise, Pokérace 5 et Monopoly KJ au sommaire. Le présent numéro remercie ses lecteurs, et prévient les candidats au prochain Food Wars : la rédaction vote steak frites.</div>
+    </div>
+
+  </div>
+
+  <!-- SECTION IV : PERSONNALITÉS -->
+  <div class="section-header">IV. — Portrait des Figures du Saint-Empire</div>
+
+  <div class="full-width">
+    <div class="article-headline large" style="text-align:center; margin-bottom:0.25rem;">Galerie des Personnages Notables</div>
+    <div style="text-align:center; font-family:'IM Fell English', serif; font-style:italic; font-size:0.8rem; color:var(--ink-light); margin-bottom:1.5rem;">Portraits établis d'après les archives du mois d'octobre, par la rédaction.</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Elomeurt</div>
+        <div class="persona-title">Sato, Reine Incontestée · 5 412 msgs · #1 du mois 🥇</div>
+        <div class="persona-tags">
+          <span class="tag">#1 du général (4 043)</span>
+          <span class="tag">#1 de l'alerte</span>
+          <span class="tag">967 msgs en jeux-vidéo</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« l'irl c'est à chine masséna, pas en chine littérale hein au cas où »</div>
+          <div class="persona-quote">« je tire sur narumanu pour rien »</div>
+        </div>
+        <div class="persona-body">Deuxième mois consécutif au sommet, et avec près du double du deuxième : Sato écrase le classement des messages comme celui de l'alerte. Hôtesse désignée de l'Animest, elle prépare son salon nancéien à recevoir les tomodachis — DVD de Star Wars 3 compris.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Mycenasilvae</div>
+        <div class="persona-title">Le Tombeur de Kayane · 2 976 msgs · #2 du mois 🥈</div>
+        <div class="persona-tags">
+          <span class="tag">#3 du général (2 125)</span>
+          <span class="tag">#1 des jeux-de-combat (183)</span>
+          <span class="tag">248 msgs le 7 octobre</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« LUPIN CA SUFFIT »</div>
+          <div class="persona-quote">« y'a velo demo nox ca parle forcément rap »</div>
+        </div>
+        <div class="persona-body">Mashi s'offre la deuxième marche, porté par un général qu'il anime sans relâche et un salon jeux-de-combat où il règne. Le 13, il racontait qu'un organisateur l'avait reconnu comme celui <em>« qui a battu Kayane »</em>.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Falundrim</div>
+        <div class="persona-title">Le Pilier de Rhodes Island · 2 766 msgs · #3 du mois 🥉</div>
+        <div class="persona-tags">
+          <span class="tag">#3 de l'alerte (995)</span>
+          <span class="tag">#4 du général</span>
+          <span class="tag">459 msgs en arknights</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« teefus aurait du embaucher nox pour faire les indices je pense en vrai »</div>
+          <div class="persona-quote">« Les globes de hots , le gloubiboulga de Casimir, mes pâtes au chocolat de Siracusa »</div>
+        </div>
+        <div class="persona-body">Podium complet : troisième des messages, troisième de l'alerte, deuxième voix du salon Arknights derrière dead_kage. Ses propositions au Food Wars n'ont pas convaincu le jury, mais elles ont convaincu l'alerte.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Despey</div>
+        <div class="persona-title">Le Conteur du Saint-Empire · 2 113 msgs · #11 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#2 de l'alerte (1 082)</span>
+          <span class="tag">3 posts à 14+ alertes</span>
+          <span class="tag">338 msgs en animes</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« vous avez louper le moment hier de l'irl quand j'ai dis bonjour à Lupin »</div>
+          <div class="persona-quote">« L’eau plate elle atomise les 3 propositions de sato déjà hein »</div>
+        </div>
+        <div class="persona-body">Seulement vingtième du général, mais deuxième de l'alerte : chacun de ses longs récits — la photo de Kaijuu sortie du sac de Lupin, le concert de Stevie Wonder — fait mouche. L'IRL du samedi lui aura coûté son dimanche.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Noxiousdtr</div>
+        <div class="persona-title">Le Roi du Pari Mutuel · 2 095 msgs · #12 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">champion du PMK (14 083,95 €)</span>
+          <span class="tag">#6 du général</span>
+          <span class="tag">panenka arrêtée</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« LA CHORBA FRIK VA PERDRE CONTRE PATE AU THON ?! »</div>
+          <div class="persona-quote">« C'est parti LA PANENKA »</div>
+        </div>
+        <div class="persona-body">Défenseur de la chorba frik, gardien des règles du tournoi, tireur malheureux face au magret : Nox a tout raté sur le terrain et tout réussi au guichet, multipliant par plus de cent quarante ses 100 € de départ.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Ynnel13</div>
+        <div class="persona-title">Le Bookmaker · 2 116 msgs · #10 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#5 de l'alerte (853)</span>
+          <span class="tag">fondateur du PMK</span>
+          <span class="tag">tarte au citron finaliste</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« j'ai préparé un magnifique tableau excel pour faire les cotes »</div>
+          <div class="persona-quote">« fier de ma tarte au citron qui aura fait la finale »</div>
+        </div>
+        <div class="persona-body">Créateur et comptable du Pari Mutuel Kikoojap, finaliste du Food Wars avec sa tarte au citron, venu de Lorraine en voiture pour l'IRL : Lenny aura été sur tous les fronts. Seul regret, son propre portefeuille, revenu à zéro en finale.</div>
+      </div>
+
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="col">
+
+      <div class="persona-card">
+        <div class="persona-name">Sufeet</div>
+        <div class="persona-title">Le Nouveau Modo · 2 328 msgs · #8 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#4 de l'alerte (916)</span>
+          <span class="tag">modérateur depuis le 25</span>
+          <span class="tag">99 msgs en club-de-lecture</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« Bienvenue et lisez LOTM, RI, The wandering inn. »</div>
+          <div class="persona-quote">« je suis modo depuis 2j »</div>
+        </div>
+        <div class="persona-body">Modérateur, relanceur du club de lecture, organisateur du bilan de Secret KJ et auteur d'une demande de programme sportif pour homme poire : Teefus a cumulé les casquettes, sans quitter le podium élargi de l'alerte.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Shinymin</div>
+        <div class="persona-title">La Nouvelle Modo · 674 msgs · #34 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">modératrice depuis le 25</span>
+          <span class="tag">104 msgs en arknights</span>
+          <span class="tag">alias Minji</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« jai peur de confondre les barres de saisie et de mettre un msg du genre "soin des pieds" dans une conv avec la direction »</div>
+          <div class="persona-quote">« ca marche comment le nouveau stronghold dcp jai pas suivi »</div>
+        </div>
+        <div class="persona-body">Arrivée en 2025, Minji est déjà modératrice, au point que free007 lui-même s'en amuse : Shishi est arrivé avant elle. Sa nomination, cachée derrière une énigme, n'avait été devinée que par Jiva.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-name">Mariedioa</div>
+        <div class="persona-title">Le Guide de la Capitale · 361 msgs · #41 du mois</div>
+        <div class="persona-tags">
+          <span class="tag">#1 de sorties-à-paris (273)</span>
+          <span class="tag">145 msgs le 10 octobre</span>
+          <span class="tag">bulletin RATP</span>
+        </div>
+        <div class="persona-quotes">
+          <div class="persona-quote">« La 12 aussi mais qui prend la 12 en 2026 ? »</div>
+          <div class="persona-quote">« on avait dit 11h30 du matin pas 11h30 du soir 🧐 »</div>
+        </div>
+        <div class="persona-body">Discret le reste du mois, Marie a tout simplement porté l'IRL Paris : itinéraires, alertes travaux, localisation des retardataires sur SNCF Connect et procès-verbal du déjeuner. Les Belges lui doivent d'être arrivés à l'Opéra.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE ALERTE -->
+  <div class="section-header">V. — L'Alerte en Octobre : Elomeurt Garde la Couronne</div>
+
+  <div style="padding: 2rem 2rem 0; border-bottom: 2px solid var(--rule);">
+
+    <div style="text-align:center; margin-bottom: 1.25rem;">
+      <div class="article-headline large" style="font-size:2rem;">Alertes &amp; Atomes — Le Palmarès d'Octobre</div>
+      <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin: 0.3rem 0;">Anthropologie culturelle · tout le mois</div>
+      <div class="article-deck" style="max-width:620px; margin:0.5rem auto 0; border-left:none; text-align:center; padding-left:0;">Elomeurt conserve son titre avec une avance encore plus nette qu'en septembre. Derrière elle, despey et falundrim montent sur le podium, en l'absence d'un Xkaijuu presque muet ce mois-ci.</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:0; margin-bottom:1.25rem;">
+      <div style="padding: 0 1.25rem 0 0;">
+        <div class="article-body">
+          <p>Elomeurt conserve la tête avec 1 654 alertes, 572 de plus que despey, qui doit sa deuxième place à une poignée de récits fleuves plutôt qu'au volume : il n'est que vingtième du général.</p>
+          <p>Falundrim complète le podium avec 995 alertes, juste devant sufeet (916), troisième en septembre et désormais modérateur.</p>
+        </div>
+      </div>
+      <div style="background:var(--rule); width:1px; margin: 0;"></div>
+      <div style="padding: 0 0 0 1.25rem;">
+        <div class="article-headline small" style="margin-bottom:0.4rem;">Palmarès de l'Alerte — Octobre 2026</div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; margin-bottom:0.6rem;">Statistiques officielles · compilation mensuelle</div>
+        <div class="article-body">
+          <p>Les archives d'octobre livrent leur verdict. Le podium des réactions alerte et atome (et dérivés), à l'emote dominante, est le suivant :</p>
+          <p><strong class="red">#1 — Elomeurt</strong> : 1 654 alertes. Deux mois, deux couronnes.</p>
+          <p><strong class="red">#2 — Despey</strong> : 1 082 alertes. La qualité plutôt que la quantité.</p>
+          <p><strong class="red">#3 — Falundrim</strong> : 995 alertes. À cinq longueurs du millier.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; font-family:'IM Fell English', serif; color:var(--rule); font-size:0.85rem; margin-bottom:1rem;">— ✦ Top 3 des Posts · Palmarès à l'Emote Dominante ✦ —</div>
+
+    <div style="display:flex; flex-direction:column; gap:1.75rem; padding-bottom:1.75rem;">
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥇 Post #1 — Reveur8951, 19 alertes · 17/10, 😊bonheur-positivité</div>
+        <img src="top1.jpg" alt="Post #1" onclick="openLightbox(this.src)" style="width:60%; margin: 0 auto; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>top1.jpg manquant</span></div>
+      </div>
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥈 Post #2 — Free007, 17 alertes · 22/10, 📣annonces</div>
+        <img src="top2.jpg" alt="Post #2" onclick="openLightbox(this.src)" style="width:60%; margin: 0 auto; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>top2.jpg manquant</span></div>
+      </div>
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥉 Post #3 (ex æquo) — Despey, 16 alertes · 11/10, 💬général</div>
+        <img src="top3.jpg" alt="Post #3" onclick="openLightbox(this.src)" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>top3.jpg manquant</span></div>
+      </div>
+
+      <div>
+        <div style="font-family:'IM Fell English SC', serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:0.5rem; border-bottom:1px solid var(--rule); padding-bottom:0.3rem;">🥉 Post #3 (ex æquo) — Deoon, 16 alertes · 16/10, 💬général</div>
+        <img src="top3b.jpg" alt="Post #3 bis" onclick="openLightbox(this.src)" style="width:100%; border:1px solid var(--rule); display:block; background:var(--paper-dark); cursor:zoom-in;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="img-missing"><span style="font-size:1.5rem; opacity:0.3;">☐</span><span>top3b.jpg manquant</span></div>
+      </div>
+
+    </div>
+  </div>
+  <!-- FIN PAGE ALERTE -->
+
+  <!-- SECTION VI : LEXIQUE -->
+  <div class="section-header">VI. — Lexique du Mois</div>
+
+  <div class="full-width">
+    <div style="text-align:center;">
+      <div class="article-headline" style="margin-bottom:0.2rem;">Petit Dictionnaire du Saint-Empire — Octobre 2026</div>
+      <div style="font-family:'IM Fell English', serif; font-style:italic; font-size:0.78rem; color:var(--ink-light);">Les mots qui ont fait le mois, hors vocabulaire courant · nombre de messages les employant</div>
+    </div>
+    <div class="lexique">
+      <div class="lex-entry"><span class="lex-word">Bokit</span><span class="lex-count">212 msgs · 29 membres</span><br>n. m. Sandwich frit antillais. Qualifié aux tirs au but contre le magret, éliminé aux tirs au but par le chili.</div>
+      <div class="lex-entry"><span class="lex-word">Magret</span><span class="lex-count">79 msgs</span><br>n. m. Fierté de la France du terroir, tombée à 22 partout. Ses partisans ne s'en sont pas remis.</div>
+      <div class="lex-entry"><span class="lex-word">Tiramisu</span><span class="lex-count">109 msgs · dont 22 de Wheelfyze</span><br>n. m. Dessert italien. Dit aussi « l'horrible tiramisu ». Demi-finaliste.</div>
+      <div class="lex-entry"><span class="lex-word">Steak frites</span><span class="lex-count">104 msgs · 22 membres</span><br>n. m. Champion du Food Wars 2026, 21 à 16. Futur menu de l'IRL Animest.</div>
+      <div class="lex-entry"><span class="lex-word">Mitraillette</span><span class="lex-count">53 msgs</span><br>n. f. Sandwich belge à la baguette et aux frites. Qualifiée « CRIME culinaire » par queencedia, quart-de-finaliste.</div>
+      <div class="lex-entry"><span class="lex-word">Tabs</span><span class="lex-count">44 msgs</span><br>n. m. pl. Tirs au but, tirés à gauche, au centre ou à droite via le hasard de Tatsu. Méthode officielle de départage.</div>
+      <div class="lex-entry"><span class="lex-word">PMK</span><span class="lex-count">478 msgs en salon dédié</span><br>n. m. Pari Mutuel Kikoojap. Économie fictive où noxiousdtr est devenu millionnaire, ou presque.</div>
+      <div class="lex-entry"><span class="lex-word">Modo</span><span class="lex-count">99 msgs · 27 membres</span><br>n. m. Membre de l'équipe de modération. Deux nouveaux spécimens recensés le 25 octobre.</div>
+      <div class="lex-entry"><span class="lex-word">Stronghold</span><span class="lex-count">84 msgs · 8 membres</span><br>n. m. et v. Mode stratégie d'Arknights. Se conjugue : « ca stronghold? ».</div>
+      <div class="lex-entry"><span class="lex-word">IRL</span><span class="lex-count">308 msgs · 45 membres</span><br>n. f. Rencontre en chair et en os. Paris en octobre, Nancy en novembre.</div>
+      <div class="lex-entry"><span class="lex-word">Aura</span><span class="lex-count">243 msgs · 42 membres</span><br>n. f. Prestige mesurable d'un membre, d'un plat ou d'un tir au but. Se perd plus vite qu'elle ne se gagne.</div>
+      <div class="lex-entry"><span class="lex-word">Goat</span><span class="lex-count">131 msgs · 30 membres</span><br>n. m. Le plus grand de tous les temps. Décerné ce mois-ci jusqu'aux jeunes fans de Stevie Wonder.</div>
+    </div>
+  </div>
+
+  <!-- BOX FINAL -->
+  <div class="full-width">
+    <div class="box" style="max-width:640px; margin:0 auto;">
+      <div class="box-title">Avis de la Rédaction</div>
+      <div class="box-body" style="text-align:center; font-style:italic;">
+        Octobre 2026 aura été le mois où le Saint-Empire est passé à table : à Montparnasse et au Chine Masséna pour l'IRL Paris, puis devant soixante-quatre plats pour le premier Food Wars de son histoire, tranché aux tirs au but et arrosé de paris fictifs. Entre deux votes, la modération a accueilli deux nouvelles têtes, le Monopoly KJ a reçu son plateau, le club de lecture a rouvert et l'administrateur a promis une année 2027 à la hauteur des dix ans.
+        <br><br>
+        Le Saint-Empire a voté. Il mangera steak frites.
+        <br><br>
+        <span class="gold">— La Gazette des Tomodachis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    La Gazette des Tomodachis · Octobre 2026 · Tous droits réservés au Saint-Empire · Reproduction autorisée avec mention de la source · Imprimée sur papier virtuel recyclé
+  </div>
+
+</div>
+
+<!-- LIGHTBOX IMAGES -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center; padding:1.5rem;">
+  <img id="lightbox-img" src="" style="max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.8);">
+</div>
+
+<script>
+  function openLightbox(src) {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>
